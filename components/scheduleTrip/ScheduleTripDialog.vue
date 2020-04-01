@@ -7,10 +7,12 @@
     @mouseenter="fetchAddrresses"
   >
     <template #default="dialog">
-      <v-card elevation="10">
-        <v-card-title>
-          <v-icon>{{ icons.mapMarker }}</v-icon>
-          <h6 class="text-h6">Schedule Trip</h6>
+      <v-card elevation="10 px-12 pt-8 pb-4">
+        <v-card-title class="d-flex flex-column mb-3">
+          <v-icon large color="black" class="mb-4">
+            {{ icons.mapMarker }}
+          </v-icon>
+          <p class="text-h6">Schedule Trip</p>
         </v-card-title>
 
         <v-card-text>
@@ -80,16 +82,27 @@
 
           <div class="trip-info">
             <p>Estimated Distance: {{ estimatedDistance }} km</p>
-            <p>Fuel Consumptin: {{ form.vehicle.getFuelconsumption() }} l/km</p>
             <p>
-              Total Fuel Consumptin:
+              Fuel Consumptin:
               {{
-                Math.ceil(form.vehicle.getFuelconsumption() * estimatedDistance)
+                new Intl.NumberFormat('en-US', {
+                  maximumSignificantDigits: 3,
+                }).format(form.vehicle.getFuelconsumption())
               }}
+              l/km
+            </p>
+            <p>
+              Total Fuel Consumption:
+              {{ Math.ceil(totalFuelConsumption) }}
               lires
+
+              <span class="mr-1">( Kshs {{ Math.ceil(totalFuelCost) }} )</span>
             </p>
 
-            <v-simple-checkbox></v-simple-checkbox>
+            <div class="d-flex">
+              <v-simple-checkbox v-model="form.disburseFunds" color="primary" />
+              <span>Disburse Funds To Driver</span>
+            </div>
           </div>
         </v-card-text>
 
@@ -97,7 +110,7 @@
           <v-btn text color="warning" @click="dialog.value = false"
             >CANCEL</v-btn
           >
-          <v-btn text color="blue" @click="scheduleTrip">CONFIRM</v-btn>
+          <v-btn text color="primary" @click="scheduleTrip">CONFIRM</v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -106,16 +119,15 @@
 
 <script lang="ts">
 import { mdiMapMarker } from '@mdi/js'
-import Vue, { PropOptions } from 'vue'
-import { Driver, Vehicle } from '~/protos/service_pb'
+import Vue from 'vue'
+import { Driver, Trip, Vehicle } from '~/protos/service_pb'
 import { driversStore, scheduleTripStore, vehicleStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
-import { geocode, LatLng } from '~/utils/geocoding'
-
-export interface LatLngProp {
-  coordinates: LatLng
-  addrress: string
-}
+import { geocode } from '~/utils/geocoding'
+import {
+  ApiCallStatus,
+  scheduleTrip as scheduleTripApi,
+} from '~/utils/api-client'
 
 export default Vue.extend({
   data() {
@@ -128,11 +140,14 @@ export default Vue.extend({
         destination: '',
         driver: driversStore.allDrivers[0],
         vehicle: vehicleStore.allVehicles[0],
+        disburseFunds: false,
+        scheduledStartTime: '',
       },
       model: scheduleTripStore.dialog,
+      apiCallStatus: ApiCallStatus.WAITING,
     }
   },
-
+  // TODO: add start date time field
   computed: {
     allDrivers(): Driver[] {
       return driversStore.allDrivers
@@ -141,7 +156,16 @@ export default Vue.extend({
       return vehicleStore.allVehicles
     },
     estimatedDistance(): number {
-      return 0
+      return 5 // TODO:USE DISTANCE VECTOR  API
+    },
+    totalFuelConsumption(): number {
+      return this.form.vehicle.getFuelconsumption() * this.estimatedDistance
+    },
+    fuelCostPerUnit(): number {
+      return 113
+    },
+    totalFuelCost(): number {
+      return this.fuelCostPerUnit * this.totalFuelConsumption
     },
   },
 
@@ -171,7 +195,17 @@ export default Vue.extend({
   methods: {
     scheduleTrip() {
       console.log('scheduling')
+      const trip = new Trip()
+      trip.setDriver(this.form.driver)
+      trip.setVehicle(this.form.vehicle)
+      trip.setOrigin(scheduleTripStore.selectedOrigin)
+      trip.setDestination(scheduleTripStore.selectedDestination)
+      scheduleTripApi(!process.browser, trip, this.onEndApiCall)
       this.model = false
+    },
+    onEndApiCall(status: ApiCallStatus) {
+      this.apiCallStatus = status
+      EventBus.$emit('schedule-complete-dialog', status)
     },
     fetchAddrresses() {
       console.log('fetching')
@@ -182,16 +216,14 @@ export default Vue.extend({
         lat: scheduleTripStore.selectedOrigin.getLat(), // mapStore.selectedOrigin.getLat(),
         lng: scheduleTripStore.selectedOrigin.getLong(), // mapStore.selectedOrigin.getLong(),
       }
-
-      geocode(originLocation, geocoder, (result) => {
-        this.form.origin = result
-      })
-
       const destinationLocation = {
         lat: scheduleTripStore.selectedDestination.getLat(), // mapStore.selectedOrigin.getLat(),
         lng: scheduleTripStore.selectedDestination.getLong(), // mapStore.selectedOrigin.getLong(),
       }
 
+      geocode(originLocation, geocoder, (result) => {
+        this.form.origin = result
+      })
       geocode(destinationLocation, geocoder, (result) => {
         this.form.destination = result
       })

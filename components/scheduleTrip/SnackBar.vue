@@ -21,18 +21,21 @@
     </v-snackbar>
 
     <schedule-trip-dialog />
+    <status-dialog />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { Location } from '@/protos/service_pb'
-import { LatLngProp } from '@/components/scheduleTrip/ScheduleTripDialog.vue'
+import ScheduleTripDialog from '@/components/scheduleTrip/ScheduleTripDialog.vue'
+import StatusDialog from '@/components/scheduleTrip/StatusDialog.vue'
 import { scheduleTripStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
-import { geocode, LatLng } from '~/utils/geocoding'
+import { geocode } from '~/utils/geocoding'
 
 export default Vue.extend({
+  components: { ScheduleTripDialog, StatusDialog },
   data() {
     return {
       model: scheduleTripStore.snackbar,
@@ -47,25 +50,6 @@ export default Vue.extend({
   computed: {
     snackbar(): boolean {
       return scheduleTripStore.snackbar
-    },
-    origin(): LatLngProp {
-      return {
-        coordinates: {
-          lat: this.locations[0] === undefined ? 0 : this.locations[0].getLat(),
-          lng:
-            this.locations[0] === undefined ? 0 : this.locations[0].getLong(),
-        },
-        addrress: this.locationsStr[0],
-      }
-    },
-    destination(): LatLngProp {
-      return {
-        coordinates: {
-          lat: this.locations[1] === undefined ? 0 : this.locations[1].getLat(),
-          lng: this.locations[1] === undefined ? 0 : this.locations[1].getLong(),
-        },
-        addrress: this.locationsStr[1],
-      }
     },
   },
 
