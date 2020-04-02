@@ -18,15 +18,17 @@
         <v-card-text>
           <div class="form">
             <v-text-field
+              v-model="form.origin"
               label="From"
               outlined
-              :value="form.origin"
+              readonly
             ></v-text-field>
 
             <v-text-field
+              v-model="form.destination"
               label="To"
               outlined
-              :value="form.destination"
+              readonly
             ></v-text-field>
 
             <v-autocomplete
@@ -200,12 +202,18 @@ export default Vue.extend({
       trip.setVehicle(this.form.vehicle)
       trip.setOrigin(scheduleTripStore.selectedOrigin)
       trip.setDestination(scheduleTripStore.selectedDestination)
+      trip.setStatus('scheduled')
+      //TODO:SCHEDULE TIME HERE SERCH VUETIFY DATE TIME PICKER
       scheduleTripApi(!process.browser, trip, this.onEndApiCall)
       this.model = false
     },
     onEndApiCall(status: ApiCallStatus) {
       this.apiCallStatus = status
-      EventBus.$emit('schedule-complete-dialog', status)
+      const message =
+        status === ApiCallStatus.SUCCESS
+          ? 'Transaction Successful'
+          : 'Transaction Failed'
+      EventBus.$emit('open-status-dialog', status, message)
     },
     fetchAddrresses() {
       console.log('fetching')

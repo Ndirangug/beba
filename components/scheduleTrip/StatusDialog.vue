@@ -3,7 +3,7 @@
     v-model="model"
     persistent
     transition="dialog-top-transition"
-    max-width="350"
+    max-width="400"
   >
     <v-card class="px-6 pt-10 pb-4" elevation="10">
       <v-card-text class="d-flex flex-column justify-center align-center">
@@ -12,7 +12,7 @@
         </div>
 
         <div class="message">
-          <p class="text-h6 black--text">{{ message }}</p>
+          <p class="text-h6 black--text text-capitalize">{{ message }}</p>
         </div>
       </v-card-text>
       <v-card-actions class="justify-end">
@@ -32,28 +32,11 @@ export default Vue.extend({
     return {
       model: false,
       status: ApiCallStatus.WAITING,
+      message: '',
     }
   },
 
   computed: {
-    message(): string {
-      let message = ''
-
-      switch (this.status) {
-        case ApiCallStatus.SUCCESS:
-          message = 'Transaction Successful'
-          break
-        case ApiCallStatus.FAILED:
-          message = 'Transaction Failed'
-          break
-        default:
-          message = 'Waiting...'
-          break
-      }
-
-      return message
-      // return this.status === ApiCallStatus.SUCCESS ? 'SUCCESS' : 'FAILED'
-    },
     icon(): string {
       let icon: string
 
@@ -91,10 +74,14 @@ export default Vue.extend({
   },
 
   created() {
-    EventBus.$on('schedule-complete-dialog', (status: ApiCallStatus) => {
-      this.model = true
-      this.status = status
-    })
+    EventBus.$on(
+      'open-status-dialog',
+      (status: ApiCallStatus, message: string) => {
+        this.status = status
+        this.message = message
+        this.model = true
+      }
+    )
   },
 })
 </script>

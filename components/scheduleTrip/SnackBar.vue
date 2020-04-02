@@ -21,7 +21,6 @@
     </v-snackbar>
 
     <schedule-trip-dialog />
-    <status-dialog />
   </div>
 </template>
 
@@ -29,13 +28,13 @@
 import Vue from 'vue'
 import { Location } from '@/protos/service_pb'
 import ScheduleTripDialog from '@/components/scheduleTrip/ScheduleTripDialog.vue'
-import StatusDialog from '@/components/scheduleTrip/StatusDialog.vue'
+
 import { scheduleTripStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
 import { geocode } from '~/utils/geocoding'
 
 export default Vue.extend({
-  components: { ScheduleTripDialog, StatusDialog },
+  components: { ScheduleTripDialog },
   data() {
     return {
       model: scheduleTripStore.snackbar,

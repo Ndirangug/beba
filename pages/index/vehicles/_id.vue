@@ -16,6 +16,9 @@
       <template #scheduled>
         <trips-list :trips="scheduledTrips" />
       </template>
+      <template #cancelled>
+        <trips-list :trips="cancelledTrips" />
+      </template>
     </tabs-view>
 
     <v-row class="d-flex justify-center align-center">
@@ -44,6 +47,10 @@ export default Vue.extend({
       return `${this.vehicle.getBrand()} ${this.vehicle.getModel()} ${this.vehicle.getModelyear()}`
     },
     tableData(): { [key: string]: string } {
+      console.log(this.vehicle.getDatepurchased())
+
+      console.log(this.vehicle.getExpectedendservice())
+
       return {
         fuel_consumption: `${new Intl.NumberFormat('en-US', {
           maximumSignificantDigits: 3,
@@ -73,7 +80,13 @@ export default Vue.extend({
       return tripsStore.allTrips
         .slice()
         .filter((trip) => trip.getVehicle()?.getVehicleid() === this.vehicleId)
-        .filter((trip) => trip.getScheduleddeparturetime() > Date.now())
+        .filter((trip) => trip.getStatus() === 'scheduled')
+    },
+    cancelledTrips(): Trip[] {
+      return tripsStore.allTrips
+        .slice()
+        .filter((trip) => trip.getVehicle()?.getVehicleid() === this.vehicleId)
+        .filter((trip) => trip.getStatus() === 'cancelled')
     },
   },
   mounted() {

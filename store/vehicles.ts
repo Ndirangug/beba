@@ -21,6 +21,14 @@ export default class Vehicles extends VuexModule {
     this.allVehicles = vehicles
   }
 
+  @Mutation
+  deleteVehicle(vehicleId: number) {
+    const index = this.allVehicles.findIndex((vehicle: Vehicle) => {
+      return vehicle.getVehicleid() === vehicleId
+    })
+    this.allVehicles.splice(index, 1)
+  }
+
   get filteredVehicles() {
     return (searchQuery: string) => {
       return this.allVehicles.filter(

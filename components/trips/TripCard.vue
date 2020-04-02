@@ -7,9 +7,28 @@
       ></div>
 
       <div class="content">
-        <v-btn color="black" icon x-small class="btn-options"
-          ><v-icon>{{ icons.menu }}</v-icon></v-btn
-        >
+        <v-menu offset-y :disabled="trip.getStatus() == 'cancelled'">
+          <template #activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              color="black"
+              icon
+              x-small
+              class="btn-options"
+              v-on="on"
+              ><v-icon>{{ icons.menu }}</v-icon></v-btn
+            >
+          </template>
+
+          <v-list>
+            <v-list-item @click="cancelTrip">
+              <v-list-item-title class="text-capitalize">
+                Cancel Trip
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
         <div class="details pa-4" :style="{ 'background-color': colors.light }">
           <p
             v-if="
@@ -88,6 +107,7 @@
         >
           <v-btn
             color="white"
+            class="px-2"
             text
             :to="`/drivers/${trip.getDriver().getIdnumber()}`"
           >
@@ -98,6 +118,7 @@
           <v-btn
             color="white"
             text
+            class="px-2"
             :to="`/vehicles/${trip.getVehicle().getVehicleid()}`"
           >
             <v-icon>{{ icons.truck }}</v-icon>
@@ -119,7 +140,10 @@ import {
 import Vue, { PropOptions } from 'vue'
 // @ts-ignore
 import colors from 'vuetify/lib/util/colors'
-import { Trip } from '~/protos/service_pb'
+import { RecordId, Trip } from '~/protos/service_pb'
+import { tripsStore } from '~/store'
+import { ApiCallStatus, cancelTrip } from '~/utils/api-client'
+import { EventBus } from '~/utils/event-bus'
 import { LatLng, geocode } from '~/utils/geocoding'
 
 export default Vue.extend({
@@ -197,6 +221,23 @@ export default Vue.extend({
   },
 
   methods: {
+    cancelTrip() {
+      const recordId = new RecordId()
+      recordId.setId(this.trip.getTripid())
+
+      cancelTrip(!process.browser, recordId, this.onEndApiCall)
+    },
+    onEndApiCall(status: ApiCallStatus) {
+      if (status === ApiCallStatus.SUCCESS) {
+        tripsStore.cancelTrip(this.trip.getTripid())
+      }
+
+      const message =
+        status === ApiCallStatus.SUCCESS
+          ? `Trip Cancelled Successfully`
+          : 'Failed'
+      EventBus.$emit('open-status-dialog', status, message)
+    },
     fetchAddresses() {
       // @ts-ignore
       const geocoder = new this.$google.maps.Geocoder()

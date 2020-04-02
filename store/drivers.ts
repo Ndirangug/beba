@@ -22,6 +22,14 @@ export default class Drivers extends VuexModule {
     this.allDrivers = drivers
   }
 
+  @Mutation
+  deletedriver(idNumber: number) {
+    const index = this.allDrivers.findIndex((driver: Driver) => {
+      return driver.getIdnumber() === idNumber
+    })
+    this.allDrivers.splice(index, 1)
+  }
+
   get filterWithName() {
     return (name: string) => {
       return this.allDrivers.filter(

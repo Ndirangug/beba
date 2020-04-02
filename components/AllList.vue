@@ -11,7 +11,21 @@
           <v-icon>{{ icons.search }}</v-icon>
         </template>
         <template #append-outer>
-          <v-icon>{{ icons.menu }}</v-icon>
+          <v-menu offset-y>
+            <template #activator="{ on, attrs }">
+              <v-btn v-bind="attrs" icon v-on="on">
+                <v-icon>{{ icons.menu }}</v-icon>
+              </v-btn>
+            </template>
+
+            <v-list>
+              <v-list-item @click="createNew">
+                <v-list-item-title class="text-capitalize">
+                  New {{ item }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </template>
       </v-text-field>
     </v-row>
@@ -29,6 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mdiSearchWeb, mdiDotsVertical } from '@mdi/js'
+import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
   props: {
@@ -49,9 +64,19 @@ export default Vue.extend({
 
   computed: {
     title(): string {
+      return this.isVehicles ? 'all vehicles' : 'all drivers'
+    },
+    isVehicles(): boolean {
       return this.$route.path.endsWith('vehicles')
-        ? 'all vehicles'
-        : 'all drivers'
+    },
+    item(): string {
+      return this.isVehicles ? 'vehicle' : 'driver'
+    },
+  },
+
+  methods: {
+    createNew() {
+      EventBus.$emit(`new-${this.item}`)
     },
   },
 })

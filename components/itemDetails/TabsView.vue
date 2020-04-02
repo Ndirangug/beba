@@ -30,6 +30,10 @@
       <v-tab-item :key="items[2]" class="pt-6">
         <slot name="scheduled"></slot>
       </v-tab-item>
+
+      <v-tab-item :key="items[3]" class="pt-6">
+        <slot name="cancelled"></slot>
+      </v-tab-item>
     </v-tabs-items>
   </div>
 </template>

@@ -19,13 +19,21 @@
 
     <tabs-view
       :table-data="tableData"
-      :items="['personal details', 'history', 'scheduled trips']"
+      :items="[
+        'personal details',
+        'history',
+        'scheduled trips',
+        'cancelled trips',
+      ]"
     >
       <template #history>
         <trips-list :trips="pastTrips" />
       </template>
       <template #scheduled>
         <trips-list :trips="scheduledTrips" />
+      </template>
+      <template #cancelled>
+        <trips-list :trips="cancelledTrips" />
       </template>
     </tabs-view>
 
@@ -95,7 +103,13 @@ export default Vue.extend({
       return tripsStore.allTrips
         .slice()
         .filter((trip) => trip.getDriver()?.getIdnumber() === this.driverId)
-        .filter((trip) => trip.getScheduleddeparturetime() > Date.now() / 1000)
+        .filter((trip) => trip.getStatus() === 'scheduled')
+    },
+    cancelledTrips(): Trip[] {
+      return tripsStore.allTrips
+        .slice()
+        .filter((trip) => trip.getDriver()?.getIdnumber() === this.driverId)
+        .filter((trip) => trip.getStatus() === 'cancelled')
     },
   },
 

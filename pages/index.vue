@@ -1,6 +1,7 @@
 <template>
   <div>
     <nav-drawer />
+    <status-dialog />
 
     <GMap
       id="gMap"
@@ -45,12 +46,14 @@
 <script lang="ts">
 import Vue from 'vue'
 
+import StatusDialog from '@/components/scheduleTrip/StatusDialog.vue'
 import { Driver, Location, Vehicle } from '~/protos/service_pb'
 import { driversStore, vehicleStore } from '~/store'
 import { fetchDrivers, fetchTrips, fetchVehicles } from '~/utils/api-client'
 import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
+  components: { StatusDialog },
   layout: 'maps',
   data() {
     return {

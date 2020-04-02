@@ -5,6 +5,7 @@ import { UnaryOutput } from '@improbable-eng/grpc-web/dist/typings/unary'
 import {
   Driver,
   DriverRequest,
+  RecordId,
   Trip,
   TripsRequest,
   Vehicle,
@@ -126,21 +127,149 @@ export const scheduleTrip = (
       }
     },
   })
-  // grpc.invoke(BebaBackend.NewTrip, {
-  //   host,
-  //   transport: transport(isServer),
-  //   trip,
-  //   onMessage: (res: ProtobufMessage) => {},
-  //   onEnd: (
-  //     code: grpc.Code,
-  //     msg: string | undefined,
-  //     trailers: grpc.Metadata
-  //   ) => {
-  //     if (code === grpc.Code.OK) {
-  //       console.log('all ok')
-  //     } else {
-  //       console.log('hit an error', code, msg, trailers)
-  //     }
-  //   },
-  // })
+}
+
+export const newVehicle = (
+  isServer: boolean,
+  vehicle: Vehicle,
+  onEnd: (status: ApiCallStatus) => void
+) => {
+  console.log('clling api')
+
+  return grpc.unary(BebaBackend.NewVehicle, {
+    host,
+    request: vehicle,
+    transport: transport(isServer),
+    onEnd: (output: UnaryOutput<WriteRecordResponse>) => {
+      if (output.status === grpc.Code.OK) {
+        console.log('all ok')
+        onEnd(ApiCallStatus.SUCCESS)
+      } else {
+        console.log(
+          'hit an error',
+          output.status,
+          output.statusMessage,
+          output.message,
+          output.trailers
+        )
+        onEnd(ApiCallStatus.FAILED)
+      }
+    },
+  })
+}
+
+export const newDriver = (
+  isServer: boolean,
+  driver: Driver,
+  onEnd: (status: ApiCallStatus) => void
+) => {
+  console.log('clling api')
+
+  return grpc.unary(BebaBackend.NewDriver, {
+    host,
+    request: driver,
+    transport: transport(isServer),
+    onEnd: (output: UnaryOutput<WriteRecordResponse>) => {
+      if (output.status === grpc.Code.OK) {
+        console.log('all ok')
+        onEnd(ApiCallStatus.SUCCESS)
+      } else {
+        console.log(
+          'hit an error',
+          output.status,
+          output.statusMessage,
+          output.message,
+          output.trailers
+        )
+        onEnd(ApiCallStatus.FAILED)
+      }
+    },
+  })
+}
+
+export const deleteDriver = (
+  isServer: boolean,
+  recordId: RecordId,
+  onEnd: (status: ApiCallStatus) => void
+) => {
+  console.log('clling api')
+
+  return grpc.unary(BebaBackend.RemoveDriver, {
+    host,
+    request: recordId,
+    transport: transport(isServer),
+    onEnd: (output: UnaryOutput<WriteRecordResponse>) => {
+      if (output.status === grpc.Code.OK) {
+        console.log('all ok')
+        onEnd(ApiCallStatus.SUCCESS)
+      } else {
+        console.log(
+          'hit an error',
+          output.status,
+          output.statusMessage,
+          output.message,
+          output.trailers
+        )
+        onEnd(ApiCallStatus.FAILED)
+      }
+    },
+  })
+}
+
+export const deleteVehicle = (
+  isServer: boolean,
+  recordId: RecordId,
+  onEnd: (status: ApiCallStatus) => void
+) => {
+  console.log('clling api')
+
+  return grpc.unary(BebaBackend.RemoveVehicle, {
+    host,
+    request: recordId,
+    transport: transport(isServer),
+    onEnd: (output: UnaryOutput<WriteRecordResponse>) => {
+      if (output.status === grpc.Code.OK) {
+        console.log('all ok')
+        onEnd(ApiCallStatus.SUCCESS)
+      } else {
+        console.log(
+          'hit an error',
+          output.status,
+          output.statusMessage,
+          output.message,
+          output.trailers
+        )
+        onEnd(ApiCallStatus.FAILED)
+      }
+    },
+  })
+}
+
+export const cancelTrip = (
+  isServer: boolean,
+  recordId: RecordId,
+  onEnd: (status: ApiCallStatus) => void
+) => {
+  console.log('clling api')
+
+  return grpc.unary(BebaBackend.CancelTrip, {
+    host,
+    request: recordId,
+    transport: transport(isServer),
+    onEnd: (output: UnaryOutput<WriteRecordResponse>) => {
+      if (output.status === grpc.Code.OK) {
+        console.log('all ok')
+        onEnd(ApiCallStatus.SUCCESS)
+      } else {
+        console.log(
+          'hit an error',
+          output.status,
+          output.statusMessage,
+          output.message,
+          output.trailers
+        )
+        onEnd(ApiCallStatus.FAILED)
+      }
+    },
+  })
 }

@@ -16,4 +16,12 @@ export default class Trips extends VuexModule {
     console.log('in store trips')
     this.allTrips = trips
   }
+
+  @Mutation
+  cancelTrip(tripId: number) {
+    const index = this.allTrips.findIndex((trip: Trip) => {
+      return trip.getTripid() === tripId
+    })
+    this.allTrips[index].setStatus('cancelled')
+  }
 }
