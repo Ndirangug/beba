@@ -13,3 +13,13 @@
     </v-col>
   </v-row>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { testGrpcWeb } from '~/utils/test'
+export default Vue.extend({
+  mounted() {
+    testGrpcWeb()
+  },
+})
+</script>
