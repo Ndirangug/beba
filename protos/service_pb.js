@@ -40,62 +40,6 @@ goog.exportSymbol('proto.beba_backend.WriteRecordResponse', null, global);
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloRequest = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.TestHelloRequest, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.TestHelloRequest.displayName =
-    'proto.beba_backend.TestHelloRequest'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.TestHelloRequest.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.TestHelloRequest.toObject(
-      opt_includeInstance,
-      this
-    )
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.TestHelloRequest} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.TestHelloRequest.toObject = function (
-    includeInstance,
-    msg
-  ) {
-    var f,
-      obj = {
-        name: jspb.Message.getFieldWithDefault(msg, 1, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.TestHelloRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -143,29 +87,17 @@ proto.beba_backend.TestHelloRequest.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.TestHelloRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloRequest.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.TestHelloRequest()
-  return proto.beba_backend.TestHelloRequest.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.TestHelloRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.TestHelloRequest;
   return proto.beba_backend.TestHelloRequest.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -174,29 +106,6 @@ proto.beba_backend.TestHelloRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.TestHelloRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloRequest.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setName(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.TestHelloRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -216,26 +125,17 @@ proto.beba_backend.TestHelloRequest.deserializeBinaryFromReader = function(msg, 
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloRequest.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.TestHelloRequest.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.TestHelloRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.TestHelloRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -244,18 +144,6 @@ proto.beba_backend.TestHelloRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloRequest.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getName()
-  if (f.length > 0) {
-    writer.writeString(1, f)
-  }
-}
-=======
 proto.beba_backend.TestHelloRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getName();
@@ -267,22 +155,11 @@ proto.beba_backend.TestHelloRequest.serializeBinaryToWriter = function(message, 
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional string name = 1;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloRequest.prototype.getName = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.TestHelloRequest.prototype.setName = function (value) {
-  jspb.Message.setProto3StringField(this, 1, value)
-}
-=======
 proto.beba_backend.TestHelloRequest.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
@@ -294,7 +171,6 @@ proto.beba_backend.TestHelloRequest.prototype.setName = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -306,62 +182,6 @@ proto.beba_backend.TestHelloRequest.prototype.setName = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloResponse = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.TestHelloResponse, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.TestHelloResponse.displayName =
-    'proto.beba_backend.TestHelloResponse'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.TestHelloResponse.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.TestHelloResponse.toObject(
-      opt_includeInstance,
-      this
-    )
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.TestHelloResponse} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.TestHelloResponse.toObject = function (
-    includeInstance,
-    msg
-  ) {
-    var f,
-      obj = {
-        response: jspb.Message.getFieldWithDefault(msg, 1, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.TestHelloResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -409,29 +229,17 @@ proto.beba_backend.TestHelloResponse.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.TestHelloResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloResponse.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.TestHelloResponse()
-  return proto.beba_backend.TestHelloResponse.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.TestHelloResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.TestHelloResponse;
   return proto.beba_backend.TestHelloResponse.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -440,29 +248,6 @@ proto.beba_backend.TestHelloResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.TestHelloResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloResponse.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 1:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setResponse(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.TestHelloResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -482,26 +267,17 @@ proto.beba_backend.TestHelloResponse.deserializeBinaryFromReader = function(msg,
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloResponse.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.TestHelloResponse.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.TestHelloResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.TestHelloResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -510,18 +286,6 @@ proto.beba_backend.TestHelloResponse.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloResponse.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getResponse()
-  if (f.length > 0) {
-    writer.writeString(1, f)
-  }
-}
-=======
 proto.beba_backend.TestHelloResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getResponse();
@@ -533,22 +297,11 @@ proto.beba_backend.TestHelloResponse.serializeBinaryToWriter = function(message,
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional string response = 1;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.TestHelloResponse.prototype.getResponse = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.TestHelloResponse.prototype.setResponse = function (value) {
-  jspb.Message.setProto3StringField(this, 1, value)
-}
-=======
 proto.beba_backend.TestHelloResponse.prototype.getResponse = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
@@ -560,7 +313,6 @@ proto.beba_backend.TestHelloResponse.prototype.setResponse = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -572,54 +324,6 @@ proto.beba_backend.TestHelloResponse.prototype.setResponse = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.EmptyMessage = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.EmptyMessage, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.EmptyMessage.displayName =
-    'proto.beba_backend.EmptyMessage'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.EmptyMessage.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.EmptyMessage.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.EmptyMessage} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.EmptyMessage.toObject = function (includeInstance, msg) {
-  let f; var obj = {
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.EmptyMessage = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -667,29 +371,17 @@ proto.beba_backend.EmptyMessage.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.EmptyMessage}
  */
-<<<<<<< HEAD
-proto.beba_backend.EmptyMessage.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.EmptyMessage()
-  return proto.beba_backend.EmptyMessage.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.EmptyMessage.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.EmptyMessage;
   return proto.beba_backend.EmptyMessage.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -698,25 +390,6 @@ proto.beba_backend.EmptyMessage.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.EmptyMessage}
  */
-<<<<<<< HEAD
-proto.beba_backend.EmptyMessage.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.EmptyMessage.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -732,26 +405,17 @@ proto.beba_backend.EmptyMessage.deserializeBinaryFromReader = function(msg, read
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.EmptyMessage.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.EmptyMessage.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.EmptyMessage.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.EmptyMessage.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -760,20 +424,11 @@ proto.beba_backend.EmptyMessage.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.EmptyMessage.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-}
-=======
 proto.beba_backend.EmptyMessage.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -785,69 +440,6 @@ proto.beba_backend.EmptyMessage.serializeBinaryToWriter = function(message, writ
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.Driver, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.Driver.displayName = 'proto.beba_backend.Driver'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.Driver.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.Driver.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.Driver} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.Driver.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        idnumber: jspb.Message.getFieldWithDefault(msg, 5, 0),
-        firstname: jspb.Message.getFieldWithDefault(msg, 6, ''),
-        lastname: jspb.Message.getFieldWithDefault(msg, 7, ''),
-        email: jspb.Message.getFieldWithDefault(msg, 8, ''),
-        phone: jspb.Message.getFieldWithDefault(msg, 9, ''),
-        sex: jspb.Message.getFieldWithDefault(msg, 10, ''),
-        dateofbirth:
-          (f = msg.getDateofbirth()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        dateemployed:
-          (f = msg.getDateemployed()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        comment: jspb.Message.getFieldWithDefault(msg, 13, ''),
-        evaluationreport: jspb.Message.getFieldWithDefault(msg, 14, ''),
-        driverslicence: jspb.Message.getFieldWithDefault(msg, 15, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.Driver = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -905,26 +497,17 @@ proto.beba_backend.Driver.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.Driver}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.Driver()
-  return proto.beba_backend.Driver.deserializeBinaryFromReader(msg, reader)
-}
-=======
 proto.beba_backend.Driver.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.Driver;
   return proto.beba_backend.Driver.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -933,74 +516,6 @@ proto.beba_backend.Driver.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.Driver}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.deserializeBinaryFromReader = function (msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 5:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setIdnumber(value)
-        break
-      case 6:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setFirstname(value)
-        break
-      case 7:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setLastname(value)
-        break
-      case 8:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setEmail(value)
-        break
-      case 9:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setPhone(value)
-        break
-      case 10:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setSex(value)
-        break
-      case 11:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setDateofbirth(value)
-        break
-      case 12:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setDateemployed(value)
-        break
-      case 13:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setComment(value)
-        break
-      case 14:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setEvaluationreport(value)
-        break
-      case 15:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setDriverslicence(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.Driver.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -1062,26 +577,17 @@ proto.beba_backend.Driver.deserializeBinaryFromReader = function(msg, reader) {
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.Driver.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.Driver.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.Driver.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1090,35 +596,6 @@ proto.beba_backend.Driver.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.serializeBinaryToWriter = function (message, writer) {
-  let f = undefined
-  f = message.getIdnumber()
-  if (f !== 0) {
-    writer.writeUint32(5, f)
-  }
-  f = message.getFirstname()
-  if (f.length > 0) {
-    writer.writeString(6, f)
-  }
-  f = message.getLastname()
-  if (f.length > 0) {
-    writer.writeString(7, f)
-  }
-  f = message.getEmail()
-  if (f.length > 0) {
-    writer.writeString(8, f)
-  }
-  f = message.getPhone()
-  if (f.length > 0) {
-    writer.writeString(9, f)
-  }
-  f = message.getSex()
-  if (f.length > 0) {
-    writer.writeString(10, f)
-  }
-  f = message.getDateofbirth()
-=======
 proto.beba_backend.Driver.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getIdnumber();
@@ -1164,43 +641,19 @@ proto.beba_backend.Driver.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getDateofbirth();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       11,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getDateemployed()
-=======
     );
   }
   f = message.getDateemployed();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       12,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getComment()
-  if (f.length > 0) {
-    writer.writeString(13, f)
-  }
-  f = message.getEvaluationreport()
-  if (f.length > 0) {
-    writer.writeString(14, f)
-  }
-  f = message.getDriverslicence()
-  if (f.length > 0) {
-    writer.writeString(15, f)
-  }
-}
-=======
     );
   }
   f = message.getComment();
@@ -1226,22 +679,11 @@ proto.beba_backend.Driver.serializeBinaryToWriter = function(message, writer) {
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 idNumber = 5;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getIdnumber = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.Driver.prototype.setIdnumber = function (value) {
-  jspb.Message.setProto3IntField(this, 5, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getIdnumber = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
@@ -1252,22 +694,11 @@ proto.beba_backend.Driver.prototype.setIdnumber = function(value) {
   jspb.Message.setProto3IntField(this, 5, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string firstName = 6;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getFirstname = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setFirstname = function (value) {
-  jspb.Message.setProto3StringField(this, 6, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getFirstname = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
@@ -1278,22 +709,11 @@ proto.beba_backend.Driver.prototype.setFirstname = function(value) {
   jspb.Message.setProto3StringField(this, 6, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string lastName = 7;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getLastname = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setLastname = function (value) {
-  jspb.Message.setProto3StringField(this, 7, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getLastname = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
@@ -1304,22 +724,11 @@ proto.beba_backend.Driver.prototype.setLastname = function(value) {
   jspb.Message.setProto3StringField(this, 7, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string email = 8;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getEmail = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setEmail = function (value) {
-  jspb.Message.setProto3StringField(this, 8, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getEmail = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
@@ -1330,22 +739,11 @@ proto.beba_backend.Driver.prototype.setEmail = function(value) {
   jspb.Message.setProto3StringField(this, 8, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string phone = 9;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getPhone = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setPhone = function (value) {
-  jspb.Message.setProto3StringField(this, 9, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getPhone = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
@@ -1356,22 +754,11 @@ proto.beba_backend.Driver.prototype.setPhone = function(value) {
   jspb.Message.setProto3StringField(this, 9, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string sex = 10;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getSex = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setSex = function (value) {
-  jspb.Message.setProto3StringField(this, 10, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getSex = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
@@ -1382,30 +769,11 @@ proto.beba_backend.Driver.prototype.setSex = function(value) {
   jspb.Message.setProto3StringField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp dateOfBirth = 11;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getDateofbirth = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    11
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Driver.prototype.setDateofbirth = function (value) {
-  jspb.Message.setWrapperField(this, 11, value)
-}
-
-proto.beba_backend.Driver.prototype.clearDateofbirth = function () {
-  this.setDateofbirth(undefined)
-}
-=======
 proto.beba_backend.Driver.prototype.getDateofbirth = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
@@ -1422,45 +790,20 @@ proto.beba_backend.Driver.prototype.clearDateofbirth = function() {
   this.setDateofbirth(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.hasDateofbirth = function () {
-  return jspb.Message.getField(this, 11) != null
-}
-=======
 proto.beba_backend.Driver.prototype.hasDateofbirth = function() {
   return jspb.Message.getField(this, 11) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp dateEmployed = 12;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getDateemployed = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    12
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Driver.prototype.setDateemployed = function (value) {
-  jspb.Message.setWrapperField(this, 12, value)
-}
-
-proto.beba_backend.Driver.prototype.clearDateemployed = function () {
-  this.setDateemployed(undefined)
-}
-=======
 proto.beba_backend.Driver.prototype.getDateemployed = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 12));
@@ -1477,37 +820,20 @@ proto.beba_backend.Driver.prototype.clearDateemployed = function() {
   this.setDateemployed(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.hasDateemployed = function () {
-  return jspb.Message.getField(this, 12) != null
-}
-=======
 proto.beba_backend.Driver.prototype.hasDateemployed = function() {
   return jspb.Message.getField(this, 12) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional string comment = 13;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getComment = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setComment = function (value) {
-  jspb.Message.setProto3StringField(this, 13, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getComment = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
 };
@@ -1518,22 +844,11 @@ proto.beba_backend.Driver.prototype.setComment = function(value) {
   jspb.Message.setProto3StringField(this, 13, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string evaluationReport = 14;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getEvaluationreport = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setEvaluationreport = function (value) {
-  jspb.Message.setProto3StringField(this, 14, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getEvaluationreport = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
 };
@@ -1544,22 +859,11 @@ proto.beba_backend.Driver.prototype.setEvaluationreport = function(value) {
   jspb.Message.setProto3StringField(this, 14, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string driversLicence = 15;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Driver.prototype.getDriverslicence = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 15, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Driver.prototype.setDriverslicence = function (value) {
-  jspb.Message.setProto3StringField(this, 15, value)
-}
-=======
 proto.beba_backend.Driver.prototype.getDriverslicence = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 15, ""));
 };
@@ -1571,7 +875,6 @@ proto.beba_backend.Driver.prototype.setDriverslicence = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -1583,57 +886,6 @@ proto.beba_backend.Driver.prototype.setDriverslicence = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.DriverRequest = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.DriverRequest, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.DriverRequest.displayName =
-    'proto.beba_backend.DriverRequest'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.DriverRequest.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.DriverRequest.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.DriverRequest} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.DriverRequest.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        idnumber: jspb.Message.getFieldWithDefault(msg, 10, 0),
-        searchquery: jspb.Message.getFieldWithDefault(msg, 11, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.DriverRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -1682,29 +934,17 @@ proto.beba_backend.DriverRequest.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.DriverRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.DriverRequest.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.DriverRequest()
-  return proto.beba_backend.DriverRequest.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.DriverRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.DriverRequest;
   return proto.beba_backend.DriverRequest.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -1713,33 +953,6 @@ proto.beba_backend.DriverRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.DriverRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.DriverRequest.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setIdnumber(value)
-        break
-      case 11:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setSearchquery(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.DriverRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -1763,26 +976,17 @@ proto.beba_backend.DriverRequest.deserializeBinaryFromReader = function(msg, rea
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.DriverRequest.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.DriverRequest.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.DriverRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.DriverRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -1791,22 +995,6 @@ proto.beba_backend.DriverRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.DriverRequest.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getIdnumber()
-  if (f !== 0) {
-    writer.writeUint32(10, f)
-  }
-  f = message.getSearchquery()
-  if (f.length > 0) {
-    writer.writeString(11, f)
-  }
-}
-=======
 proto.beba_backend.DriverRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getIdnumber();
@@ -1825,22 +1013,11 @@ proto.beba_backend.DriverRequest.serializeBinaryToWriter = function(message, wri
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 idNumber = 10;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.DriverRequest.prototype.getIdnumber = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.DriverRequest.prototype.setIdnumber = function (value) {
-  jspb.Message.setProto3IntField(this, 10, value)
-}
-=======
 proto.beba_backend.DriverRequest.prototype.getIdnumber = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
@@ -1851,22 +1028,11 @@ proto.beba_backend.DriverRequest.prototype.setIdnumber = function(value) {
   jspb.Message.setProto3IntField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string searchQuery = 11;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.DriverRequest.prototype.getSearchquery = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.DriverRequest.prototype.setSearchquery = function (value) {
-  jspb.Message.setProto3StringField(this, 11, value)
-}
-=======
 proto.beba_backend.DriverRequest.prototype.getSearchquery = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
@@ -1878,7 +1044,6 @@ proto.beba_backend.DriverRequest.prototype.setSearchquery = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -1890,69 +1055,6 @@ proto.beba_backend.DriverRequest.prototype.setSearchquery = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.Vehicle, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.Vehicle.displayName = 'proto.beba_backend.Vehicle'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.Vehicle.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.Vehicle.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.Vehicle} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.Vehicle.toObject = function (includeInstance, msg) {
-  let f; var obj = {
-        vehicleid: jspb.Message.getFieldWithDefault(msg, 10, 0),
-        brand: jspb.Message.getFieldWithDefault(msg, 11, ''),
-        model: jspb.Message.getFieldWithDefault(msg, 12, ''),
-        modelyear: jspb.Message.getFieldWithDefault(msg, 13, ''),
-        registrationnumber: jspb.Message.getFieldWithDefault(msg, 14, ''),
-        fuelconsumption: +jspb.Message.getFieldWithDefault(msg, 15, 0.0),
-        color: jspb.Message.getFieldWithDefault(msg, 16, ''),
-        datepurchased:
-          (f = msg.getDatepurchased()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        expectedendservice:
-          (f = msg.getExpectedendservice()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        type: jspb.Message.getFieldWithDefault(msg, 19, ''),
-        condition: jspb.Message.getFieldWithDefault(msg, 20, ''),
-        maxweight: +jspb.Message.getFieldWithDefault(msg, 21, 0.0),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.Vehicle = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -2011,26 +1113,17 @@ proto.beba_backend.Vehicle.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.Vehicle}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.Vehicle()
-  return proto.beba_backend.Vehicle.deserializeBinaryFromReader(msg, reader)
-}
-=======
 proto.beba_backend.Vehicle.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.Vehicle;
   return proto.beba_backend.Vehicle.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2039,81 +1132,6 @@ proto.beba_backend.Vehicle.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.Vehicle}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setVehicleid(value)
-        break
-      case 11:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setBrand(value)
-        break
-      case 12:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setModel(value)
-        break
-      case 13:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setModelyear(value)
-        break
-      case 14:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setRegistrationnumber(value)
-        break
-      case 15:
-        var value = /** @type {number} */ (reader.readFloat())
-        msg.setFuelconsumption(value)
-        break
-      case 16:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setColor(value)
-        break
-      case 17:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setDatepurchased(value)
-        break
-      case 18:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setExpectedendservice(value)
-        break
-      case 19:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setType(value)
-        break
-      case 20:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setCondition(value)
-        break
-      case 21:
-        var value = /** @type {number} */ (reader.readFloat())
-        msg.setMaxweight(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.Vehicle.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -2179,26 +1197,17 @@ proto.beba_backend.Vehicle.deserializeBinaryFromReader = function(msg, reader) {
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.Vehicle.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.Vehicle.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.Vehicle.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2207,42 +1216,6 @@ proto.beba_backend.Vehicle.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getVehicleid()
-  if (f !== 0) {
-    writer.writeUint32(10, f)
-  }
-  f = message.getBrand()
-  if (f.length > 0) {
-    writer.writeString(11, f)
-  }
-  f = message.getModel()
-  if (f.length > 0) {
-    writer.writeString(12, f)
-  }
-  f = message.getModelyear()
-  if (f.length > 0) {
-    writer.writeString(13, f)
-  }
-  f = message.getRegistrationnumber()
-  if (f.length > 0) {
-    writer.writeString(14, f)
-  }
-  f = message.getFuelconsumption()
-  if (f !== 0.0) {
-    writer.writeFloat(15, f)
-  }
-  f = message.getColor()
-  if (f.length > 0) {
-    writer.writeString(16, f)
-  }
-  f = message.getDatepurchased()
-=======
 proto.beba_backend.Vehicle.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getVehicleid();
@@ -2295,43 +1268,19 @@ proto.beba_backend.Vehicle.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getDatepurchased();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       17,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getExpectedendservice()
-=======
     );
   }
   f = message.getExpectedendservice();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       18,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getType()
-  if (f.length > 0) {
-    writer.writeString(19, f)
-  }
-  f = message.getCondition()
-  if (f.length > 0) {
-    writer.writeString(20, f)
-  }
-  f = message.getMaxweight()
-  if (f !== 0.0) {
-    writer.writeFloat(21, f)
-  }
-}
-=======
     );
   }
   f = message.getType();
@@ -2357,22 +1306,11 @@ proto.beba_backend.Vehicle.serializeBinaryToWriter = function(message, writer) {
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 vehicleId = 10;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getVehicleid = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.Vehicle.prototype.setVehicleid = function (value) {
-  jspb.Message.setProto3IntField(this, 10, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getVehicleid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
@@ -2383,22 +1321,11 @@ proto.beba_backend.Vehicle.prototype.setVehicleid = function(value) {
   jspb.Message.setProto3IntField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string brand = 11;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getBrand = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Vehicle.prototype.setBrand = function (value) {
-  jspb.Message.setProto3StringField(this, 11, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getBrand = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
@@ -2409,22 +1336,11 @@ proto.beba_backend.Vehicle.prototype.setBrand = function(value) {
   jspb.Message.setProto3StringField(this, 11, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string model = 12;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getModel = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Vehicle.prototype.setModel = function (value) {
-  jspb.Message.setProto3StringField(this, 12, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getModel = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
@@ -2435,22 +1351,11 @@ proto.beba_backend.Vehicle.prototype.setModel = function(value) {
   jspb.Message.setProto3StringField(this, 12, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string modelYear = 13;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getModelyear = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Vehicle.prototype.setModelyear = function (value) {
-  jspb.Message.setProto3StringField(this, 13, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getModelyear = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
 };
@@ -2461,22 +1366,11 @@ proto.beba_backend.Vehicle.prototype.setModelyear = function(value) {
   jspb.Message.setProto3StringField(this, 13, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string registrationNumber = 14;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getRegistrationnumber = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Vehicle.prototype.setRegistrationnumber = function (value) {
-  jspb.Message.setProto3StringField(this, 14, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getRegistrationnumber = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
 };
@@ -2487,26 +1381,11 @@ proto.beba_backend.Vehicle.prototype.setRegistrationnumber = function(value) {
   jspb.Message.setProto3StringField(this, 14, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional float fuelConsumption = 15;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getFuelconsumption = function () {
-  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(
-    this,
-    15,
-    0.0
-  ))
-}
-
-/** @param {number} value */
-proto.beba_backend.Vehicle.prototype.setFuelconsumption = function (value) {
-  jspb.Message.setProto3FloatField(this, 15, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getFuelconsumption = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 15, 0.0));
 };
@@ -2517,22 +1396,11 @@ proto.beba_backend.Vehicle.prototype.setFuelconsumption = function(value) {
   jspb.Message.setProto3FloatField(this, 15, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string color = 16;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getColor = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Vehicle.prototype.setColor = function (value) {
-  jspb.Message.setProto3StringField(this, 16, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getColor = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
 };
@@ -2543,30 +1411,11 @@ proto.beba_backend.Vehicle.prototype.setColor = function(value) {
   jspb.Message.setProto3StringField(this, 16, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp datePurchased = 17;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getDatepurchased = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    17
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Vehicle.prototype.setDatepurchased = function (value) {
-  jspb.Message.setWrapperField(this, 17, value)
-}
-
-proto.beba_backend.Vehicle.prototype.clearDatepurchased = function () {
-  this.setDatepurchased(undefined)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getDatepurchased = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 17));
@@ -2583,45 +1432,20 @@ proto.beba_backend.Vehicle.prototype.clearDatepurchased = function() {
   this.setDatepurchased(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.hasDatepurchased = function () {
-  return jspb.Message.getField(this, 17) != null
-}
-=======
 proto.beba_backend.Vehicle.prototype.hasDatepurchased = function() {
   return jspb.Message.getField(this, 17) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp expectedEndService = 18;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getExpectedendservice = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    18
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Vehicle.prototype.setExpectedendservice = function (value) {
-  jspb.Message.setWrapperField(this, 18, value)
-}
-
-proto.beba_backend.Vehicle.prototype.clearExpectedendservice = function () {
-  this.setExpectedendservice(undefined)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getExpectedendservice = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 18));
@@ -2638,37 +1462,20 @@ proto.beba_backend.Vehicle.prototype.clearExpectedendservice = function() {
   this.setExpectedendservice(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.hasExpectedendservice = function () {
-  return jspb.Message.getField(this, 18) != null
-}
-=======
 proto.beba_backend.Vehicle.prototype.hasExpectedendservice = function() {
   return jspb.Message.getField(this, 18) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional string type = 19;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getType = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 19, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Vehicle.prototype.setType = function (value) {
-  jspb.Message.setProto3StringField(this, 19, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getType = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 19, ""));
 };
@@ -2679,22 +1486,11 @@ proto.beba_backend.Vehicle.prototype.setType = function(value) {
   jspb.Message.setProto3StringField(this, 19, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string condition = 20;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getCondition = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 20, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Vehicle.prototype.setCondition = function (value) {
-  jspb.Message.setProto3StringField(this, 20, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getCondition = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 20, ""));
 };
@@ -2705,26 +1501,11 @@ proto.beba_backend.Vehicle.prototype.setCondition = function(value) {
   jspb.Message.setProto3StringField(this, 20, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional float maxWeight = 21;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.Vehicle.prototype.getMaxweight = function () {
-  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(
-    this,
-    21,
-    0.0
-  ))
-}
-
-/** @param {number} value */
-proto.beba_backend.Vehicle.prototype.setMaxweight = function (value) {
-  jspb.Message.setProto3FloatField(this, 21, value)
-}
-=======
 proto.beba_backend.Vehicle.prototype.getMaxweight = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 21, 0.0));
 };
@@ -2736,7 +1517,6 @@ proto.beba_backend.Vehicle.prototype.setMaxweight = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -2748,57 +1528,6 @@ proto.beba_backend.Vehicle.prototype.setMaxweight = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleRequest = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.VehicleRequest, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.VehicleRequest.displayName =
-    'proto.beba_backend.VehicleRequest'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.VehicleRequest.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.VehicleRequest.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.VehicleRequest} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.VehicleRequest.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        vehicleid: jspb.Message.getFieldWithDefault(msg, 10, 0),
-        searchquery: jspb.Message.getFieldWithDefault(msg, 11, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.VehicleRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -2847,29 +1576,17 @@ proto.beba_backend.VehicleRequest.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.VehicleRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleRequest.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.VehicleRequest()
-  return proto.beba_backend.VehicleRequest.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.VehicleRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.VehicleRequest;
   return proto.beba_backend.VehicleRequest.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -2878,33 +1595,6 @@ proto.beba_backend.VehicleRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.VehicleRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleRequest.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setVehicleid(value)
-        break
-      case 11:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setSearchquery(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.VehicleRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -2928,26 +1618,17 @@ proto.beba_backend.VehicleRequest.deserializeBinaryFromReader = function(msg, re
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleRequest.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.VehicleRequest.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.VehicleRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.VehicleRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -2956,22 +1637,6 @@ proto.beba_backend.VehicleRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleRequest.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getVehicleid()
-  if (f !== 0) {
-    writer.writeUint32(10, f)
-  }
-  f = message.getSearchquery()
-  if (f.length > 0) {
-    writer.writeString(11, f)
-  }
-}
-=======
 proto.beba_backend.VehicleRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getVehicleid();
@@ -2990,22 +1655,11 @@ proto.beba_backend.VehicleRequest.serializeBinaryToWriter = function(message, wr
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 vehicleID = 10;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleRequest.prototype.getVehicleid = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.VehicleRequest.prototype.setVehicleid = function (value) {
-  jspb.Message.setProto3IntField(this, 10, value)
-}
-=======
 proto.beba_backend.VehicleRequest.prototype.getVehicleid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
@@ -3016,22 +1670,11 @@ proto.beba_backend.VehicleRequest.prototype.setVehicleid = function(value) {
   jspb.Message.setProto3IntField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string searchQuery = 11;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleRequest.prototype.getSearchquery = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.VehicleRequest.prototype.setSearchquery = function (value) {
-  jspb.Message.setProto3StringField(this, 11, value)
-}
-=======
 proto.beba_backend.VehicleRequest.prototype.getSearchquery = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
@@ -3043,7 +1686,6 @@ proto.beba_backend.VehicleRequest.prototype.setSearchquery = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -3055,66 +1697,6 @@ proto.beba_backend.VehicleRequest.prototype.setSearchquery = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleKilometresTravelledResponse = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(
-  proto.beba_backend.VehicleKilometresTravelledResponse,
-  jspb.Message
-)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.VehicleKilometresTravelledResponse.displayName =
-    'proto.beba_backend.VehicleKilometresTravelledResponse'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.VehicleKilometresTravelledResponse.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.VehicleKilometresTravelledResponse.toObject(
-      opt_includeInstance,
-      this
-    )
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.VehicleKilometresTravelledResponse} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.VehicleKilometresTravelledResponse.toObject = function (
-    includeInstance,
-    msg
-  ) {
-    var f,
-      obj = {
-        date: jspb.Message.getFieldWithDefault(msg, 10, ''),
-        kilometres: +jspb.Message.getFieldWithDefault(msg, 11, 0.0),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.VehicleKilometresTravelledResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -3163,31 +1745,17 @@ proto.beba_backend.VehicleKilometresTravelledResponse.toObject = function(includ
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.VehicleKilometresTravelledResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinary = function (
-  bytes
-) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.VehicleKilometresTravelledResponse()
-  return proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.VehicleKilometresTravelledResponse;
   return proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3196,33 +1764,6 @@ proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinary = functi
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.VehicleKilometresTravelledResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setDate(value)
-        break
-      case 11:
-        var value = /** @type {number} */ (reader.readDouble())
-        msg.setKilometres(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -3246,29 +1787,17 @@ proto.beba_backend.VehicleKilometresTravelledResponse.deserializeBinaryFromReade
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleKilometresTravelledResponse.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.VehicleKilometresTravelledResponse.serializeBinaryToWriter(
-    this,
-    writer
-  )
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.VehicleKilometresTravelledResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.VehicleKilometresTravelledResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3277,22 +1806,6 @@ proto.beba_backend.VehicleKilometresTravelledResponse.prototype.serializeBinary 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleKilometresTravelledResponse.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getDate()
-  if (f.length > 0) {
-    writer.writeString(10, f)
-  }
-  f = message.getKilometres()
-  if (f !== 0.0) {
-    writer.writeDouble(11, f)
-  }
-}
-=======
 proto.beba_backend.VehicleKilometresTravelledResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getDate();
@@ -3311,24 +1824,11 @@ proto.beba_backend.VehicleKilometresTravelledResponse.serializeBinaryToWriter = 
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional string date = 10;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleKilometresTravelledResponse.prototype.getDate = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.VehicleKilometresTravelledResponse.prototype.setDate = function (
-  value
-) {
-  jspb.Message.setProto3StringField(this, 10, value)
-}
-=======
 proto.beba_backend.VehicleKilometresTravelledResponse.prototype.getDate = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
@@ -3339,28 +1839,11 @@ proto.beba_backend.VehicleKilometresTravelledResponse.prototype.setDate = functi
   jspb.Message.setProto3StringField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional double kilometres = 11;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.VehicleKilometresTravelledResponse.prototype.getKilometres = function () {
-  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(
-    this,
-    11,
-    0.0
-  ))
-}
-
-/** @param {number} value */
-proto.beba_backend.VehicleKilometresTravelledResponse.prototype.setKilometres = function (
-  value
-) {
-  jspb.Message.setProto3FloatField(this, 11, value)
-}
-=======
 proto.beba_backend.VehicleKilometresTravelledResponse.prototype.getKilometres = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 11, 0.0));
 };
@@ -3372,7 +1855,6 @@ proto.beba_backend.VehicleKilometresTravelledResponse.prototype.setKilometres = 
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -3384,78 +1866,6 @@ proto.beba_backend.VehicleKilometresTravelledResponse.prototype.setKilometres = 
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.Trip, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.Trip.displayName = 'proto.beba_backend.Trip'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.Trip.prototype.toObject = function (opt_includeInstance) {
-    return proto.beba_backend.Trip.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.Trip} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.Trip.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        tripid: jspb.Message.getFieldWithDefault(msg, 10, 0),
-        driver:
-          (f = msg.getDriver()) &&
-          proto.beba_backend.Driver.toObject(includeInstance, f),
-        vehicle:
-          (f = msg.getVehicle()) &&
-          proto.beba_backend.Vehicle.toObject(includeInstance, f),
-        scheduleddeparturetime:
-          (f = msg.getScheduleddeparturetime()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        actualdeparturetime:
-          (f = msg.getActualdeparturetime()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        scheduledarrivaltime:
-          (f = msg.getScheduledarrivaltime()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        actualarrivaltime:
-          (f = msg.getActualarrivaltime()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        origin:
-          (f = msg.getOrigin()) &&
-          proto.beba_backend.Location.toObject(includeInstance, f),
-        destination:
-          (f = msg.getDestination()) &&
-          proto.beba_backend.Location.toObject(includeInstance, f),
-        status: jspb.Message.getFieldWithDefault(msg, 19, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.Trip = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -3512,26 +1922,17 @@ proto.beba_backend.Trip.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.Trip}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.Trip()
-  return proto.beba_backend.Trip.deserializeBinaryFromReader(msg, reader)
-}
-=======
 proto.beba_backend.Trip.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.Trip;
   return proto.beba_backend.Trip.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -3540,94 +1941,6 @@ proto.beba_backend.Trip.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.Trip}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.deserializeBinaryFromReader = function (msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setTripid(value)
-        break
-      case 11:
-        var value = new proto.beba_backend.Driver()
-        reader.readMessage(
-          value,
-          proto.beba_backend.Driver.deserializeBinaryFromReader
-        )
-        msg.setDriver(value)
-        break
-      case 12:
-        var value = new proto.beba_backend.Vehicle()
-        reader.readMessage(
-          value,
-          proto.beba_backend.Vehicle.deserializeBinaryFromReader
-        )
-        msg.setVehicle(value)
-        break
-      case 13:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setScheduleddeparturetime(value)
-        break
-      case 14:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setActualdeparturetime(value)
-        break
-      case 15:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setScheduledarrivaltime(value)
-        break
-      case 16:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setActualarrivaltime(value)
-        break
-      case 17:
-        var value = new proto.beba_backend.Location()
-        reader.readMessage(
-          value,
-          proto.beba_backend.Location.deserializeBinaryFromReader
-        )
-        msg.setOrigin(value)
-        break
-      case 18:
-        var value = new proto.beba_backend.Location()
-        reader.readMessage(
-          value,
-          proto.beba_backend.Location.deserializeBinaryFromReader
-        )
-        msg.setDestination(value)
-        break
-      case 19:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setStatus(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.Trip.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -3691,26 +2004,17 @@ proto.beba_backend.Trip.deserializeBinaryFromReader = function(msg, reader) {
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.Trip.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.Trip.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.Trip.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -3719,15 +2023,6 @@ proto.beba_backend.Trip.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.serializeBinaryToWriter = function (message, writer) {
-  let f = undefined
-  f = message.getTripid()
-  if (f !== 0) {
-    writer.writeUint32(10, f)
-  }
-  f = message.getDriver()
-=======
 proto.beba_backend.Trip.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTripid();
@@ -3738,119 +2033,67 @@ proto.beba_backend.Trip.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getDriver();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       11,
       f,
       proto.beba_backend.Driver.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getVehicle()
-=======
     );
   }
   f = message.getVehicle();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       12,
       f,
       proto.beba_backend.Vehicle.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getScheduleddeparturetime()
-=======
     );
   }
   f = message.getScheduleddeparturetime();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       13,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getActualdeparturetime()
-=======
     );
   }
   f = message.getActualdeparturetime();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       14,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getScheduledarrivaltime()
-=======
     );
   }
   f = message.getScheduledarrivaltime();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       15,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getActualarrivaltime()
-=======
     );
   }
   f = message.getActualarrivaltime();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       16,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getOrigin()
-=======
     );
   }
   f = message.getOrigin();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       17,
       f,
       proto.beba_backend.Location.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getDestination()
-=======
     );
   }
   f = message.getDestination();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       18,
       f,
       proto.beba_backend.Location.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getStatus()
-  if (f.length > 0) {
-    writer.writeString(19, f)
-  }
-}
-=======
     );
   }
   f = message.getStatus();
@@ -3862,22 +2105,11 @@ proto.beba_backend.Trip.serializeBinaryToWriter = function(message, writer) {
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 tripId = 10;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getTripid = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.Trip.prototype.setTripid = function (value) {
-  jspb.Message.setProto3IntField(this, 10, value)
-}
-=======
 proto.beba_backend.Trip.prototype.getTripid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
@@ -3888,30 +2120,11 @@ proto.beba_backend.Trip.prototype.setTripid = function(value) {
   jspb.Message.setProto3IntField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional Driver driver = 11;
  * @return {?proto.beba_backend.Driver}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getDriver = function () {
-  return /** @type{?proto.beba_backend.Driver} */ (jspb.Message.getWrapperField(
-    this,
-    proto.beba_backend.Driver,
-    11
-  ))
-}
-
-/** @param {?proto.beba_backend.Driver|undefined} value */
-proto.beba_backend.Trip.prototype.setDriver = function (value) {
-  jspb.Message.setWrapperField(this, 11, value)
-}
-
-proto.beba_backend.Trip.prototype.clearDriver = function () {
-  this.setDriver(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getDriver = function() {
   return /** @type{?proto.beba_backend.Driver} */ (
     jspb.Message.getWrapperField(this, proto.beba_backend.Driver, 11));
@@ -3928,45 +2141,20 @@ proto.beba_backend.Trip.prototype.clearDriver = function() {
   this.setDriver(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasDriver = function () {
-  return jspb.Message.getField(this, 11) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasDriver = function() {
   return jspb.Message.getField(this, 11) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional Vehicle vehicle = 12;
  * @return {?proto.beba_backend.Vehicle}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getVehicle = function () {
-  return /** @type{?proto.beba_backend.Vehicle} */ (jspb.Message.getWrapperField(
-    this,
-    proto.beba_backend.Vehicle,
-    12
-  ))
-}
-
-/** @param {?proto.beba_backend.Vehicle|undefined} value */
-proto.beba_backend.Trip.prototype.setVehicle = function (value) {
-  jspb.Message.setWrapperField(this, 12, value)
-}
-
-proto.beba_backend.Trip.prototype.clearVehicle = function () {
-  this.setVehicle(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getVehicle = function() {
   return /** @type{?proto.beba_backend.Vehicle} */ (
     jspb.Message.getWrapperField(this, proto.beba_backend.Vehicle, 12));
@@ -3983,45 +2171,20 @@ proto.beba_backend.Trip.prototype.clearVehicle = function() {
   this.setVehicle(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasVehicle = function () {
-  return jspb.Message.getField(this, 12) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasVehicle = function() {
   return jspb.Message.getField(this, 12) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp scheduledDepartureTime = 13;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getScheduleddeparturetime = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    13
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Trip.prototype.setScheduleddeparturetime = function (value) {
-  jspb.Message.setWrapperField(this, 13, value)
-}
-
-proto.beba_backend.Trip.prototype.clearScheduleddeparturetime = function () {
-  this.setScheduleddeparturetime(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getScheduleddeparturetime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 13));
@@ -4038,45 +2201,20 @@ proto.beba_backend.Trip.prototype.clearScheduleddeparturetime = function() {
   this.setScheduleddeparturetime(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasScheduleddeparturetime = function () {
-  return jspb.Message.getField(this, 13) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasScheduleddeparturetime = function() {
   return jspb.Message.getField(this, 13) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp actualDepartureTime = 14;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getActualdeparturetime = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    14
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Trip.prototype.setActualdeparturetime = function (value) {
-  jspb.Message.setWrapperField(this, 14, value)
-}
-
-proto.beba_backend.Trip.prototype.clearActualdeparturetime = function () {
-  this.setActualdeparturetime(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getActualdeparturetime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 14));
@@ -4093,45 +2231,20 @@ proto.beba_backend.Trip.prototype.clearActualdeparturetime = function() {
   this.setActualdeparturetime(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasActualdeparturetime = function () {
-  return jspb.Message.getField(this, 14) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasActualdeparturetime = function() {
   return jspb.Message.getField(this, 14) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp scheduledArrivalTime = 15;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getScheduledarrivaltime = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    15
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Trip.prototype.setScheduledarrivaltime = function (value) {
-  jspb.Message.setWrapperField(this, 15, value)
-}
-
-proto.beba_backend.Trip.prototype.clearScheduledarrivaltime = function () {
-  this.setScheduledarrivaltime(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getScheduledarrivaltime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 15));
@@ -4148,45 +2261,20 @@ proto.beba_backend.Trip.prototype.clearScheduledarrivaltime = function() {
   this.setScheduledarrivaltime(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasScheduledarrivaltime = function () {
-  return jspb.Message.getField(this, 15) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasScheduledarrivaltime = function() {
   return jspb.Message.getField(this, 15) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp actualArrivalTime = 16;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getActualarrivaltime = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    16
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.Trip.prototype.setActualarrivaltime = function (value) {
-  jspb.Message.setWrapperField(this, 16, value)
-}
-
-proto.beba_backend.Trip.prototype.clearActualarrivaltime = function () {
-  this.setActualarrivaltime(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getActualarrivaltime = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 16));
@@ -4203,45 +2291,20 @@ proto.beba_backend.Trip.prototype.clearActualarrivaltime = function() {
   this.setActualarrivaltime(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasActualarrivaltime = function () {
-  return jspb.Message.getField(this, 16) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasActualarrivaltime = function() {
   return jspb.Message.getField(this, 16) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional Location origin = 17;
  * @return {?proto.beba_backend.Location}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getOrigin = function () {
-  return /** @type{?proto.beba_backend.Location} */ (jspb.Message.getWrapperField(
-    this,
-    proto.beba_backend.Location,
-    17
-  ))
-}
-
-/** @param {?proto.beba_backend.Location|undefined} value */
-proto.beba_backend.Trip.prototype.setOrigin = function (value) {
-  jspb.Message.setWrapperField(this, 17, value)
-}
-
-proto.beba_backend.Trip.prototype.clearOrigin = function () {
-  this.setOrigin(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getOrigin = function() {
   return /** @type{?proto.beba_backend.Location} */ (
     jspb.Message.getWrapperField(this, proto.beba_backend.Location, 17));
@@ -4258,45 +2321,20 @@ proto.beba_backend.Trip.prototype.clearOrigin = function() {
   this.setOrigin(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasOrigin = function () {
-  return jspb.Message.getField(this, 17) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasOrigin = function() {
   return jspb.Message.getField(this, 17) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional Location destination = 18;
  * @return {?proto.beba_backend.Location}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getDestination = function () {
-  return /** @type{?proto.beba_backend.Location} */ (jspb.Message.getWrapperField(
-    this,
-    proto.beba_backend.Location,
-    18
-  ))
-}
-
-/** @param {?proto.beba_backend.Location|undefined} value */
-proto.beba_backend.Trip.prototype.setDestination = function (value) {
-  jspb.Message.setWrapperField(this, 18, value)
-}
-
-proto.beba_backend.Trip.prototype.clearDestination = function () {
-  this.setDestination(undefined)
-}
-=======
 proto.beba_backend.Trip.prototype.getDestination = function() {
   return /** @type{?proto.beba_backend.Location} */ (
     jspb.Message.getWrapperField(this, proto.beba_backend.Location, 18));
@@ -4313,37 +2351,20 @@ proto.beba_backend.Trip.prototype.clearDestination = function() {
   this.setDestination(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.hasDestination = function () {
-  return jspb.Message.getField(this, 18) != null
-}
-=======
 proto.beba_backend.Trip.prototype.hasDestination = function() {
   return jspb.Message.getField(this, 18) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional string status = 19;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.Trip.prototype.getStatus = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 19, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.Trip.prototype.setStatus = function (value) {
-  jspb.Message.setProto3StringField(this, 19, value)
-}
-=======
 proto.beba_backend.Trip.prototype.getStatus = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 19, ""));
 };
@@ -4355,7 +2376,6 @@ proto.beba_backend.Trip.prototype.setStatus = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -4367,64 +2387,6 @@ proto.beba_backend.Trip.prototype.setStatus = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.TripsRequest, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.TripsRequest.displayName =
-    'proto.beba_backend.TripsRequest'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.TripsRequest.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.TripsRequest.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.TripsRequest} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.TripsRequest.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        vehicleid: jspb.Message.getFieldWithDefault(msg, 10, 0),
-        driverid: jspb.Message.getFieldWithDefault(msg, 11, 0),
-        startdate:
-          (f = msg.getStartdate()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        enddate:
-          (f = msg.getEnddate()) &&
-          google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-        status: jspb.Message.getFieldWithDefault(msg, 14, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.TripsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -4476,29 +2438,17 @@ proto.beba_backend.TripsRequest.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.TripsRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.TripsRequest()
-  return proto.beba_backend.TripsRequest.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.TripsRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.TripsRequest;
   return proto.beba_backend.TripsRequest.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -4507,53 +2457,6 @@ proto.beba_backend.TripsRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.TripsRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setVehicleid(value)
-        break
-      case 11:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setDriverid(value)
-        break
-      case 12:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setStartdate(value)
-        break
-      case 13:
-        var value = new google_protobuf_timestamp_pb.Timestamp()
-        reader.readMessage(
-          value,
-          google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader
-        )
-        msg.setEnddate(value)
-        break
-      case 14:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setStatus(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.TripsRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -4591,26 +2494,17 @@ proto.beba_backend.TripsRequest.deserializeBinaryFromReader = function(msg, read
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.TripsRequest.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.TripsRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.TripsRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -4619,22 +2513,6 @@ proto.beba_backend.TripsRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getVehicleid()
-  if (f !== 0) {
-    writer.writeUint32(10, f)
-  }
-  f = message.getDriverid()
-  if (f !== 0) {
-    writer.writeUint32(11, f)
-  }
-  f = message.getStartdate()
-=======
 proto.beba_backend.TripsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getVehicleid();
@@ -4652,35 +2530,19 @@ proto.beba_backend.TripsRequest.serializeBinaryToWriter = function(message, writ
     );
   }
   f = message.getStartdate();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       12,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getEnddate()
-=======
     );
   }
   f = message.getEnddate();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       13,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getStatus()
-  if (f.length > 0) {
-    writer.writeString(14, f)
-  }
-}
-=======
     );
   }
   f = message.getStatus();
@@ -4692,22 +2554,11 @@ proto.beba_backend.TripsRequest.serializeBinaryToWriter = function(message, writ
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 vehicleId = 10;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.getVehicleid = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.TripsRequest.prototype.setVehicleid = function (value) {
-  jspb.Message.setProto3IntField(this, 10, value)
-}
-=======
 proto.beba_backend.TripsRequest.prototype.getVehicleid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
@@ -4718,22 +2569,11 @@ proto.beba_backend.TripsRequest.prototype.setVehicleid = function(value) {
   jspb.Message.setProto3IntField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 driverId = 11;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.getDriverid = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.TripsRequest.prototype.setDriverid = function (value) {
-  jspb.Message.setProto3IntField(this, 11, value)
-}
-=======
 proto.beba_backend.TripsRequest.prototype.getDriverid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
 };
@@ -4744,30 +2584,11 @@ proto.beba_backend.TripsRequest.prototype.setDriverid = function(value) {
   jspb.Message.setProto3IntField(this, 11, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp startDate = 12;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.getStartdate = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    12
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.TripsRequest.prototype.setStartdate = function (value) {
-  jspb.Message.setWrapperField(this, 12, value)
-}
-
-proto.beba_backend.TripsRequest.prototype.clearStartdate = function () {
-  this.setStartdate(undefined)
-}
-=======
 proto.beba_backend.TripsRequest.prototype.getStartdate = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 12));
@@ -4784,45 +2605,20 @@ proto.beba_backend.TripsRequest.prototype.clearStartdate = function() {
   this.setStartdate(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.hasStartdate = function () {
-  return jspb.Message.getField(this, 12) != null
-}
-=======
 proto.beba_backend.TripsRequest.prototype.hasStartdate = function() {
   return jspb.Message.getField(this, 12) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional google.protobuf.Timestamp endDate = 13;
  * @return {?proto.google.protobuf.Timestamp}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.getEnddate = function () {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (jspb.Message.getWrapperField(
-    this,
-    google_protobuf_timestamp_pb.Timestamp,
-    13
-  ))
-}
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.beba_backend.TripsRequest.prototype.setEnddate = function (value) {
-  jspb.Message.setWrapperField(this, 13, value)
-}
-
-proto.beba_backend.TripsRequest.prototype.clearEnddate = function () {
-  this.setEnddate(undefined)
-}
-=======
 proto.beba_backend.TripsRequest.prototype.getEnddate = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
     jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 13));
@@ -4839,37 +2635,20 @@ proto.beba_backend.TripsRequest.prototype.clearEnddate = function() {
   this.setEnddate(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.hasEnddate = function () {
-  return jspb.Message.getField(this, 13) != null
-}
-=======
 proto.beba_backend.TripsRequest.prototype.hasEnddate = function() {
   return jspb.Message.getField(this, 13) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional string status = 14;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.TripsRequest.prototype.getStatus = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.TripsRequest.prototype.setStatus = function (value) {
-  jspb.Message.setProto3StringField(this, 14, value)
-}
-=======
 proto.beba_backend.TripsRequest.prototype.getStatus = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
 };
@@ -4881,7 +2660,6 @@ proto.beba_backend.TripsRequest.prototype.setStatus = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -4893,54 +2671,6 @@ proto.beba_backend.TripsRequest.prototype.setStatus = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.RecordId = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.RecordId, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.RecordId.displayName = 'proto.beba_backend.RecordId'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.RecordId.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.RecordId.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.RecordId} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.RecordId.toObject = function (includeInstance, msg) {
-  let f; var obj = {
-        id: jspb.Message.getFieldWithDefault(msg, 10, 0),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.RecordId = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -4988,26 +2718,17 @@ proto.beba_backend.RecordId.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.RecordId}
  */
-<<<<<<< HEAD
-proto.beba_backend.RecordId.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.RecordId()
-  return proto.beba_backend.RecordId.deserializeBinaryFromReader(msg, reader)
-}
-=======
 proto.beba_backend.RecordId.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.RecordId;
   return proto.beba_backend.RecordId.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5016,29 +2737,6 @@ proto.beba_backend.RecordId.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.RecordId}
  */
-<<<<<<< HEAD
-proto.beba_backend.RecordId.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setId(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.RecordId.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -5058,26 +2756,17 @@ proto.beba_backend.RecordId.deserializeBinaryFromReader = function(msg, reader) 
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.RecordId.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.RecordId.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.RecordId.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.RecordId.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5086,18 +2775,6 @@ proto.beba_backend.RecordId.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.RecordId.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getId()
-  if (f !== 0) {
-    writer.writeUint32(10, f)
-  }
-}
-=======
 proto.beba_backend.RecordId.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getId();
@@ -5109,22 +2786,11 @@ proto.beba_backend.RecordId.serializeBinaryToWriter = function(message, writer) 
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 id = 10;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.RecordId.prototype.getId = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.RecordId.prototype.setId = function (value) {
-  jspb.Message.setProto3IntField(this, 10, value)
-}
-=======
 proto.beba_backend.RecordId.prototype.getId = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
@@ -5136,7 +2802,6 @@ proto.beba_backend.RecordId.prototype.setId = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -5148,63 +2813,6 @@ proto.beba_backend.RecordId.prototype.setId = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.WriteRecordResponse, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.WriteRecordResponse.displayName =
-    'proto.beba_backend.WriteRecordResponse'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.WriteRecordResponse.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.WriteRecordResponse.toObject(
-      opt_includeInstance,
-      this
-    )
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.WriteRecordResponse} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.WriteRecordResponse.toObject = function (
-    includeInstance,
-    msg
-  ) {
-  let f; var obj = {
-        status: jspb.Message.getFieldWithDefault(msg, 10, false),
-        message: jspb.Message.getFieldWithDefault(msg, 11, ''),
-        recordid: jspb.Message.getFieldWithDefault(msg, 12, 0),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.WriteRecordResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -5254,29 +2862,17 @@ proto.beba_backend.WriteRecordResponse.toObject = function(includeInstance, msg)
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.WriteRecordResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.WriteRecordResponse()
-  return proto.beba_backend.WriteRecordResponse.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.WriteRecordResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.WriteRecordResponse;
   return proto.beba_backend.WriteRecordResponse.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5285,37 +2881,6 @@ proto.beba_backend.WriteRecordResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.WriteRecordResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {boolean} */ (reader.readBool())
-        msg.setStatus(value)
-        break
-      case 11:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setMessage(value)
-        break
-      case 12:
-        var value = /** @type {number} */ (reader.readUint32())
-        msg.setRecordid(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.WriteRecordResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -5343,26 +2908,17 @@ proto.beba_backend.WriteRecordResponse.deserializeBinaryFromReader = function(ms
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.WriteRecordResponse.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.WriteRecordResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.WriteRecordResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5371,26 +2927,6 @@ proto.beba_backend.WriteRecordResponse.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getStatus()
-  if (f) {
-    writer.writeBool(10, f)
-  }
-  f = message.getMessage()
-  if (f.length > 0) {
-    writer.writeString(11, f)
-  }
-  f = message.getRecordid()
-  if (f !== 0) {
-    writer.writeUint32(12, f)
-  }
-}
-=======
 proto.beba_backend.WriteRecordResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getStatus();
@@ -5416,7 +2952,6 @@ proto.beba_backend.WriteRecordResponse.serializeBinaryToWriter = function(messag
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional bool status = 10;
@@ -5424,20 +2959,6 @@ proto.beba_backend.WriteRecordResponse.serializeBinaryToWriter = function(messag
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse.prototype.getStatus = function () {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(
-    this,
-    10,
-    false
-  ))
-}
-
-/** @param {boolean} value */
-proto.beba_backend.WriteRecordResponse.prototype.setStatus = function (value) {
-  jspb.Message.setProto3BooleanField(this, 10, value)
-}
-=======
 proto.beba_backend.WriteRecordResponse.prototype.getStatus = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 10, false));
 };
@@ -5448,22 +2969,11 @@ proto.beba_backend.WriteRecordResponse.prototype.setStatus = function(value) {
   jspb.Message.setProto3BooleanField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string message = 11;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse.prototype.getMessage = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.WriteRecordResponse.prototype.setMessage = function (value) {
-  jspb.Message.setProto3StringField(this, 11, value)
-}
-=======
 proto.beba_backend.WriteRecordResponse.prototype.getMessage = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
@@ -5474,24 +2984,11 @@ proto.beba_backend.WriteRecordResponse.prototype.setMessage = function(value) {
   jspb.Message.setProto3StringField(this, 11, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional uint32 recordId = 12;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.WriteRecordResponse.prototype.getRecordid = function () {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0))
-}
-
-/** @param {number} value */
-proto.beba_backend.WriteRecordResponse.prototype.setRecordid = function (
-  value
-) {
-  jspb.Message.setProto3IntField(this, 12, value)
-}
-=======
 proto.beba_backend.WriteRecordResponse.prototype.getRecordid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
 };
@@ -5503,7 +3000,6 @@ proto.beba_backend.WriteRecordResponse.prototype.setRecordid = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -5515,60 +3011,6 @@ proto.beba_backend.WriteRecordResponse.prototype.setRecordid = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.TextMessage, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.TextMessage.displayName = 'proto.beba_backend.TextMessage'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.TextMessage.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.TextMessage.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.TextMessage} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.TextMessage.toObject = function (includeInstance, msg) {
-    var f,
-      obj = {
-        messageid: jspb.Message.getFieldWithDefault(msg, 10, ''),
-        recepient:
-          (f = msg.getRecepient()) &&
-          proto.beba_backend.Driver.toObject(includeInstance, f),
-        text: jspb.Message.getFieldWithDefault(msg, 12, ''),
-        timesent: jspb.Message.getFieldWithDefault(msg, 13, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.TextMessage = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -5619,26 +3061,17 @@ proto.beba_backend.TextMessage.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.TextMessage}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.TextMessage()
-  return proto.beba_backend.TextMessage.deserializeBinaryFromReader(msg, reader)
-}
-=======
 proto.beba_backend.TextMessage.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.TextMessage;
   return proto.beba_backend.TextMessage.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -5647,45 +3080,6 @@ proto.beba_backend.TextMessage.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.TextMessage}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setMessageid(value)
-        break
-      case 11:
-        var value = new proto.beba_backend.Driver()
-        reader.readMessage(
-          value,
-          proto.beba_backend.Driver.deserializeBinaryFromReader
-        )
-        msg.setRecepient(value)
-        break
-      case 12:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setText(value)
-        break
-      case 13:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setTimesent(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.TextMessage.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -5718,26 +3112,17 @@ proto.beba_backend.TextMessage.deserializeBinaryFromReader = function(msg, reade
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.TextMessage.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.TextMessage.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.TextMessage.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -5746,18 +3131,6 @@ proto.beba_backend.TextMessage.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getMessageid()
-  if (f.length > 0) {
-    writer.writeString(10, f)
-  }
-  f = message.getRecepient()
-=======
 proto.beba_backend.TextMessage.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMessageid();
@@ -5768,25 +3141,11 @@ proto.beba_backend.TextMessage.serializeBinaryToWriter = function(message, write
     );
   }
   f = message.getRecepient();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       11,
       f,
       proto.beba_backend.Driver.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getText()
-  if (f.length > 0) {
-    writer.writeString(12, f)
-  }
-  f = message.getTimesent()
-  if (f.length > 0) {
-    writer.writeString(13, f)
-  }
-}
-=======
     );
   }
   f = message.getText();
@@ -5805,22 +3164,11 @@ proto.beba_backend.TextMessage.serializeBinaryToWriter = function(message, write
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional string messageId = 10;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.prototype.getMessageid = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.TextMessage.prototype.setMessageid = function (value) {
-  jspb.Message.setProto3StringField(this, 10, value)
-}
-=======
 proto.beba_backend.TextMessage.prototype.getMessageid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
@@ -5831,30 +3179,11 @@ proto.beba_backend.TextMessage.prototype.setMessageid = function(value) {
   jspb.Message.setProto3StringField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional Driver recepient = 11;
  * @return {?proto.beba_backend.Driver}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.prototype.getRecepient = function () {
-  return /** @type{?proto.beba_backend.Driver} */ (jspb.Message.getWrapperField(
-    this,
-    proto.beba_backend.Driver,
-    11
-  ))
-}
-
-/** @param {?proto.beba_backend.Driver|undefined} value */
-proto.beba_backend.TextMessage.prototype.setRecepient = function (value) {
-  jspb.Message.setWrapperField(this, 11, value)
-}
-
-proto.beba_backend.TextMessage.prototype.clearRecepient = function () {
-  this.setRecepient(undefined)
-}
-=======
 proto.beba_backend.TextMessage.prototype.getRecepient = function() {
   return /** @type{?proto.beba_backend.Driver} */ (
     jspb.Message.getWrapperField(this, proto.beba_backend.Driver, 11));
@@ -5871,37 +3200,20 @@ proto.beba_backend.TextMessage.prototype.clearRecepient = function() {
   this.setRecepient(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.prototype.hasRecepient = function () {
-  return jspb.Message.getField(this, 11) != null
-}
-=======
 proto.beba_backend.TextMessage.prototype.hasRecepient = function() {
   return jspb.Message.getField(this, 11) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional string text = 12;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.prototype.getText = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.TextMessage.prototype.setText = function (value) {
-  jspb.Message.setProto3StringField(this, 12, value)
-}
-=======
 proto.beba_backend.TextMessage.prototype.getText = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
@@ -5912,22 +3224,11 @@ proto.beba_backend.TextMessage.prototype.setText = function(value) {
   jspb.Message.setProto3StringField(this, 12, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string timeSent = 13;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.TextMessage.prototype.getTimesent = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.TextMessage.prototype.setTimesent = function (value) {
-  jspb.Message.setProto3StringField(this, 13, value)
-}
-=======
 proto.beba_backend.TextMessage.prototype.getTimesent = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
 };
@@ -5939,7 +3240,6 @@ proto.beba_backend.TextMessage.prototype.setTimesent = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -5951,64 +3251,6 @@ proto.beba_backend.TextMessage.prototype.setTimesent = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.SendMessageResponse, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.SendMessageResponse.displayName =
-    'proto.beba_backend.SendMessageResponse'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.SendMessageResponse.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.SendMessageResponse.toObject(
-      opt_includeInstance,
-      this
-    )
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.SendMessageResponse} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.SendMessageResponse.toObject = function (
-    includeInstance,
-    msg
-  ) {
-    var f,
-      obj = {
-        messageid: jspb.Message.getFieldWithDefault(msg, 10, ''),
-        status: jspb.Message.getFieldWithDefault(msg, 11, false),
-        message: jspb.Message.getFieldWithDefault(msg, 12, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.SendMessageResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -6058,29 +3300,17 @@ proto.beba_backend.SendMessageResponse.toObject = function(includeInstance, msg)
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.SendMessageResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.SendMessageResponse()
-  return proto.beba_backend.SendMessageResponse.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.SendMessageResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.SendMessageResponse;
   return proto.beba_backend.SendMessageResponse.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6089,37 +3319,6 @@ proto.beba_backend.SendMessageResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.SendMessageResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setMessageid(value)
-        break
-      case 11:
-        var value = /** @type {boolean} */ (reader.readBool())
-        msg.setStatus(value)
-        break
-      case 12:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setMessage(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.SendMessageResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -6147,26 +3346,17 @@ proto.beba_backend.SendMessageResponse.deserializeBinaryFromReader = function(ms
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.SendMessageResponse.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.SendMessageResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.SendMessageResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6175,26 +3365,6 @@ proto.beba_backend.SendMessageResponse.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getMessageid()
-  if (f.length > 0) {
-    writer.writeString(10, f)
-  }
-  f = message.getStatus()
-  if (f) {
-    writer.writeBool(11, f)
-  }
-  f = message.getMessage()
-  if (f.length > 0) {
-    writer.writeString(12, f)
-  }
-}
-=======
 proto.beba_backend.SendMessageResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMessageid();
@@ -6220,24 +3390,11 @@ proto.beba_backend.SendMessageResponse.serializeBinaryToWriter = function(messag
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional string messageId = 10;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse.prototype.getMessageid = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.SendMessageResponse.prototype.setMessageid = function (
-  value
-) {
-  jspb.Message.setProto3StringField(this, 10, value)
-}
-=======
 proto.beba_backend.SendMessageResponse.prototype.getMessageid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
@@ -6248,7 +3405,6 @@ proto.beba_backend.SendMessageResponse.prototype.setMessageid = function(value) 
   jspb.Message.setProto3StringField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional bool status = 11;
@@ -6256,20 +3412,6 @@ proto.beba_backend.SendMessageResponse.prototype.setMessageid = function(value) 
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse.prototype.getStatus = function () {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(
-    this,
-    11,
-    false
-  ))
-}
-
-/** @param {boolean} value */
-proto.beba_backend.SendMessageResponse.prototype.setStatus = function (value) {
-  jspb.Message.setProto3BooleanField(this, 11, value)
-}
-=======
 proto.beba_backend.SendMessageResponse.prototype.getStatus = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 11, false));
 };
@@ -6280,22 +3422,11 @@ proto.beba_backend.SendMessageResponse.prototype.setStatus = function(value) {
   jspb.Message.setProto3BooleanField(this, 11, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string message = 12;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.SendMessageResponse.prototype.getMessage = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.SendMessageResponse.prototype.setMessage = function (value) {
-  jspb.Message.setProto3StringField(this, 12, value)
-}
-=======
 proto.beba_backend.SendMessageResponse.prototype.getMessage = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
@@ -6307,7 +3438,6 @@ proto.beba_backend.SendMessageResponse.prototype.setMessage = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -6319,65 +3449,6 @@ proto.beba_backend.SendMessageResponse.prototype.setMessage = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.DisburseFundsRequest, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.DisburseFundsRequest.displayName =
-    'proto.beba_backend.DisburseFundsRequest'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.DisburseFundsRequest.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.DisburseFundsRequest.toObject(
-      opt_includeInstance,
-      this
-    )
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.DisburseFundsRequest} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.DisburseFundsRequest.toObject = function (
-    includeInstance,
-    msg
-  ) {
-    var f,
-      obj = {
-        driver:
-          (f = msg.getDriver()) &&
-          proto.beba_backend.Driver.toObject(includeInstance, f),
-        amount: +jspb.Message.getFieldWithDefault(msg, 11, 0.0),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.DisburseFundsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -6426,29 +3497,17 @@ proto.beba_backend.DisburseFundsRequest.toObject = function(includeInstance, msg
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.DisburseFundsRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.DisburseFundsRequest()
-  return proto.beba_backend.DisburseFundsRequest.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.DisburseFundsRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.DisburseFundsRequest;
   return proto.beba_backend.DisburseFundsRequest.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6457,37 +3516,6 @@ proto.beba_backend.DisburseFundsRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.DisburseFundsRequest}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = new proto.beba_backend.Driver()
-        reader.readMessage(
-          value,
-          proto.beba_backend.Driver.deserializeBinaryFromReader
-        )
-        msg.setDriver(value)
-        break
-      case 11:
-        var value = /** @type {number} */ (reader.readDouble())
-        msg.setAmount(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.DisburseFundsRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -6512,26 +3540,17 @@ proto.beba_backend.DisburseFundsRequest.deserializeBinaryFromReader = function(m
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.DisburseFundsRequest.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.DisburseFundsRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.DisburseFundsRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6540,32 +3559,14 @@ proto.beba_backend.DisburseFundsRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getDriver()
-=======
 proto.beba_backend.DisburseFundsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getDriver();
->>>>>>> triage2
   if (f != null) {
     writer.writeMessage(
       10,
       f,
       proto.beba_backend.Driver.serializeBinaryToWriter
-<<<<<<< HEAD
-    )
-  }
-  f = message.getAmount()
-  if (f !== 0.0) {
-    writer.writeDouble(11, f)
-  }
-}
-=======
     );
   }
   f = message.getAmount();
@@ -6577,30 +3578,11 @@ proto.beba_backend.DisburseFundsRequest.serializeBinaryToWriter = function(messa
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional Driver driver = 10;
  * @return {?proto.beba_backend.Driver}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest.prototype.getDriver = function () {
-  return /** @type{?proto.beba_backend.Driver} */ (jspb.Message.getWrapperField(
-    this,
-    proto.beba_backend.Driver,
-    10
-  ))
-}
-
-/** @param {?proto.beba_backend.Driver|undefined} value */
-proto.beba_backend.DisburseFundsRequest.prototype.setDriver = function (value) {
-  jspb.Message.setWrapperField(this, 10, value)
-}
-
-proto.beba_backend.DisburseFundsRequest.prototype.clearDriver = function () {
-  this.setDriver(undefined)
-}
-=======
 proto.beba_backend.DisburseFundsRequest.prototype.getDriver = function() {
   return /** @type{?proto.beba_backend.Driver} */ (
     jspb.Message.getWrapperField(this, proto.beba_backend.Driver, 10));
@@ -6617,41 +3599,20 @@ proto.beba_backend.DisburseFundsRequest.prototype.clearDriver = function() {
   this.setDriver(undefined);
 };
 
->>>>>>> triage2
 
 /**
  * Returns whether this field is set.
  * @return {!boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest.prototype.hasDriver = function () {
-  return jspb.Message.getField(this, 10) != null
-}
-=======
 proto.beba_backend.DisburseFundsRequest.prototype.hasDriver = function() {
   return jspb.Message.getField(this, 10) != null;
 };
 
->>>>>>> triage2
 
 /**
  * optional double amount = 11;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsRequest.prototype.getAmount = function () {
-  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(
-    this,
-    11,
-    0.0
-  ))
-}
-
-/** @param {number} value */
-proto.beba_backend.DisburseFundsRequest.prototype.setAmount = function (value) {
-  jspb.Message.setProto3FloatField(this, 11, value)
-}
-=======
 proto.beba_backend.DisburseFundsRequest.prototype.getAmount = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 11, 0.0));
 };
@@ -6663,7 +3624,6 @@ proto.beba_backend.DisburseFundsRequest.prototype.setAmount = function(value) {
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -6675,62 +3635,6 @@ proto.beba_backend.DisburseFundsRequest.prototype.setAmount = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsResponse = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.DisburseFundsResponse, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.DisburseFundsResponse.displayName =
-    'proto.beba_backend.DisburseFundsResponse'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.DisburseFundsResponse.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.DisburseFundsResponse.toObject(
-      opt_includeInstance,
-      this
-    )
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.DisburseFundsResponse} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.DisburseFundsResponse.toObject = function (
-    includeInstance,
-    msg
-  ) {
-  let f; var obj = {
-        status: jspb.Message.getFieldWithDefault(msg, 10, false),
-        message: jspb.Message.getFieldWithDefault(msg, 11, ''),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.DisburseFundsResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -6779,29 +3683,17 @@ proto.beba_backend.DisburseFundsResponse.toObject = function(includeInstance, ms
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.DisburseFundsResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsResponse.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.DisburseFundsResponse()
-  return proto.beba_backend.DisburseFundsResponse.deserializeBinaryFromReader(
-    msg,
-    reader
-  )
-}
-=======
 proto.beba_backend.DisburseFundsResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.DisburseFundsResponse;
   return proto.beba_backend.DisburseFundsResponse.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -6810,33 +3702,6 @@ proto.beba_backend.DisburseFundsResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.DisburseFundsResponse}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsResponse.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 10:
-        var value = /** @type {boolean} */ (reader.readBool())
-        msg.setStatus(value)
-        break
-      case 11:
-        var value = /** @type {string} */ (reader.readString())
-        msg.setMessage(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.DisburseFundsResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -6860,26 +3725,17 @@ proto.beba_backend.DisburseFundsResponse.deserializeBinaryFromReader = function(
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsResponse.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.DisburseFundsResponse.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.DisburseFundsResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.DisburseFundsResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -6888,22 +3744,6 @@ proto.beba_backend.DisburseFundsResponse.prototype.serializeBinary = function() 
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsResponse.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getStatus()
-  if (f) {
-    writer.writeBool(10, f)
-  }
-  f = message.getMessage()
-  if (f.length > 0) {
-    writer.writeString(11, f)
-  }
-}
-=======
 proto.beba_backend.DisburseFundsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getStatus();
@@ -6922,7 +3762,6 @@ proto.beba_backend.DisburseFundsResponse.serializeBinaryToWriter = function(mess
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional bool status = 10;
@@ -6930,22 +3769,6 @@ proto.beba_backend.DisburseFundsResponse.serializeBinaryToWriter = function(mess
  * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsResponse.prototype.getStatus = function () {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(
-    this,
-    10,
-    false
-  ))
-}
-
-/** @param {boolean} value */
-proto.beba_backend.DisburseFundsResponse.prototype.setStatus = function (
-  value
-) {
-  jspb.Message.setProto3BooleanField(this, 10, value)
-}
-=======
 proto.beba_backend.DisburseFundsResponse.prototype.getStatus = function() {
   return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 10, false));
 };
@@ -6956,24 +3779,11 @@ proto.beba_backend.DisburseFundsResponse.prototype.setStatus = function(value) {
   jspb.Message.setProto3BooleanField(this, 10, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional string message = 11;
  * @return {string}
  */
-<<<<<<< HEAD
-proto.beba_backend.DisburseFundsResponse.prototype.getMessage = function () {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ''))
-}
-
-/** @param {string} value */
-proto.beba_backend.DisburseFundsResponse.prototype.setMessage = function (
-  value
-) {
-  jspb.Message.setProto3StringField(this, 11, value)
-}
-=======
 proto.beba_backend.DisburseFundsResponse.prototype.getMessage = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
@@ -6985,7 +3795,6 @@ proto.beba_backend.DisburseFundsResponse.prototype.setMessage = function(value) 
 };
 
 
->>>>>>> triage2
 
 /**
  * Generated by JsPbCodeGenerator.
@@ -6997,55 +3806,6 @@ proto.beba_backend.DisburseFundsResponse.prototype.setMessage = function(value) 
  * @extends {jspb.Message}
  * @constructor
  */
-<<<<<<< HEAD
-proto.beba_backend.Location = function (opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null)
-}
-goog.inherits(proto.beba_backend.Location, jspb.Message)
-if (goog.DEBUG && !COMPILED) {
-  proto.beba_backend.Location.displayName = 'proto.beba_backend.Location'
-}
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-  /**
-   * Creates an object representation of this proto suitable for use in Soy templates.
-   * Field names that are reserved in JavaScript and will be renamed to pb_name.
-   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-   * For the list of reserved names please see:
-   *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
-   * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
-   *     for transitional soy proto support: http://goto/soy-param-migration
-   * @return {!Object}
-   */
-  proto.beba_backend.Location.prototype.toObject = function (
-    opt_includeInstance
-  ) {
-    return proto.beba_backend.Location.toObject(opt_includeInstance, this)
-  }
-
-  /**
-   * Static version of the {@see toObject} method.
-   * @param {boolean|undefined} includeInstance Whether to include the JSPB
-   *     instance for transitional soy proto support:
-   *     http://goto/soy-param-migration
-   * @param {!proto.beba_backend.Location} msg The msg instance to transform.
-   * @return {!Object}
-   * @suppress {unusedLocalVariables} f is only used for nested messages
-   */
-  proto.beba_backend.Location.toObject = function (includeInstance, msg) {
-  let f; var obj = {
-        lat: +jspb.Message.getFieldWithDefault(msg, 1, 0.0),
-        pb_long: +jspb.Message.getFieldWithDefault(msg, 2, 0.0),
-      }
-
-    if (includeInstance) {
-      obj.$jspbMessageInstance = msg
-    }
-    return obj
-  }
-}
-
-=======
 proto.beba_backend.Location = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -7094,26 +3854,17 @@ proto.beba_backend.Location.toObject = function(includeInstance, msg) {
 }
 
 
->>>>>>> triage2
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.beba_backend.Location}
  */
-<<<<<<< HEAD
-proto.beba_backend.Location.deserializeBinary = function (bytes) {
-  let reader = new jspb.BinaryReader(bytes)
-  let msg = new proto.beba_backend.Location()
-  return proto.beba_backend.Location.deserializeBinaryFromReader(msg, reader)
-}
-=======
 proto.beba_backend.Location.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
   var msg = new proto.beba_backend.Location;
   return proto.beba_backend.Location.deserializeBinaryFromReader(msg, reader);
 };
 
->>>>>>> triage2
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -7122,33 +3873,6 @@ proto.beba_backend.Location.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.beba_backend.Location}
  */
-<<<<<<< HEAD
-proto.beba_backend.Location.deserializeBinaryFromReader = function (
-  msg,
-  reader
-) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break
-    }
-    let field = reader.getFieldNumber()
-    switch (field) {
-      case 1:
-        var value = /** @type {number} */ (reader.readDouble())
-        msg.setLat(value)
-        break
-      case 2:
-        var value = /** @type {number} */ (reader.readDouble())
-        msg.setLong(value)
-        break
-      default:
-        reader.skipField()
-        break
-    }
-  }
-  return msg
-}
-=======
 proto.beba_backend.Location.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
@@ -7172,26 +3896,17 @@ proto.beba_backend.Location.deserializeBinaryFromReader = function(msg, reader) 
   return msg;
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-<<<<<<< HEAD
-proto.beba_backend.Location.prototype.serializeBinary = function () {
-  let writer = new jspb.BinaryWriter()
-  proto.beba_backend.Location.serializeBinaryToWriter(this, writer)
-  return writer.getResultBuffer()
-}
-=======
 proto.beba_backend.Location.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   proto.beba_backend.Location.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
->>>>>>> triage2
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -7200,22 +3915,6 @@ proto.beba_backend.Location.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-<<<<<<< HEAD
-proto.beba_backend.Location.serializeBinaryToWriter = function (
-  message,
-  writer
-) {
-  let f = undefined
-  f = message.getLat()
-  if (f !== 0.0) {
-    writer.writeDouble(1, f)
-  }
-  f = message.getLong()
-  if (f !== 0.0) {
-    writer.writeDouble(2, f)
-  }
-}
-=======
 proto.beba_backend.Location.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getLat();
@@ -7234,22 +3933,11 @@ proto.beba_backend.Location.serializeBinaryToWriter = function(message, writer) 
   }
 };
 
->>>>>>> triage2
 
 /**
  * optional double lat = 1;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.Location.prototype.getLat = function () {
-  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 1, 0.0))
-}
-
-/** @param {number} value */
-proto.beba_backend.Location.prototype.setLat = function (value) {
-  jspb.Message.setProto3FloatField(this, 1, value)
-}
-=======
 proto.beba_backend.Location.prototype.getLat = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 1, 0.0));
 };
@@ -7260,24 +3948,11 @@ proto.beba_backend.Location.prototype.setLat = function(value) {
   jspb.Message.setProto3FloatField(this, 1, value);
 };
 
->>>>>>> triage2
 
 /**
  * optional double long = 2;
  * @return {number}
  */
-<<<<<<< HEAD
-proto.beba_backend.Location.prototype.getLong = function () {
-  return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 2, 0.0))
-}
-
-/** @param {number} value */
-proto.beba_backend.Location.prototype.setLong = function (value) {
-  jspb.Message.setProto3FloatField(this, 2, value)
-}
-
-goog.object.extend(exports, proto.beba_backend)
-=======
 proto.beba_backend.Location.prototype.getLong = function() {
   return /** @type {number} */ (+jspb.Message.getFieldWithDefault(this, 2, 0.0));
 };
@@ -7290,4 +3965,3 @@ proto.beba_backend.Location.prototype.setLong = function(value) {
 
 
 goog.object.extend(exports, proto.beba_backend);
->>>>>>> triage2
