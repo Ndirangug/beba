@@ -41,6 +41,14 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/firebase',
+    [
+      'nuxt-gmaps',
+      {
+        key: 'AIzaSyBZgURdVR_BOFf7j-bk4bzVTCEAXdApUlE',
+        // you can use libraries: ['places']
+      },
+    ],
+    //
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -60,7 +68,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,

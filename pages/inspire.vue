@@ -17,7 +17,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import { testGrpcWeb } from '~/utils/test'
+import { driversStore } from '~/store'
+import { Driver } from '~/protos/service_pb'
+
 export default Vue.extend({
+  computed: {
+    // sample for vuex
+    drivers(): Driver[] {
+      return driversStore.driversInTransit
+    },
+  },
   mounted() {
     testGrpcWeb()
   },
