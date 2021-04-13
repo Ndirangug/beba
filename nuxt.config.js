@@ -40,6 +40,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/firebase',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -73,7 +74,21 @@ export default {
       },
     },
   },
-
+  // https://firebase.nuxtjs.org/guide/getting-started
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyCpesW78ka0z5Vi30whnWFjkuOoQKuFKYE',
+      authDomain: 'fleet-management-sys.firebaseapp.com',
+      projectId: 'fleet-management-sys',
+      storageBucket: 'fleet-management-sys.appspot.com',
+      messagingSenderId: '841578396667',
+      appId: '1:841578396667:web:f2d431edabc4da84f7695e',
+      measurementId: 'G-D48YF6T0D5',
+    },
+    services: {
+      auth: true, // Just as example. Can be any other service.
+    },
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
