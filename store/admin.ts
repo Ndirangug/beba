@@ -1,5 +1,4 @@
 import { VuexModule, Module } from 'vuex-module-decorators'
-import { Driver } from '~/protos/service_pb'
 
 export interface Manager {
   firstName: String
@@ -8,7 +7,7 @@ export interface Manager {
   photo: String
 }
 
-@Module({ name: 'Admin' })
+@Module({ name: 'Admin', stateFactory: true, namespaced: true })
 export default class Admin extends VuexModule {
   admin: Manager | undefined
 }

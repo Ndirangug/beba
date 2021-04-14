@@ -30,6 +30,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { Driver } from '~/protos/service_pb'
+import { driversStore } from '~/store'
+import { fetchDrivers } from '~/utils/test'
 
 export default Vue.extend({
   layout: 'maps',
@@ -63,6 +66,19 @@ export default Vue.extend({
   computed: {
     sheetWidth(): String {
       return this.$route.path === '/' ? 'width:0' : 'width:30em'
+    },
+    drivers(): Driver[] {
+      let drivers: Driver[]
+
+      try {
+        drivers = fetchDrivers()
+        driversStore.updateDrivers(drivers)
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error)
+      }
+
+      return this.drivers
     },
   },
 })

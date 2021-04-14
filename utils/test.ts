@@ -1,13 +1,11 @@
 import { Status } from 'grpc-web'
+import { BebaBackendClient } from '../protos/ServiceServiceClientPb'
 import { Driver, DriverRequest } from '~/protos/service_pb'
+
+const client = new BebaBackendClient('http://localhost:50050')
 
 export const testGrpcWeb = () => {
   /* eslint-disable no-console */
-  const { DriverRequest } = require('../protos/service_pb')
-
-  const { BebaBackendClient } = require('../protos/ServiceServiceClientPb')
-
-  const client = new BebaBackendClient('http://localhost:50050')
 
   const request: DriverRequest = new DriverRequest()
   request.setIdnumber(1)
@@ -22,6 +20,7 @@ export const testGrpcWeb = () => {
   // })
 
   const stream = client.getDrivers(request, {})
+
   stream.on('data', function (response: Driver) {
     console.log(`${response.getFirstname()} ${response.getLastname()}`)
     // console.log(response.getFirstname)
@@ -35,5 +34,23 @@ export const testGrpcWeb = () => {
   stream.on('end', function (end: any) {
     // stream end signal
     console.log(end)
+  })
+}
+
+export const fetchDrivers = (): Driver[] => {
+  let drivers: Driver[]
+
+  const request: DriverRequest = new DriverRequest()
+  request.setIdnumber(1)
+  request.setSearchquery('')
+
+  const stream = client.getDrivers(request, {})
+  stream.on('data', (response: Driver) => {
+    drivers.push(response)
+  })
+
+  stream.on('end', function (end: any) {
+    // stream end signal
+    return drivers
   })
 }

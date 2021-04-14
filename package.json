@@ -32,7 +32,8 @@
     "firebase": "^8.4.1",
     "nuxt": "^2.14.12",
     "nuxt-gmaps": "^1.2.10",
-    "vuex-module-decorators": "^1.0.1"
+    "vuex-module-decorators": "^1.0.1",
+    "xhr2": "^0.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
