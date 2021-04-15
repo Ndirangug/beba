@@ -5,19 +5,31 @@
       id="gMap"
       ref="gMap"
       language="en"
-      :center="{ lat: locations[0].lat, lng: locations[0].lng }"
+      :center="{
+        lat: center.getLat(),
+        lng: center.getLong(),
+      }"
       :options="{ fullscreenControl: true, styles: mapStyle }"
       :zoom="8"
       map-ids="46cd1a2032db6b3a"
     >
       <GMapMarker
-        v-for="location in locations"
-        :key="location.id"
-        :position="{ lat: location.lat, lng: location.lng }"
-        @click="currentLocation = location"
+        v-for="vehicle in vehicles"
+        :key="vehicle.getVehicleid()"
+        :position="{
+          lat: vehicle.getCurrentlocation().getLat,
+          lng: vehicle.getCurrentlocation().getLang,
+        }"
+        @click="currentLocation = vehicle.getCurrentlocation()"
       >
         <GMapInfoWindow :options="{ maxWidth: 200 }">
-          <code> lat: {{ location.lat }}, lng: {{ location.lng }} </code>
+          <code>
+            lat: {{ vehicle.getCurrentlocation().getLat() }}, lng:
+            {{ vehicle.getCurrentlocation().getLong() }}
+
+            Address:
+            {{ addressFromCoordinates(vehicle.getCurrentlocation()) }}
+          </code>
         </GMapInfoWindow>
       </GMapMarker>
     </GMap>
@@ -30,9 +42,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Driver } from '~/protos/service_pb'
-import { driversStore } from '~/store'
-import { fetchDrivers } from '~/utils/test'
+import { Driver, Location, Vehicle } from '~/protos/service_pb'
+import { driversStore, vehicleStore } from '~/store'
+import { fetchDrivers, fetchVehicles } from '~/utils/api-client'
 
 export default Vue.extend({
   layout: 'maps',
@@ -68,17 +80,39 @@ export default Vue.extend({
       return this.$route.path === '/' ? 'width:0' : 'width:30em'
     },
     drivers(): Driver[] {
-      let drivers: Driver[]
+      return driversStore.allDrivers
+    },
+    vehicles(): Vehicle[] {
+      return vehicleStore.allVehicles
+    },
+    center(): Location {
+      const location: Location = new Location()
+      let lat
+      let long
+      // eslint-disable-next-line prefer-const
+      ;({ lat, long } =
+        this.vehicles.length > 0
+          ? {
+              lat: this.vehicles[0].getCurrentlocation()?.getLat,
+              long: this.vehicles[0].getCurrentlocation()?.getLong,
+            }
+          : { lat: -1.2042133565653255, long: 36.825933702022446 })
+  
+      location.setLat(lat)
+      location.setLong(long)
+      return location
+    },
+  },
 
-      try {
-        drivers = fetchDrivers()
-        driversStore.updateDrivers(drivers)
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error)
-      }
+  mounted() {
+    fetchVehicles(!process.browser)
+    fetchDrivers(!process.browser)
+    // console.log(this.vehicles[0].getCurrentlocation()?.getLong())
+  },
 
-      return this.drivers
+  methods: {
+    addressFromCoordinates(location: Location): String {
+      return 'Address Address'
     },
   },
 })

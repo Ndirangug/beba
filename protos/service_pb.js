@@ -1102,7 +1102,8 @@ proto.beba_backend.Vehicle.toObject = function(includeInstance, msg) {
     expectedendservice: (f = msg.getExpectedendservice()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     type: jspb.Message.getFieldWithDefault(msg, 19, ""),
     condition: jspb.Message.getFieldWithDefault(msg, 20, ""),
-    maxweight: +jspb.Message.getFieldWithDefault(msg, 21, 0.0)
+    maxweight: +jspb.Message.getFieldWithDefault(msg, 21, 0.0),
+    currentlocation: (f = msg.getCurrentlocation()) && proto.beba_backend.Location.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1188,6 +1189,11 @@ proto.beba_backend.Vehicle.deserializeBinaryFromReader = function(msg, reader) {
     case 21:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setMaxweight(value);
+      break;
+    case 22:
+      var value = new proto.beba_backend.Location;
+      reader.readMessage(value,proto.beba_backend.Location.deserializeBinaryFromReader);
+      msg.setCurrentlocation(value);
       break;
     default:
       reader.skipField();
@@ -1302,6 +1308,14 @@ proto.beba_backend.Vehicle.serializeBinaryToWriter = function(message, writer) {
     writer.writeFloat(
       21,
       f
+    );
+  }
+  f = message.getCurrentlocation();
+  if (f != null) {
+    writer.writeMessage(
+      22,
+      f,
+      proto.beba_backend.Location.serializeBinaryToWriter
     );
   }
 };
@@ -1514,6 +1528,36 @@ proto.beba_backend.Vehicle.prototype.getMaxweight = function() {
 /** @param {number} value */
 proto.beba_backend.Vehicle.prototype.setMaxweight = function(value) {
   jspb.Message.setProto3FloatField(this, 21, value);
+};
+
+
+/**
+ * optional Location currentLocation = 22;
+ * @return {?proto.beba_backend.Location}
+ */
+proto.beba_backend.Vehicle.prototype.getCurrentlocation = function() {
+  return /** @type{?proto.beba_backend.Location} */ (
+    jspb.Message.getWrapperField(this, proto.beba_backend.Location, 22));
+};
+
+
+/** @param {?proto.beba_backend.Location|undefined} value */
+proto.beba_backend.Vehicle.prototype.setCurrentlocation = function(value) {
+  jspb.Message.setWrapperField(this, 22, value);
+};
+
+
+proto.beba_backend.Vehicle.prototype.clearCurrentlocation = function() {
+  this.setCurrentlocation(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.beba_backend.Vehicle.prototype.hasCurrentlocation = function() {
+  return jspb.Message.getField(this, 22) != null;
 };
 
 
