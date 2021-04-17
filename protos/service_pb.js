@@ -486,7 +486,8 @@ proto.beba_backend.Driver.toObject = function(includeInstance, msg) {
     dateemployed: (f = msg.getDateemployed()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     comment: jspb.Message.getFieldWithDefault(msg, 13, ""),
     evaluationreport: jspb.Message.getFieldWithDefault(msg, 14, ""),
-    driverslicence: jspb.Message.getFieldWithDefault(msg, 15, "")
+    driverslicence: jspb.Message.getFieldWithDefault(msg, 15, ""),
+    photo: jspb.Message.getFieldWithDefault(msg, 16, "")
   };
 
   if (includeInstance) {
@@ -568,6 +569,10 @@ proto.beba_backend.Driver.deserializeBinaryFromReader = function(msg, reader) {
     case 15:
       var value = /** @type {string} */ (reader.readString());
       msg.setDriverslicence(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPhoto(value);
       break;
     default:
       reader.skipField();
@@ -674,6 +679,13 @@ proto.beba_backend.Driver.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       15,
+      f
+    );
+  }
+  f = message.getPhoto();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
       f
     );
   }
@@ -872,6 +884,21 @@ proto.beba_backend.Driver.prototype.getDriverslicence = function() {
 /** @param {string} value */
 proto.beba_backend.Driver.prototype.setDriverslicence = function(value) {
   jspb.Message.setProto3StringField(this, 15, value);
+};
+
+
+/**
+ * optional string photo = 16;
+ * @return {string}
+ */
+proto.beba_backend.Driver.prototype.getPhoto = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/** @param {string} value */
+proto.beba_backend.Driver.prototype.setPhoto = function(value) {
+  jspb.Message.setProto3StringField(this, 16, value);
 };
 
 
@@ -1103,7 +1130,8 @@ proto.beba_backend.Vehicle.toObject = function(includeInstance, msg) {
     type: jspb.Message.getFieldWithDefault(msg, 19, ""),
     condition: jspb.Message.getFieldWithDefault(msg, 20, ""),
     maxweight: +jspb.Message.getFieldWithDefault(msg, 21, 0.0),
-    currentlocation: (f = msg.getCurrentlocation()) && proto.beba_backend.Location.toObject(includeInstance, f)
+    currentlocation: (f = msg.getCurrentlocation()) && proto.beba_backend.Location.toObject(includeInstance, f),
+    photo: jspb.Message.getFieldWithDefault(msg, 23, "")
   };
 
   if (includeInstance) {
@@ -1194,6 +1222,10 @@ proto.beba_backend.Vehicle.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.beba_backend.Location;
       reader.readMessage(value,proto.beba_backend.Location.deserializeBinaryFromReader);
       msg.setCurrentlocation(value);
+      break;
+    case 23:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPhoto(value);
       break;
     default:
       reader.skipField();
@@ -1316,6 +1348,13 @@ proto.beba_backend.Vehicle.serializeBinaryToWriter = function(message, writer) {
       22,
       f,
       proto.beba_backend.Location.serializeBinaryToWriter
+    );
+  }
+  f = message.getPhoto();
+  if (f.length > 0) {
+    writer.writeString(
+      23,
+      f
     );
   }
 };
@@ -1558,6 +1597,21 @@ proto.beba_backend.Vehicle.prototype.clearCurrentlocation = function() {
  */
 proto.beba_backend.Vehicle.prototype.hasCurrentlocation = function() {
   return jspb.Message.getField(this, 22) != null;
+};
+
+
+/**
+ * optional string photo = 23;
+ * @return {string}
+ */
+proto.beba_backend.Vehicle.prototype.getPhoto = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 23, ""));
+};
+
+
+/** @param {string} value */
+proto.beba_backend.Vehicle.prototype.setPhoto = function(value) {
+  jspb.Message.setProto3StringField(this, 23, value);
 };
 
 

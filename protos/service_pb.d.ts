@@ -98,6 +98,9 @@ export class Driver extends jspb.Message {
   getDriverslicence(): string;
   setDriverslicence(value: string): void;
 
+  getPhoto(): string;
+  setPhoto(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Driver.AsObject;
   static toObject(includeInstance: boolean, msg: Driver): Driver.AsObject;
@@ -121,6 +124,7 @@ export namespace Driver {
     comment: string,
     evaluationreport: string,
     driverslicence: string,
+    photo: string,
   }
 }
 
@@ -194,6 +198,9 @@ export class Vehicle extends jspb.Message {
   getCurrentlocation(): Location | undefined;
   setCurrentlocation(value?: Location): void;
 
+  getPhoto(): string;
+  setPhoto(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Vehicle.AsObject;
   static toObject(includeInstance: boolean, msg: Vehicle): Vehicle.AsObject;
@@ -219,6 +226,7 @@ export namespace Vehicle {
     condition: string,
     maxweight: number,
     currentlocation?: Location.AsObject,
+    photo: string,
   }
 }
 
