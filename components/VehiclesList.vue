@@ -8,8 +8,8 @@
     >
       <template #default="{ item }">
         <v-list-item :key="item.vehicleId">
-          <v-list-item-avatar>
-            <img eager :src="item.photo" />
+          <v-list-item-avatar tile height="56px" width="80px">
+            <img eager :src="item.getPhoto()" />
           </v-list-item-avatar>
 
           <v-list-item-content>
