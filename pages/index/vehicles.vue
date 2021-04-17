@@ -1,5 +1,5 @@
 <template>
   <div id="all-vehicles-container">
-    <h1>All Vehicles</h1>
+    <AllList search-hint="Search Registration number" />
   </div>
 </template>

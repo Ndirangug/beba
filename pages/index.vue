@@ -34,7 +34,7 @@
       </GMapMarker>
     </GMap>
 
-    <v-sheet id="sheet" :style="sheetWidth" height="100%">
+    <v-sheet id="sheet" class="elevation-20" :style="sheetWidth" height="100%">
       <n-child />
     </v-sheet>
   </div>
@@ -87,9 +87,11 @@ export default Vue.extend({
     },
     center(): Location {
       const location: Location = new Location()
-      let lat
-      let long
-      // eslint-disable-next-line prefer-const
+      let lat: number
+      let long: number
+
+        // @ts-ignore
+        // eslint-disable-next-line prefer-const
       ;({ lat, long } =
         this.vehicles.length > 0
           ? {
@@ -97,7 +99,7 @@ export default Vue.extend({
               long: this.vehicles[0].getCurrentlocation()?.getLong,
             }
           : { lat: -1.2042133565653255, long: 36.825933702022446 })
-  
+
       location.setLat(lat)
       location.setLong(long)
       return location
@@ -120,7 +122,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 #sheet {
-  position: absolute;
+  position: fixed;
   padding-left: 5em;
   transition: width 0.5s;
 }
