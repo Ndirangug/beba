@@ -36,7 +36,7 @@
 <script lang="ts">
 // eslint-disable no-console
 import Vue from 'vue'
-import { mdiHome, mdiTruck, mdiSteering, mdiHomeOutline, mdiTruckOutline } from '@mdi/js'
+import { mdiSteering, mdiHomeOutline, mdiTruckOutline } from '@mdi/js'
 
 export default Vue.extend({
   data() {

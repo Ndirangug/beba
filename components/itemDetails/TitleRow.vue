@@ -1,14 +1,14 @@
 <template>
   <v-row class="title-row pr-8 pt-6">
     <v-col cols="1">
-      <v-btn icon>
+      <v-btn icon @click="back">
         <v-icon>{{ icons.back }}</v-icon>
       </v-btn>
     </v-col>
-    <v-col cols="10">
-      <p class="text-capitlize">{{ title }}</p>
+    <v-col class="pl-8" cols="10">
+      <p class="text-capitalize text-h6 mb-1 font-weight-bold">{{ title }}</p>
       <slot name="subtitle">
-        <p>{{ subtitle }}</p>
+        <p class="text-uppercase text-body-2 pl-n1">{{ subtitle }}</p>
       </slot>
     </v-col>
     <v-col cols="1">
@@ -42,6 +42,11 @@ export default Vue.extend({
         menu: mdiDotsVertical,
       },
     }
+  },
+  methods: {
+    back() {
+      this.$router.back()
+    },
   },
 })
 </script>
