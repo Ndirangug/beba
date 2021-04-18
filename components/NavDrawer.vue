@@ -7,11 +7,12 @@
     mini-variant-width="70"
     mini-variant
     permanent
+    color="primary"
   >
     <v-list dense>
       <v-list-item v-for="item in items" :key="item.title" class="py-3" link>
         <v-list-item-icon>
-          <v-btn icon :to="item.to">
+          <v-btn color="lightText" icon :to="item.to">
             <v-icon size="40">{{ item.icon }}</v-icon>
           </v-btn>
         </v-list-item-icon>
@@ -35,16 +36,16 @@
 <script lang="ts">
 // eslint-disable no-console
 import Vue from 'vue'
-import { mdiHome, mdiTruck, mdiSteering } from '@mdi/js'
+import { mdiHome, mdiTruck, mdiSteering, mdiHomeOutline, mdiTruckOutline } from '@mdi/js'
 
 export default Vue.extend({
   data() {
     return {
       drawer: true,
       items: [
-        { title: 'Home', icon: mdiHome, to: '/' },
+        { title: 'Home', icon: mdiHomeOutline, to: '/' },
         { title: 'Drivers', icon: mdiSteering, to: '/drivers' },
-        { title: 'Vehicles', icon: mdiTruck, to: '/vehicles' },
+        { title: 'Vehicles', icon: mdiTruckOutline, to: '/vehicles' },
       ],
     }
   },
