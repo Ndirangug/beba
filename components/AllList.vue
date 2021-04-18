@@ -16,8 +16,12 @@
       </v-text-field>
     </v-row>
 
+    <v-row class="d-flex justify-center align-center">
+      <h4 class="text-capitalize ml-n12">{{ title }}</h4>
+    </v-row>
+
     <v-row>
-      <vehicles-list />
+      <the-list />
     </v-row>
   </v-container>
 </template>
@@ -25,10 +29,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mdiSearchWeb, mdiDotsVertical } from '@mdi/js'
-import VehiclesList from './VehiclesList.vue'
 
 export default Vue.extend({
-  components: { VehiclesList },
   props: {
     searchHint: {
       type: String,
@@ -43,6 +45,14 @@ export default Vue.extend({
         menu: mdiDotsVertical,
       },
     }
+  },
+
+  computed: {
+    title(): string {
+      return this.$route.path.endsWith('vehicles')
+        ? 'all vehicles'
+        : 'all drivers'
+    },
   },
 })
 </script>

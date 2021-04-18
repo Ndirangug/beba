@@ -1,7 +1,7 @@
 // package: beba_backend
 // file: protos/service.proto
 
-import * as protos_service_pb from "../protos/service_pb";
+import * as protos_service_pb from "./service_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
 type BebaBackendTestHello = {

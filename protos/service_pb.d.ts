@@ -101,6 +101,9 @@ export class Driver extends jspb.Message {
   getPhoto(): string;
   setPhoto(value: string): void;
 
+  getOntrip(): boolean;
+  setOntrip(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Driver.AsObject;
   static toObject(includeInstance: boolean, msg: Driver): Driver.AsObject;
@@ -125,6 +128,7 @@ export namespace Driver {
     evaluationreport: string,
     driverslicence: string,
     photo: string,
+    ontrip: boolean,
   }
 }
 

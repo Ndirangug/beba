@@ -487,7 +487,8 @@ proto.beba_backend.Driver.toObject = function(includeInstance, msg) {
     comment: jspb.Message.getFieldWithDefault(msg, 13, ""),
     evaluationreport: jspb.Message.getFieldWithDefault(msg, 14, ""),
     driverslicence: jspb.Message.getFieldWithDefault(msg, 15, ""),
-    photo: jspb.Message.getFieldWithDefault(msg, 16, "")
+    photo: jspb.Message.getFieldWithDefault(msg, 16, ""),
+    ontrip: jspb.Message.getFieldWithDefault(msg, 17, false)
   };
 
   if (includeInstance) {
@@ -573,6 +574,10 @@ proto.beba_backend.Driver.deserializeBinaryFromReader = function(msg, reader) {
     case 16:
       var value = /** @type {string} */ (reader.readString());
       msg.setPhoto(value);
+      break;
+    case 17:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setOntrip(value);
       break;
     default:
       reader.skipField();
@@ -686,6 +691,13 @@ proto.beba_backend.Driver.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       16,
+      f
+    );
+  }
+  f = message.getOntrip();
+  if (f) {
+    writer.writeBool(
+      17,
       f
     );
   }
@@ -899,6 +911,23 @@ proto.beba_backend.Driver.prototype.getPhoto = function() {
 /** @param {string} value */
 proto.beba_backend.Driver.prototype.setPhoto = function(value) {
   jspb.Message.setProto3StringField(this, 16, value);
+};
+
+
+/**
+ * optional bool onTrip = 17;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.beba_backend.Driver.prototype.getOntrip = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 17, false));
+};
+
+
+/** @param {boolean} value */
+proto.beba_backend.Driver.prototype.setOntrip = function(value) {
+  jspb.Message.setProto3BooleanField(this, 17, value);
 };
 
 
