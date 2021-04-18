@@ -11,13 +11,20 @@
       </template>
     </title-row>
 
-    <v-row class="d-flex justify-center align-center">
+    <v-row class="d-flex justify-center align-center mt-n4">
       <v-avatar height="150" width="150">
         <v-img :src="driver.getPhoto()"></v-img>
       </v-avatar>
     </v-row>
 
-    <tabs-view :items="['personal details', 'history', 'scheduled trips']" />
+    <tabs-view
+      :table-data="tableData"
+      :items="['personal details', 'history', 'scheduled trips']"
+    />
+
+    <v-row class="d-flex justify-center align-center">
+      <v-btn color="primary">SCHEDULE TRIP</v-btn>
+    </v-row>
   </div>
 </template>
 
@@ -43,6 +50,23 @@ export default Vue.extend({
     },
     title(): String {
       return `${this.driver.getFirstname()} ${this.driver.getLastname()} `
+    },
+    tableData(): { [key: string]: string } {
+      return {
+        full_name: `${this.driver.getFirstname()} ${this.driver.getLastname()}`,
+        email: this.driver.getEmail(),
+        phone: this.driver.getPhone(),
+        sex: this.driver.getSex(),
+        date_of_birth: new Intl.DateTimeFormat().format(
+          this.driver.getDateofbirth()
+        ),
+        drivers_licence: this.driver.getDriverslicence(),
+        date_employed: new Intl.DateTimeFormat().format(
+          this.driver.getDateemployed()
+        ),
+        evaluation_report: this.driver.getEvaluationreport(),
+        comment: this.driver.getComment(),
+      }
     },
   },
 })
