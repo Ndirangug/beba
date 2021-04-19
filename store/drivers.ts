@@ -12,6 +12,11 @@ export default class Drivers extends VuexModule {
   }
 
   @Mutation
+  pushDriver(driver: Driver) {
+    this.allDrivers.push(driver)
+  }
+
+  @Mutation
   updateDrivers(drivers: Driver[]) {
     console.log('in store driver')
     this.allDrivers = drivers

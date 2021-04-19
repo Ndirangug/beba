@@ -44,29 +44,13 @@
 import Vue from 'vue'
 import { Driver, Location, Vehicle } from '~/protos/service_pb'
 import { driversStore, vehicleStore } from '~/store'
-import { fetchDrivers, fetchVehicles } from '~/utils/api-client'
+import { fetchDrivers, fetchTrips, fetchVehicles } from '~/utils/api-client'
 
 export default Vue.extend({
   layout: 'maps',
   data() {
     return {
       currentLocation: {},
-      locations: [
-        {
-          // ,
-          lat: -1.2847464503136028,
-          lng: 36.825933702022446,
-        },
-        {
-          //,
-          lat: -1.2042133565653255,
-          lng: 36.769081599779184,
-        },
-        {
-          lat: -0.45036063301313567,
-          lng: 36.64582873931924,
-        },
-      ],
       pins: {
         selected: 'data:image/png;base64,iVBORw0KGgo...',
         notSelected: 'data:image/png;base64,iVBORw0KGgo...',
@@ -109,7 +93,7 @@ export default Vue.extend({
   mounted() {
     fetchVehicles(!process.browser)
     fetchDrivers(!process.browser)
-    // console.log(this.vehicles[0].getCurrentlocation()?.getLong())
+    fetchTrips(!process.browser)
   },
 
   methods: {
@@ -125,6 +109,7 @@ export default Vue.extend({
   position: fixed;
   padding-left: 5em;
   transition: width 0.5s;
+  overflow: scroll;
 }
 
 #gMap {

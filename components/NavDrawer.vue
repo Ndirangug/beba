@@ -36,7 +36,7 @@
 <script lang="ts">
 // eslint-disable no-console
 import Vue from 'vue'
-import { mdiSteering, mdiHomeOutline, mdiTruckOutline } from '@mdi/js'
+import { mdiSteering, mdiHomeOutline, mdiTruckOutline, mdiMap } from '@mdi/js'
 
 export default Vue.extend({
   data() {
@@ -46,6 +46,7 @@ export default Vue.extend({
         { title: 'Home', icon: mdiHomeOutline, to: '/' },
         { title: 'Drivers', icon: mdiSteering, to: '/drivers' },
         { title: 'Vehicles', icon: mdiTruckOutline, to: '/vehicles' },
+        { title: 'Trips', icon: mdiMap, to: '/trips' },
       ],
     }
   },

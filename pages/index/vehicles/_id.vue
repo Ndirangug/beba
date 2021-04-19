@@ -11,8 +11,8 @@
       :items="['overview', 'history', 'scheduled trips']"
     />
 
-     <v-row class="d-flex justify-center align-center">
-      <v-btn  color="primary">SCHEDULE TRIP</v-btn>
+    <v-row class="d-flex justify-center align-center">
+      <v-btn color="primary">SCHEDULE TRIP</v-btn>
     </v-row>
   </div>
 </template>

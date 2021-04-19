@@ -11,6 +11,11 @@ export default class Vehicles extends VuexModule {
   }
 
   @Mutation
+  pushVehicle(vehicle: Vehicle) {
+    this.allVehicles.push(vehicle)
+  }
+
+  @Mutation
   updateVehicles(vehicles: Vehicle[]) {
     console.log('in store vehicle')
     this.allVehicles = vehicles
