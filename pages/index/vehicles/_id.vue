@@ -46,10 +46,10 @@ export default Vue.extend({
         color: this.vehicle.getColor(),
         model_year: this.vehicle.getModelyear(),
         date_purchased: new Intl.DateTimeFormat().format(
-          this.vehicle.getDatepurchased()
+          new Date(this.vehicle.getDatepurchased() * 1000)
         ),
         expected_end_of_service: new Intl.DateTimeFormat().format(
-          this.vehicle.getExpectedendservice()
+          new Date(this.vehicle.getExpectedendservice() * 1000)
         ),
         condition: this.vehicle.getCondition(),
         maxWeight: `${new Intl.NumberFormat('en-US', {

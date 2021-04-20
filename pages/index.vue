@@ -79,8 +79,8 @@ export default Vue.extend({
       ;({ lat, long } =
         this.vehicles.length > 0
           ? {
-              lat: this.vehicles[0].getCurrentlocation()?.getLat,
-              long: this.vehicles[0].getCurrentlocation()?.getLong,
+              lat: this.vehicles[0].getCurrentlocation()?.getLat(),
+              long: this.vehicles[0].getCurrentlocation()?.getLong(),
             }
           : { lat: -1.2042133565653255, long: 36.825933702022446 })
 

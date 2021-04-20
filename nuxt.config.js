@@ -48,6 +48,12 @@ export default {
         // you can use libraries: ['places']
       },
     ],
+    [
+      'nuxt-google-maps-module',
+      {
+        key: 'AIzaSyBZgURdVR_BOFf7j-bk4bzVTCEAXdApUlE',
+      },
+    ],
     //
   ],
 

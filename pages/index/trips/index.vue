@@ -8,13 +8,21 @@
           right
           small
         >
-          <h6>{{ new Intl.DateTimeFormat().format(key) }}</h6>
-          
+          <h6>
+            {{
+              new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium' }).format(
+                new Date(key * 1000)
+              )
+            }}
+          </h6>
+
           <trip-card
-            v-for="trip in tripGroup"
+            v-for="(trip, i) in tripGroup"
             :key="trip.getTripid()"
             class="my-2"
             :trip="trip"
+            :color="randomColor()"
+            :multiplier="i"
           />
         </v-timeline-item>
       </v-timeline>
@@ -61,6 +69,29 @@ export default Vue.extend({
       // console.log(groupedTrips);
 
       return groupedTrips
+    },
+  },
+
+  methods: {
+    randomColor(): string {
+      const colors = [
+        'red',
+        'green',
+        'purple',
+        'pink',
+        'indigo',
+        'blue',
+        'teal',
+        'cyan',
+        'green',
+        'lime',
+        'yellow',
+        'amber',
+        'orange',
+        'brown',
+        'grey',
+      ]
+      return colors[Math.floor(Math.random() * 14 + 1)]
     },
   },
 })

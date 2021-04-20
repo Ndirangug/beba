@@ -58,11 +58,11 @@ export default Vue.extend({
         phone: this.driver.getPhone(),
         sex: this.driver.getSex(),
         date_of_birth: new Intl.DateTimeFormat().format(
-          this.driver.getDateofbirth()
+          new Date(this.driver.getDateofbirth() * 1000)
         ),
         drivers_licence: this.driver.getDriverslicence(),
         date_employed: new Intl.DateTimeFormat().format(
-          this.driver.getDateemployed()
+          new Date(this.driver.getDateemployed() * 1000)
         ),
         evaluation_report: this.driver.getEvaluationreport(),
         comment: this.driver.getComment(),
