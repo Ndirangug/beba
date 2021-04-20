@@ -9,7 +9,14 @@
     <tabs-view
       :table-data="tableData"
       :items="['overview', 'history', 'scheduled trips']"
-    />
+    >
+      <template #history>
+        <trips-list :trips="pastTrips" />
+      </template>
+      <template #scheduled>
+        <trips-list :trips="scheduledTrips" />
+      </template>
+    </tabs-view>
 
     <v-row class="d-flex justify-center align-center">
       <v-btn color="primary">SCHEDULE TRIP</v-btn>
@@ -21,8 +28,8 @@
 import Vue from 'vue'
 import TitleRow from '~/components/itemDetails/TitleRow.vue'
 import TabsView from '~/components/itemDetails/TabsView.vue'
-import { Vehicle } from '~/protos/service_pb'
-import { vehicleStore } from '~/store'
+import { Trip, Vehicle } from '~/protos/service_pb'
+import { tripsStore, vehicleStore } from '~/store'
 
 export default Vue.extend({
   components: { TitleRow, TabsView },
@@ -57,6 +64,27 @@ export default Vue.extend({
         }).format(this.vehicle.getMaxweight())} t`,
       }
     },
+    pastTrips(): Trip[] {
+      return tripsStore.allTrips
+        .slice()
+        .filter((trip) => trip.getVehicle()?.getVehicleid() === this.vehicleId)
+        .filter((trip) => trip.getScheduleddeparturetime() < Date.now())
+    },
+    scheduledTrips(): Trip[] {
+      return tripsStore.allTrips
+        .slice()
+        .filter((trip) => trip.getVehicle()?.getVehicleid() === this.vehicleId)
+        .filter((trip) => trip.getScheduleddeparturetime() > Date.now())
+    },
   },
 })
 </script>
+
+<style lang="scss">
+.v-window {
+  overflow: visible;
+}
+.date-picker {
+  top: -350px;
+}
+</style>

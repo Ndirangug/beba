@@ -21,12 +21,12 @@
         <banded-table :table-data="tableData" />
       </v-tab-item>
 
-      <v-tab-item :key="items[1]">
-        <h1>tab 2</h1>
+      <v-tab-item :key="items[1]" class="pt-6">
+        <slot name="history"></slot>
       </v-tab-item>
 
-      <v-tab-item :key="items[2]">
-        <h1>tab 3</h1>
+      <v-tab-item :key="items[2]" class="pt-6">
+        <slot name="scheduled"></slot>
       </v-tab-item>
     </v-tabs-items>
   </div>

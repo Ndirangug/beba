@@ -20,7 +20,14 @@
     <tabs-view
       :table-data="tableData"
       :items="['personal details', 'history', 'scheduled trips']"
-    />
+    >
+      <template #history>
+        <trips-list :trips="pastTrips" />
+      </template>
+      <template #scheduled>
+        <trips-list :trips="scheduledTrips" />
+      </template>
+    </tabs-view>
 
     <v-row class="d-flex justify-center align-center">
       <v-btn color="primary">SCHEDULE TRIP</v-btn>
@@ -33,8 +40,8 @@ import { mdiCircle } from '@mdi/js'
 import Vue from 'vue'
 import TitleRow from '~/components/itemDetails/TitleRow.vue'
 import TabsView from '~/components/itemDetails/TabsView.vue'
-import { Driver } from '~/protos/service_pb'
-import { driversStore } from '~/store'
+import { Driver, Trip } from '~/protos/service_pb'
+import { driversStore, tripsStore } from '~/store'
 
 export default Vue.extend({
   components: { TitleRow, TabsView },
@@ -68,6 +75,28 @@ export default Vue.extend({
         comment: this.driver.getComment(),
       }
     },
+    pastTrips(): Trip[] {
+      return tripsStore.allTrips
+        .slice()
+        .filter((trip) => trip.getDriver()?.getIdnumber() === this.driverId)
+        .filter((trip) => trip.getScheduleddeparturetime() < Date.now() / 1000)
+    },
+    scheduledTrips(): Trip[] {
+      return tripsStore.allTrips
+        .slice()
+        .filter((trip) => trip.getDriver()?.getIdnumber() === this.driverId)
+        .filter((trip) => trip.getScheduleddeparturetime() > Date.now() / 1000)
+    },
   },
 })
 </script>
+
+<style lang="scss">
+.v-window {
+  overflow: visible;
+}
+
+.date-picker {
+  top: -350px;
+}
+</style>

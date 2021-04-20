@@ -6,12 +6,13 @@
       elevation="10"
       class="date-picker"
       range
+      :style="isAllTrips ? { top: '5px', left: '80px' } : {}"
     ></v-date-picker>
 
     <v-text-field
       v-model="dateRangeText"
       outlined
-      label="Date range"
+      label="Time range"
       readonly
       @click="showPicker = !showPicker"
     >
@@ -29,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { mdiCalendar, mdiCancel } from '@mdi/js'
+import { mdiCalendar, mdiCancel, mdiClose, mdiCloseCircle } from '@mdi/js'
 import Vue, { PropType } from 'vue'
 export default Vue.extend({
   props: {
@@ -46,12 +47,15 @@ export default Vue.extend({
     model: ['', ''],
     icons: {
       calendar: mdiCalendar,
-      cancel: mdiCancel,
+      cancel: mdiCloseCircle,
     },
   }),
   computed: {
     dateRangeText() {
-      return this.model === ['', ''] ? '' : this.dates.join('  to  ')
+      return this.model[0] === '' ? '' : this.dates.join('  to  ')
+    },
+    isAllTrips(): Boolean {
+      return this.$route.path.endsWith('trips')
     },
   },
   watch: {
