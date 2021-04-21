@@ -12,6 +12,9 @@
       :options="{ fullscreenControl: true, styles: mapStyle }"
       :zoom="8"
       map-ids="46cd1a2032db6b3a"
+      @click="onClick"
+      @dblclick="onDoubleClick"
+      @rightclick="onRightClick"
     >
       <GMapMarker
         v-for="vehicle in vehicles"
@@ -99,6 +102,23 @@ export default Vue.extend({
   methods: {
     addressFromCoordinates(location: Location): String {
       return 'Address Address'
+    },
+    onRightClick(data: any) {
+      console.log('right click')
+      const location: Location = new Location()
+      location.setLat(data.event.latLng.lat())
+      location.setLong(data.event.latLng.lng())
+      console.log(location)
+    },
+    onClick(data: any) {
+      const location: Location = new Location()
+      location.setLat(data.event.latLng.lat())
+      location.setLong(data.event.latLng.lng())
+      console.log(location)
+    },
+    onDoubleClick(data: any) {
+      console.log('double click')
+      console.log(data)
     },
   },
 })
