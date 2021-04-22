@@ -1,6 +1,9 @@
 <template>
   <div>
     <nav-drawer />
+    <snack-bar />
+    <schedule-trip-dialog />
+
     <GMap
       id="gMap"
       ref="gMap"
@@ -12,8 +15,6 @@
       :options="{ fullscreenControl: true, styles: mapStyle }"
       :zoom="8"
       map-ids="46cd1a2032db6b3a"
-      @click="onClick"
-      @dblclick="onDoubleClick"
       @rightclick="onRightClick"
     >
       <GMapMarker
@@ -45,12 +46,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import SnackBar from '@/components/scheduleTrip/SnackBar.vue'
 import { Driver, Location, Vehicle } from '~/protos/service_pb'
-import { driversStore, mapStore, vehicleStore } from '~/store'
+import { driversStore, vehicleStore } from '~/store'
 import { fetchDrivers, fetchTrips, fetchVehicles } from '~/utils/api-client'
 import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
+  components: { SnackBar },
   layout: 'maps',
   data() {
     return {
@@ -112,19 +115,18 @@ export default Vue.extend({
       location.setLat(data.event.latLng.lat())
       location.setLong(data.event.latLng.lng())
       EventBus.$emit('map-location', location)
-      mapStore.setOrigin(location)
     },
-    onClick(data: any) {
-      const location: Location = new Location()
-      location.setLat(data.event.latLng.lat())
-      location.setLong(data.event.latLng.lng())
-      mapStore.setDestination(location)
-      console.log(location)
-    },
-    onDoubleClick(data: any) {
-      console.log('double click')
-      console.log(data)
-    },
+    // onClick(data: any) {
+    //   const location: Location = new Location()
+    //   location.setLat(data.event.latLng.lat())
+    //   location.setLong(data.event.latLng.lng())
+    //   mapStore.setDestination(location)
+    //   console.log(location)
+    // },
+    // onDoubleClick(data: any) {
+    //   console.log('double click')
+    //   console.log(data)
+    // },
   },
 })
 </script>

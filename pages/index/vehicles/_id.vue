@@ -29,11 +29,10 @@ import Vue from 'vue'
 import TitleRow from '~/components/itemDetails/TitleRow.vue'
 import TabsView from '~/components/itemDetails/TabsView.vue'
 import { Trip, Vehicle } from '~/protos/service_pb'
-import { tripsStore, vehicleStore } from '~/store'
+import { scheduleTripStore, tripsStore, vehicleStore } from '~/store'
 
 export default Vue.extend({
   components: { TitleRow, TabsView },
-
   computed: {
     vehicle(): Vehicle {
       return vehicleStore.vehicle(this.vehicleId)
@@ -76,6 +75,9 @@ export default Vue.extend({
         .filter((trip) => trip.getVehicle()?.getVehicleid() === this.vehicleId)
         .filter((trip) => trip.getScheduleddeparturetime() > Date.now())
     },
+  },
+  mounted() {
+    scheduleTripStore.updateVehicle(this.vehicle)
   },
 })
 </script>
