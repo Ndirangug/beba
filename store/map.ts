@@ -6,6 +6,8 @@ import { Location } from '~/protos/service_pb'
 export default class Map extends VuexModule {
   selectedOrigin: Location = new Location()
   selectedDestination: Location = new Location()
+  dialog: boolean = false
+ 
 
   @Mutation
   setOrigin(location: Location) {
@@ -15,5 +17,10 @@ export default class Map extends VuexModule {
   @Mutation
   setDestination(location: Location) {
     this.selectedDestination = location
+  }
+
+  @Mutation
+  updateDialog(value: boolean) {
+    this.dialog = value
   }
 }

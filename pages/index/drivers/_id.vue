@@ -30,8 +30,10 @@
     </tabs-view>
 
     <v-row class="d-flex justify-center align-center">
-      <v-btn color="primary">SCHEDULE TRIP</v-btn>
+      <v-btn color="primary" @click="openDialog">SCHEDULE TRIP</v-btn>
     </v-row>
+
+    <schedule-trip-dialog :driver="driver" :vehicle="vehicle" />
   </div>
 </template>
 
@@ -40,15 +42,20 @@ import { mdiCircle } from '@mdi/js'
 import Vue from 'vue'
 import TitleRow from '~/components/itemDetails/TitleRow.vue'
 import TabsView from '~/components/itemDetails/TabsView.vue'
-import { Driver, Trip } from '~/protos/service_pb'
-import { driversStore, tripsStore } from '~/store'
+import { Driver, Trip, Vehicle } from '~/protos/service_pb'
+import { driversStore, tripsStore, vehicleStore } from '~/store'
+import { EventBus } from '~/utils/event-bus'
+import ScheduleTripDialog from '~/components/ScheduleTripDialog.vue'
 
 export default Vue.extend({
-  components: { TitleRow, TabsView },
+  components: { TitleRow, TabsView, ScheduleTripDialog },
   data() {
     return { icons: { circle: mdiCircle } }
   },
   computed: {
+    vehicle(): Vehicle {
+      return vehicleStore.allVehicles[0]
+    },
     driver(): Driver {
       return driversStore.driver(this.driverId)
     },
@@ -86,6 +93,13 @@ export default Vue.extend({
         .slice()
         .filter((trip) => trip.getDriver()?.getIdnumber() === this.driverId)
         .filter((trip) => trip.getScheduleddeparturetime() > Date.now() / 1000)
+    },
+  },
+
+  methods: {
+    openDialog() {
+      EventBus.$emit('update:dialog', true)
+      console.log('emitting...')
     },
   },
 })

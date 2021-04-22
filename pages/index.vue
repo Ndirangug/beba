@@ -46,8 +46,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Driver, Location, Vehicle } from '~/protos/service_pb'
-import { driversStore, vehicleStore } from '~/store'
+import { driversStore, mapStore, vehicleStore } from '~/store'
 import { fetchDrivers, fetchTrips, fetchVehicles } from '~/utils/api-client'
+import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
   layout: 'maps',
@@ -97,6 +98,9 @@ export default Vue.extend({
     fetchVehicles(!process.browser)
     fetchDrivers(!process.browser)
     fetchTrips(!process.browser)
+    // EventBus.$on('map-location', (location: Location) => {
+    //   console.log(`received ${location.getLat()}`)
+    // })
   },
 
   methods: {
@@ -104,16 +108,17 @@ export default Vue.extend({
       return 'Address Address'
     },
     onRightClick(data: any) {
-      console.log('right click')
       const location: Location = new Location()
       location.setLat(data.event.latLng.lat())
       location.setLong(data.event.latLng.lng())
-      console.log(location)
+      EventBus.$emit('map-location', location)
+      mapStore.setOrigin(location)
     },
     onClick(data: any) {
       const location: Location = new Location()
       location.setLat(data.event.latLng.lat())
       location.setLong(data.event.latLng.lng())
+      mapStore.setDestination(location)
       console.log(location)
     },
     onDoubleClick(data: any) {

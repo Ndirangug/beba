@@ -17,7 +17,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/event-bus.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -84,7 +84,7 @@ export default {
           accent: '#7198BA',
           secondary: '#2C4EC5',
           info: colors.teal.lighten1,
-          warning: colors.amber.base,
+          warning: colors.red.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
           lightText: '#DAC6C2',
