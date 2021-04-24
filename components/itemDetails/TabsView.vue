@@ -1,5 +1,8 @@
 <template>
   <div class="tabs-container px-6 py-8">
+    <snack-bar />
+    <schedule-trip-dialog />
+
     <v-tabs
       v-model="tab"
       fixed-tabs
@@ -35,9 +38,11 @@
 <script lang="ts">
 import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
 import Vue from 'vue'
+import SnackBar from '@/components/scheduleTrip/SnackBar.vue'
 import BandedTable from './BandedTable.vue'
+
 export default Vue.extend({
-  components: { BandedTable },
+  components: { BandedTable, SnackBar },
   props: {
     items: {
       type: Array,

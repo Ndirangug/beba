@@ -41,4 +41,20 @@ export default class ScheduleTrip extends VuexModule {
   updateVehicle(value: Vehicle) {
     this.vehicle = value
   }
+
+  get getDriver() {
+    console.log(this.driver)
+
+    return this.driver == new Driver()
+      ? driversStore.allDrivers[0]
+      : this.driver
+  }
+
+  get getVehicle() {
+    console.log(this.vehicle)
+
+    return this.vehicle == new Vehicle()
+      ? vehicleStore.allVehicles[0]
+      : this.vehicle
+  }
 }

@@ -1,8 +1,6 @@
 <template>
   <div>
     <nav-drawer />
-    <snack-bar />
-    <schedule-trip-dialog />
 
     <GMap
       id="gMap"
@@ -46,14 +44,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SnackBar from '@/components/scheduleTrip/SnackBar.vue'
+
 import { Driver, Location, Vehicle } from '~/protos/service_pb'
 import { driversStore, vehicleStore } from '~/store'
 import { fetchDrivers, fetchTrips, fetchVehicles } from '~/utils/api-client'
 import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
-  components: { SnackBar },
   layout: 'maps',
   data() {
     return {

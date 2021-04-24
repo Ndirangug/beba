@@ -120,6 +120,7 @@ import Vue, { PropOptions } from 'vue'
 // @ts-ignore
 import colors from 'vuetify/lib/util/colors'
 import { Trip } from '~/protos/service_pb'
+import { LatLng, geocode } from '~/utils/geocoding'
 
 export default Vue.extend({
   props: {
@@ -201,48 +202,25 @@ export default Vue.extend({
       const geocoder = new this.$google.maps.Geocoder()
 
       if (this.departureAddress === '') {
-        geocoder.geocode(
-          {
-            location: {
-              lat: this.trip.getOrigin()?.getLat(),
-              lng: this.trip.getOrigin()?.getLat(),
-            },
-          },
-          (results, status) => {
-            if (status === 'OK') {
-              this.departureAddress = results[0].formatted_address
-            } else {
-              // eslint-disable-next-line no-console
-              console.log(
-                'Geocode was not successful for the following reason: ' + status
-              )
-              // setTimeout(() => {
-              //   this.fetchAddresses()
-              // }, 1000 * this.multiplier)
-            }
-          }
-        )
+        const depatureLocation: LatLng = {
+          lat: this.trip.getOrigin()?.getLat(),
+          lng: this.trip.getOrigin()?.getLat(),
+        }
+
+        geocode(depatureLocation, geocoder, (result: string) => {
+          this.departureAddress = result
+        })
       }
 
       if (this.arrivalAddress === '') {
-        geocoder.geocode(
-          {
-            location: {
-              lat: this.trip.getDestination()?.getLat(),
-              lng: this.trip.getDestination()?.getLat(),
-            },
-          },
-          (results, status) => {
-            if (status === 'OK') {
-              this.arrivalAddress = results[0].formatted_address
-            } else {
-              // eslint-disable-next-line no-console
-              console.log(
-                'Geocode was not successful for the following reason: ' + status
-              )
-            }
-          }
-        )
+        const arrivalLocation = {
+          lat: this.trip.getDestination()?.getLat(),
+          lng: this.trip.getDestination()?.getLat(),
+        }
+
+        geocode(arrivalLocation, geocoder, (result: string) => {
+          this.arrivalAddress = result
+        })
       }
     },
   },

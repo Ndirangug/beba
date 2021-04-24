@@ -28,6 +28,7 @@
 
             <v-autocomplete
               v-model="form.driver"
+              outlined
               :items="allDrivers"
               :filter="driversFilter"
               color="white"
@@ -56,6 +57,7 @@
               label="Vehicle"
               cache-items
               return-object
+              outlined
             >
               <template #selection="data">
                 <v-list-item-content>
@@ -107,6 +109,7 @@ import Vue from 'vue'
 import { Driver, Vehicle } from '~/protos/service_pb'
 import { driversStore, scheduleTripStore, vehicleStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
+import { geocode } from '~/utils/geocoding'
 
 export default Vue.extend({
   data() {
@@ -117,8 +120,8 @@ export default Vue.extend({
       form: {
         origin: '',
         destination: '',
-        driver: scheduleTripStore.driver,
-        vehicle: scheduleTripStore.vehicle,
+        driver: driversStore.allDrivers[0],
+        vehicle: vehicleStore.allVehicles[0],
       },
       model: scheduleTripStore.dialog,
     }
@@ -145,6 +148,10 @@ export default Vue.extend({
 
   mounted() {
     this.fetchAddrresses()
+    this.form.driver = driversStore.allDrivers[0]
+    this.form.vehicle = vehicleStore.allVehicles[0]
+    console.log('mountd')
+    console.log(vehicleStore.allVehicles[0])
   },
 
   created() {
@@ -161,47 +168,23 @@ export default Vue.extend({
     fetchAddrresses() {
       // @ts-ignore
       const geocoder = new this.$google.maps.Geocoder()
+      const originLocation = {
+        lat: 0, // mapStore.selectedOrigin.getLat(),
+        lng: 0, // mapStore.selectedOrigin.getLong(),
+      }
 
-      geocoder.geocode(
-        {
-          location: {
-            lat: 0, // mapStore.selectedOrigin.getLat(),
-            lng: 0, // mapStore.selectedOrigin.getLong(),
-          },
-        },
-        (results, status) => {
-          if (status === 'OK') {
-            this.form.origin = results[0].formatted_address
-          } else {
-            // eslint-disable-next-line no-console
-            console.log(
-              'Geocode was not successful for the following reason: ' + status
-            )
-            // setTimeout(() => {
-            //   this.fetchAddresses()
-            // }, 1000 * this.multiplier)
-          }
-        }
-      )
+      geocode(originLocation, geocoder, (result) => {
+        this.form.origin = result
+      })
 
-      geocoder.geocode(
-        {
-          location: {
-            lat: 0, // mapStore.selectedDestination.getLat(),
-            lng: 0, // mapStore.selectedDestination.getLong(),
-          },
-        },
-        (results, status) => {
-          if (status === 'OK') {
-            this.form.destination = results[0].formatted_address
-          } else {
-            // eslint-disable-next-line no-console
-            console.log(
-              'Geocode was not successful for the following reason: ' + status
-            )
-          }
-        }
-      )
+      const destinationLocatio = {
+        lat: 0, // mapStore.selectedOrigin.getLat(),
+        lng: 0, // mapStore.selectedOrigin.getLong(),
+      }
+
+      geocode(destinationLocatio, geocoder, (result) => {
+        this.form.destination = result
+      })
     },
 
     driversFilter(drier: Driver, queryText: String, _itemText: String) {
