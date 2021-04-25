@@ -1,7 +1,6 @@
 <template>
   <div class="tabs-container px-6 py-8">
     <snack-bar />
-    <schedule-trip-dialog />
 
     <v-tabs
       v-model="tab"

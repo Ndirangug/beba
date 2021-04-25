@@ -4,6 +4,7 @@
     persistent
     transition="dialog-top-transition"
     max-width="600"
+    @mouseenter="fetchAddrresses"
   >
     <template #default="dialog">
       <v-card elevation="10">
@@ -105,11 +106,16 @@
 
 <script lang="ts">
 import { mdiMapMarker } from '@mdi/js'
-import Vue from 'vue'
+import Vue, { PropOptions } from 'vue'
 import { Driver, Vehicle } from '~/protos/service_pb'
 import { driversStore, scheduleTripStore, vehicleStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
-import { geocode } from '~/utils/geocoding'
+import { geocode, LatLng } from '~/utils/geocoding'
+
+export interface LatLngProp {
+  coordinates: LatLng
+  addrress: string
+}
 
 export default Vue.extend({
   data() {
@@ -147,16 +153,18 @@ export default Vue.extend({
   },
 
   mounted() {
-    this.fetchAddrresses()
     this.form.driver = driversStore.allDrivers[0]
     this.form.vehicle = vehicleStore.allVehicles[0]
-    console.log('mountd')
-    console.log(vehicleStore.allVehicles[0])
+  },
+
+  updated() {
+    // this.fetchAddrresses()
   },
 
   created() {
     EventBus.$on('open:dialog', () => {
       this.model = true
+      this.fetchAddrresses()
     })
   },
 
@@ -166,23 +174,25 @@ export default Vue.extend({
       this.model = false
     },
     fetchAddrresses() {
+      console.log('fetching')
+
       // @ts-ignore
       const geocoder = new this.$google.maps.Geocoder()
       const originLocation = {
-        lat: 0, // mapStore.selectedOrigin.getLat(),
-        lng: 0, // mapStore.selectedOrigin.getLong(),
+        lat: scheduleTripStore.selectedOrigin.getLat(), // mapStore.selectedOrigin.getLat(),
+        lng: scheduleTripStore.selectedOrigin.getLong(), // mapStore.selectedOrigin.getLong(),
       }
 
       geocode(originLocation, geocoder, (result) => {
         this.form.origin = result
       })
 
-      const destinationLocatio = {
-        lat: 0, // mapStore.selectedOrigin.getLat(),
-        lng: 0, // mapStore.selectedOrigin.getLong(),
+      const destinationLocation = {
+        lat: scheduleTripStore.selectedDestination.getLat(), // mapStore.selectedOrigin.getLat(),
+        lng: scheduleTripStore.selectedDestination.getLong(), // mapStore.selectedOrigin.getLong(),
       }
 
-      geocode(destinationLocatio, geocoder, (result) => {
+      geocode(destinationLocation, geocoder, (result) => {
         this.form.destination = result
       })
     },
