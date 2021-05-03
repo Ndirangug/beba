@@ -1,7 +1,10 @@
 <template>
   <div class="snackbar-container">
     <v-snackbar v-model="model" timeout="-1">
-      <p>Right click on the map to Chooose a start location</p>
+      <p>
+        Right click on the map to Chooose a
+        {{ index == 0 ? 'start' : 'end' }} location
+      </p>
       <div v-if="showLocation">
         {{ locationsStr[index] }} ({{ locations[index] }})
       </div>

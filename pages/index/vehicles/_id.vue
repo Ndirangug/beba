@@ -22,7 +22,7 @@
     </tabs-view>
 
     <v-row class="d-flex justify-center align-center">
-      <v-btn color="primary">SCHEDULE TRIP</v-btn>
+      <schdule-trip-btn />
     </v-row>
   </div>
 </template>
@@ -33,9 +33,10 @@ import TitleRow from '~/components/itemDetails/TitleRow.vue'
 import TabsView from '~/components/itemDetails/TabsView.vue'
 import { Trip, Vehicle } from '~/protos/service_pb'
 import { scheduleTripStore, tripsStore, vehicleStore } from '~/store'
+import SchduleTripBtn from '~/components/trips/SchduleTripBtn.vue'
 
 export default Vue.extend({
-  components: { TitleRow, TabsView },
+  components: { TitleRow, TabsView, SchduleTripBtn },
   computed: {
     vehicle(): Vehicle {
       return vehicleStore.vehicle(this.vehicleId)

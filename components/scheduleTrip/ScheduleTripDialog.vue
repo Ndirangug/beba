@@ -22,6 +22,7 @@
               label="From"
               outlined
               readonly
+              @mouseover="fetchAddrresses"
             ></v-text-field>
 
             <v-text-field
@@ -29,6 +30,7 @@
               label="To"
               outlined
               readonly
+              @mouseover="fetchAddrresses"
             ></v-text-field>
 
             <v-autocomplete
@@ -80,6 +82,31 @@
                 </v-list-item-content>
               </template>
             </v-autocomplete>
+
+            <v-menu
+              v-model="datePicker"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              transition="scale-transition"
+              offset-y
+              min-width="auto"
+            >
+              <template #activator="{ on, attrs }">
+                <v-text-field
+                  v-model="form.scheduledStartTime"
+                  outlined
+                  label="Date"
+                  :prepend-icon="icons.calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker
+                v-model="form.scheduledStartTime"
+                @input="datePicker = false"
+              ></v-date-picker>
+            </v-menu>
           </div>
 
           <div class="trip-info">
@@ -120,12 +147,13 @@
 </template>
 
 <script lang="ts">
-import { mdiMapMarker } from '@mdi/js'
+import { mdiCalendar, mdiMapMarker } from '@mdi/js'
 import Vue from 'vue'
+import emailjs, { init } from 'emailjs-com'
 import { Driver, Trip, Vehicle } from '~/protos/service_pb'
 import { driversStore, scheduleTripStore, vehicleStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
-import { geocode } from '~/utils/geocoding'
+import { geocode, LatLng } from '~/utils/geocoding'
 import {
   ApiCallStatus,
   scheduleTrip as scheduleTripApi,
@@ -136,17 +164,21 @@ export default Vue.extend({
     return {
       icons: {
         mapMarker: mdiMapMarker,
+        calendar: mdiCalendar,
       },
       form: {
         origin: '',
         destination: '',
         driver: driversStore.allDrivers[0],
         vehicle: vehicleStore.allVehicles[0],
-        disburseFunds: false,
+        disburseFunds: true,
         scheduledStartTime: '',
       },
       model: scheduleTripStore.dialog,
       apiCallStatus: ApiCallStatus.WAITING,
+      estimatedDistance: 5,
+      estimatedDuration: 1,
+      datePicker: false,
     }
   },
   // TODO: add start date time field
@@ -156,9 +188,6 @@ export default Vue.extend({
     },
     allVehicles(): Vehicle[] {
       return vehicleStore.allVehicles
-    },
-    estimatedDistance(): number {
-      return 5 // TODO:USE DISTANCE VECTOR  API
     },
     totalFuelConsumption(): number {
       return this.form.vehicle.getFuelconsumption() * this.estimatedDistance
@@ -181,6 +210,7 @@ export default Vue.extend({
   mounted() {
     this.form.driver = driversStore.allDrivers[0]
     this.form.vehicle = vehicleStore.allVehicles[0]
+    init('user_7yP9yP1S2q2Z46bRzUXtO')
   },
 
   updated() {
@@ -203,9 +233,42 @@ export default Vue.extend({
       trip.setOrigin(scheduleTripStore.selectedOrigin)
       trip.setDestination(scheduleTripStore.selectedDestination)
       trip.setStatus('scheduled')
-      //TODO:SCHEDULE TIME HERE SERCH VUETIFY DATE TIME PICKER
+      // TODO:SCHEDULE TIME HERE SERCH VUETIFY DATE TIME PICKER
       scheduleTripApi(!process.browser, trip, this.onEndApiCall)
+
+      this.disburseFunds()
+      this.sendEmail()
       this.model = false
+    },
+    disburseFunds() {
+      if (this.form.disburseFunds) {
+        window.open(
+          `http://localhost:7000/completeTransaction.php?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
+            this.totalFuelCost
+          }`
+        )
+      }
+    },
+    sendEmail() {
+      const templateParams = {
+        name: this.form.driver.getFirstname(),
+        origin: this.form.origin,
+        destination: this.form.destination,
+        date: this.form.scheduledStartTime,
+        money: this.totalFuelCost,
+        email: this.form.driver.getEmail(),
+        distance: this.estimatedDistance,
+        duration: Math.ceil(this.estimatedDuration / 3600),
+      }
+
+      emailjs.send('service_9nijfkb', 'template_hitgxhm', templateParams).then(
+        function (response) {
+          console.log('SUCCESS!', response.status, response.text)
+        },
+        function (error) {
+          console.log('FAILED...', error)
+        }
+      )
     },
     onEndApiCall(status: ApiCallStatus) {
       this.apiCallStatus = status
@@ -230,11 +293,17 @@ export default Vue.extend({
       }
 
       geocode(originLocation, geocoder, (result) => {
+        console.log(result)
+
         this.form.origin = result
       })
       geocode(destinationLocation, geocoder, (result) => {
+        console.log(result)
+
         this.form.destination = result
       })
+
+      this.calculateDistance(originLocation, destinationLocation)
     },
 
     driversFilter(drier: Driver, queryText: String, _itemText: String) {
@@ -264,6 +333,28 @@ export default Vue.extend({
     },
     vehicleSummary(vehicle: Vehicle): String {
       return `${vehicle.getBrand()} ${vehicle.getModel()}   -   ${vehicle.getRegistrationnumber()}`
+    },
+
+    calculateDistance(origin: LatLng, destination: LatLng) {
+      const service = new this.$google.maps.DistanceMatrixService()
+
+      service.getDistanceMatrix(
+        {
+          origins: [origin],
+          destinations: [destination],
+          travelMode: 'DRIVING',
+        },
+        (response, status) => {
+          console.log(response)
+
+          const distance = response.rows[0].elements[0].distance.value
+          const duration = response.rows[0].elements[0].distance.value
+          console.log(distance)
+          console.log(duration)
+          this.estimatedDistance = distance / 1000
+          this.estimatedDuration = duration
+        }
+      )
     },
   },
 })

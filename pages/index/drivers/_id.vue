@@ -38,7 +38,8 @@
     </tabs-view>
 
     <v-row class="d-flex justify-center align-center">
-      <v-btn color="primary" @click="prepareScheduleTrip">SCHEDULE TRIP</v-btn>
+      <!-- <v-btn color="primary" @click="prepareScheduleTrip">SCHEDULE TRIP</v-btn> -->
+      <schdule-trip-btn />
     </v-row>
   </div>
 </template>
@@ -55,11 +56,11 @@ import {
   tripsStore,
   vehicleStore,
 } from '~/store'
-import { EventBus } from '~/utils/event-bus'
 import ScheduleTripDialog from '~/components/scheduleTrip/ScheduleTripDialog.vue'
+import SchduleTripBtn from '~/components/trips/SchduleTripBtn.vue'
 
 export default Vue.extend({
-  components: { TitleRow, TabsView, ScheduleTripDialog },
+  components: { TitleRow, TabsView,  SchduleTripBtn },
   data() {
     return { icons: { circle: mdiCircle } }
   },
@@ -117,14 +118,14 @@ export default Vue.extend({
     scheduleTripStore.updateDriver(this.driver)
   },
 
-  methods: {
-    prepareScheduleTrip() {
-      console.log('prep...')
-      scheduleTripStore.updateSnackbar(true)
-      EventBus.$emit('open:snackbar')
-      console.log('send message')
-    },
-  },
+  // methods: {
+  //   prepareScheduleTrip() {
+  //     console.log('prep...')
+  //     scheduleTripStore.updateSnackbar(true)
+  //     EventBus.$emit('open:snackbar')
+  //     console.log('send message')
+  //   },
+  // },
 })
 </script>
 

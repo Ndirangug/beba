@@ -3,7 +3,9 @@
     <nav-drawer />
     <status-dialog />
 
+    <v-progress-circular v-if="!renderMap" id="progress" width="5" size="70" />
     <GMap
+      v-else
       id="gMap"
       ref="gMap"
       language="en"
@@ -17,13 +19,16 @@
       @rightclick="onRightClick"
     >
       <GMapMarker
-        v-for="vehicle in vehicles"
-        :key="vehicle.getVehicleid()"
+        v-for="(vehicle, i) in vehicles"
+        :ref="`marker${i}`"
+        :key="i"
         :position="{
-          lat: vehicle.getCurrentlocation().getLat,
-          lng: vehicle.getCurrentlocation().getLang,
+          lat: vehicle.getCurrentlocation().getLat(),
+          lng: vehicle.getCurrentlocation().getLong(),
         }"
-        @click="currentLocation = vehicle.getCurrentlocation()"
+        :options="{ icon: '/truckMarker.png' }"
+        @mouseover="addressFromCoordinates(vehicle.getCurrentlocation(), i)"
+        @click="goToVehicle(vehicle.getVehicleid())"
       >
         <GMapInfoWindow :options="{ maxWidth: 200 }">
           <code>
@@ -31,7 +36,7 @@
             {{ vehicle.getCurrentlocation().getLong() }}
 
             Address:
-            {{ addressFromCoordinates(vehicle.getCurrentlocation()) }}
+            {{ addresses[i] }}
           </code>
         </GMapInfoWindow>
       </GMapMarker>
@@ -51,6 +56,7 @@ import { Driver, Location, Vehicle } from '~/protos/service_pb'
 import { driversStore, vehicleStore } from '~/store'
 import { fetchDrivers, fetchTrips, fetchVehicles } from '~/utils/api-client'
 import { EventBus } from '~/utils/event-bus'
+import { geocode } from '~/utils/geocoding'
 
 export default Vue.extend({
   components: { StatusDialog },
@@ -63,6 +69,9 @@ export default Vue.extend({
         notSelected: 'data:image/png;base64,iVBORw0KGgo...',
       },
       mapStyle: [],
+      renderMap: false,
+      addresses: [] as string[],
+      geocoder: Object,
     }
   },
 
@@ -98,6 +107,16 @@ export default Vue.extend({
   },
 
   mounted() {
+    setTimeout(() => {
+      this.renderMap = true
+      this.addresses = Array(this.vehicles.length)
+      this.geocoder = new this.$google.maps.Geocoder()
+
+      this.vehicles.forEach((vehicle: Vehicle, index: number) => {
+        this.addressFromCoordinates(vehicle.getCurrentlocation(), index)
+      })
+    }, 5000)
+
     fetchVehicles(!process.browser)
     fetchDrivers(!process.browser)
     fetchTrips(!process.browser)
@@ -107,8 +126,15 @@ export default Vue.extend({
   },
 
   methods: {
-    addressFromCoordinates(location: Location): String {
-      return 'Address Address'
+    addressFromCoordinates(location: Location, index: number) {
+      geocode(
+        { lat: location.getLat(), lng: location.getLong() },
+        this.geocoder,
+        (result) => {
+          this.addresses[index] = result
+          console.log(result)
+        }
+      )
     },
     onRightClick(data: any) {
       const location: Location = new Location()
@@ -116,17 +142,9 @@ export default Vue.extend({
       location.setLong(data.event.latLng.lng())
       EventBus.$emit('map-location', location)
     },
-    // onClick(data: any) {
-    //   const location: Location = new Location()
-    //   location.setLat(data.event.latLng.lat())
-    //   location.setLong(data.event.latLng.lng())
-    //   mapStore.setDestination(location)
-    //   console.log(location)
-    // },
-    // onDoubleClick(data: any) {
-    //   console.log('double click')
-    //   console.log(data)
-    // },
+    goToVehicle(id: number) {
+      this.$router.push(`/vehicles/${id}`)
+    },
   },
 })
 </script>
@@ -141,6 +159,13 @@ export default Vue.extend({
 
 #gMap {
   position: fixed;
+}
+
+#progress {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 </style>
 
