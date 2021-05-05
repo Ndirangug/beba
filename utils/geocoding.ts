@@ -12,7 +12,7 @@ export const geocode = function (
     {
       location,
     },
-    (results, status) => {
+    (results: any, status: any) => {
       if (status === 'OK') {
         // this.form.origin = results[0].formatted_address
         onSuccess(results[0].formatted_address)

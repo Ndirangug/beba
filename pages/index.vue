@@ -110,9 +110,11 @@ export default Vue.extend({
     setTimeout(() => {
       this.renderMap = true
       this.addresses = Array(this.vehicles.length)
+      // @ts-ignore
       this.geocoder = new this.$google.maps.Geocoder()
 
       this.vehicles.forEach((vehicle: Vehicle, index: number) => {
+        // @ts-ignore
         this.addressFromCoordinates(vehicle.getCurrentlocation(), index)
       })
     }, 5000)
@@ -132,6 +134,7 @@ export default Vue.extend({
         this.geocoder,
         (result) => {
           this.addresses[index] = result
+          // eslint-disable-next-line no-console
           console.log(result)
         }
       )

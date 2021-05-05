@@ -147,6 +147,7 @@
 </template>
 
 <script lang="ts">
+// eslint-disable no-console
 import { mdiCalendar, mdiMapMarker } from '@mdi/js'
 import Vue from 'vue'
 import emailjs, { init } from 'emailjs-com'
@@ -226,6 +227,7 @@ export default Vue.extend({
 
   methods: {
     scheduleTrip() {
+      // eslint-disable-next-line no-console
       console.log('scheduling')
       const trip = new Trip()
       trip.setDriver(this.form.driver)
@@ -263,9 +265,11 @@ export default Vue.extend({
 
       emailjs.send('service_9nijfkb', 'template_hitgxhm', templateParams).then(
         function (response) {
+          // eslint-disable-next-line no-console
           console.log('SUCCESS!', response.status, response.text)
         },
         function (error) {
+          // eslint-disable-next-line no-console
           console.log('FAILED...', error)
         }
       )
@@ -279,6 +283,7 @@ export default Vue.extend({
       EventBus.$emit('open-status-dialog', status, message)
     },
     fetchAddrresses() {
+      // eslint-disable-next-line no-console
       console.log('fetching')
 
       // @ts-ignore
@@ -293,11 +298,13 @@ export default Vue.extend({
       }
 
       geocode(originLocation, geocoder, (result) => {
+        // eslint-disable-next-line no-console
         console.log(result)
 
         this.form.origin = result
       })
       geocode(destinationLocation, geocoder, (result) => {
+        // eslint-disable-next-line no-console
         console.log(result)
 
         this.form.destination = result
@@ -310,6 +317,7 @@ export default Vue.extend({
       const firstname = drier.getFirstname().toLowerCase()
       const lastname = drier.getLastname().toLowerCase()
       const searchText = queryText.toLowerCase()
+      // eslint-disable-next-line no-console
       console.log('searching')
 
       return firstname.includes(searchText) || lastname.includes(searchText)
@@ -336,6 +344,7 @@ export default Vue.extend({
     },
 
     calculateDistance(origin: LatLng, destination: LatLng) {
+      // @ts-ignore
       const service = new this.$google.maps.DistanceMatrixService()
 
       service.getDistanceMatrix(
@@ -344,12 +353,15 @@ export default Vue.extend({
           destinations: [destination],
           travelMode: 'DRIVING',
         },
-        (response, status) => {
+        (response: any, _status: any) => {
+          // eslint-disable-next-line no-console
           console.log(response)
 
           const distance = response.rows[0].elements[0].distance.value
           const duration = response.rows[0].elements[0].distance.value
+          // eslint-disable-next-line no-console
           console.log(distance)
+          // eslint-disable-next-line no-console
           console.log(duration)
           this.estimatedDistance = distance / 1000
           this.estimatedDuration = duration

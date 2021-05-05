@@ -1,4 +1,6 @@
+/* eslint-disable no-empty-pattern */
 /* eslint-disable no-console */
+import { Context } from '@nuxt/types'
 import { Store } from 'vuex'
 import { fetchDrivers, fetchVehicles } from '~/utils/api-client'
 import { initialiseStores } from '~/utils/store-accessor'
@@ -8,7 +10,7 @@ export * from '~/utils/store-accessor'
 
 export const actions = {
   // eslint-disable-next-line require-await
-  async nuxtServerInit({}, ctx) {
+  async nuxtServerInit({}, ctx: Context) {
     // do it once more like so..
     initialiseStores(ctx.store)
 
