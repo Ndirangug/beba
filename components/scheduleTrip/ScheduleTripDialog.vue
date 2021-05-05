@@ -245,7 +245,7 @@ export default Vue.extend({
     disburseFunds() {
       if (this.form.disburseFunds) {
         window.open(
-          `http://localhost:7000/completeTransaction.php?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
+          `http://localhost:7000/index.php?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
             this.totalFuelCost
           }`
         )

@@ -21,7 +21,8 @@ export enum ApiCallStatus {
   SUCCESS = 'SUCCESS',
 }
 
-const host = 'https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app:443'
+//const host = 'https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app:443'
+const host = 'http://localhost:8080'
 function transport(server: boolean) {
   return server ? NodeHttpTransport() : grpc.CrossBrowserHttpTransport({})
 }
