@@ -4,6 +4,7 @@
     <status-dialog />
 
     <v-progress-circular v-if="!renderMap" id="progress" width="5" size="70" />
+    <!-- <div id="gMap" ref="gMap" @rightclick="onRightClick"></div> -->
     <GMap
       v-else
       id="gMap"
@@ -40,6 +41,17 @@
           </code>
         </GMapInfoWindow>
       </GMapMarker>
+
+      <GMapMarker
+        v-for="(latLng, index) in route"
+        :key="`r${index}`"
+        :position="{
+          lat: latLng.lat,
+          lng: latLng.lng,
+        }"
+        :options="{ icon: `/route-marker-${index}.png` }"
+      >
+      </GMapMarker>
     </GMap>
 
     <v-sheet id="sheet" class="elevation-20" :style="sheetWidth" height="100%">
@@ -56,7 +68,7 @@ import { Driver, Location, Vehicle } from '~/protos/service_pb'
 import { driversStore, vehicleStore } from '~/store'
 import { fetchDrivers, fetchTrips, fetchVehicles } from '~/utils/api-client'
 import { EventBus } from '~/utils/event-bus'
-import { geocode } from '~/utils/geocoding'
+import { geocode, LatLng } from '~/utils/geocoding'
 
 export default Vue.extend({
   components: { StatusDialog },
@@ -72,6 +84,9 @@ export default Vue.extend({
       renderMap: false,
       addresses: [] as string[],
       geocoder: Object,
+      showRoute: false,
+      route: [] as LatLng[],
+      map: {},
     }
   },
 
@@ -107,6 +122,8 @@ export default Vue.extend({
   },
 
   mounted() {
+    console.log(this)
+
     setTimeout(() => {
       this.renderMap = true
       this.addresses = Array(this.vehicles.length)
@@ -117,17 +134,50 @@ export default Vue.extend({
         // @ts-ignore
         this.addressFromCoordinates(vehicle.getCurrentlocation(), index)
       })
-    }, 5000)
+      // this.setupMap()
 
-    fetchVehicles(!process.browser)
-    fetchDrivers(!process.browser)
-    fetchTrips(!process.browser)
-    // EventBus.$on('map-location', (location: Location) => {
-    //   console.log(`received ${location.getLat()}`)
-    // })
+      console.log('map')
+      console.log(this.$refs)
+    }, 5000)
+    this.fetchData()
+    this.setEventListeners()
   },
 
   methods: {
+    setupMap() {
+      const mapOptions = {
+        zoom: 8,
+        center: {
+          lat: this.center.getLat(),
+          lng: this.center.getLong(),
+        } as LatLng,
+        fullscreenControl: true,
+      }
+
+      // @ts-ignore
+      this.map = new this.$google.maps.Map(
+        document.getElementById('gMap'),
+        mapOptions
+      )
+
+      console.log('set up map')
+    },
+    fetchData() {
+      fetchVehicles(!process.browser)
+      fetchDrivers(!process.browser)
+      fetchTrips(!process.browser)
+    },
+    setEventListeners() {
+      EventBus.$on('route:marker', (location: LatLng, index: number) => {
+        this.setRouteMarker(location, index)
+        this.$forceUpdate()
+      })
+
+      EventBus.$on('clear:route', () => {
+        this.route.pop()
+        this.route.pop()
+      })
+    },
     addressFromCoordinates(location: Location, index: number) {
       geocode(
         { lat: location.getLat(), lng: location.getLong() },
@@ -147,6 +197,38 @@ export default Vue.extend({
     },
     goToVehicle(id: number) {
       this.$router.push(`/vehicles/${id}`)
+    },
+    updateRouteMarkers() {},
+    setRouteMarker(location: LatLng, index: number) {
+      console.log(`setting route marker ${location}  ${index}`)
+      this.$set(this.route, index, location)
+      console.log(this.route)
+
+      if (index === 1) {
+        // if array index 0(origin) and 1(destination) are both filled
+        this.drawRoute()
+      }
+    },
+    drawRoute() {
+      // @ts-ignore
+      const directionsService = new this.$google.maps.DirectionsService()
+      // @ts-ignore
+      const directionsRenderer = new this.$google.maps.DirectionsRenderer()
+      directionsRenderer.setMap(this.map)
+
+      const request = {
+        origin: this.route[0],
+        destination: this.route[1],
+        travelMode: 'DRIVING',
+      }
+      directionsService.route(request, (result: any, status: string) => {
+        if (status === 'OK') {
+          console.log(result)
+          directionsRenderer.setDirections(result)
+        } else {
+          console.log(status)
+        }
+      })
     },
   },
 })

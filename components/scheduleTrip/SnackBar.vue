@@ -34,7 +34,7 @@ import ScheduleTripDialog from '@/components/scheduleTrip/ScheduleTripDialog.vue
 
 import { scheduleTripStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
-import { geocode } from '~/utils/geocoding'
+import { geocode, LatLng } from '~/utils/geocoding'
 
 export default Vue.extend({
   components: { ScheduleTripDialog },
@@ -79,6 +79,12 @@ export default Vue.extend({
         this.loading = false
         this.locations[this.index] = location
         this.showLocation = true
+
+        EventBus.$emit(
+          'route:marker',
+          { lat: location.getLat(), lng: location.getLong() } as LatLng,
+          this.index
+        )
       }, 3000)
     })
   },
@@ -92,6 +98,7 @@ export default Vue.extend({
         scheduleTripStore.setDestination(this.locations[1])
         this.model = false
         this.index = 0
+        EventBus.$emit('clear:route')
         EventBus.$emit('open:dialog')
       }
     },

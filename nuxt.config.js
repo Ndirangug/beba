@@ -45,7 +45,7 @@ export default {
       'nuxt-gmaps',
       {
         key: 'AIzaSyBZgURdVR_BOFf7j-bk4bzVTCEAXdApUlE',
-        // you can use libraries: ['places']
+        libraries: ['geocoding', 'directions'],
       },
     ],
     [
