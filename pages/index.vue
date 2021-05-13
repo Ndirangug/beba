@@ -136,8 +136,8 @@ export default Vue.extend({
       })
       // this.setupMap()
 
-      console.log('map')
-      console.log(this.$refs)
+      // console.log('map')
+      // console.log(this.$refs)
     }, 5000)
     this.fetchData()
     this.setEventListeners()

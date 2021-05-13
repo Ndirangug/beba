@@ -245,7 +245,7 @@ export default Vue.extend({
     disburseFunds() {
       if (this.form.disburseFunds) {
         window.open(
-          `http://localhost:7000/index.php?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
+          `https://ipay-payment-container-p2gh3d44pq-uc.a.run.app?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
             this.totalFuelCost
           }`
         )
