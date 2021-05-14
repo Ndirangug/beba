@@ -4,55 +4,27 @@
     <status-dialog />
 
     <v-progress-circular v-if="!renderMap" id="progress" width="5" size="70" />
-    <!-- <div id="gMap" ref="gMap" @rightclick="onRightClick"></div> -->
-    <GMap
-      v-else
+    <GmapMap
       id="gMap"
       ref="gMap"
-      language="en"
       :center="{
         lat: center.getLat(),
         lng: center.getLong(),
       }"
-      :options="{ fullscreenControl: true, styles: mapStyle }"
       :zoom="8"
-      map-ids="46cd1a2032db6b3a"
       @rightclick="onRightClick"
     >
-      <GMapMarker
+      <GmapMarker
         v-for="(vehicle, i) in vehicles"
         :ref="`marker${i}`"
         :key="i"
-        :position="{
-          lat: vehicle.getCurrentlocation().getLat(),
-          lng: vehicle.getCurrentlocation().getLong(),
-        }"
-        :options="{ icon: '/truckMarker.png' }"
-        @mouseover="addressFromCoordinates(vehicle.getCurrentlocation(), i)"
+        :position="locations[0]"
+        :clickable="true"
+        :draggable="false"
+        icon="/truckMarker.png"
         @click="goToVehicle(vehicle.getVehicleid())"
-      >
-        <GMapInfoWindow :options="{ maxWidth: 200 }">
-          <code>
-            lat: {{ vehicle.getCurrentlocation().getLat() }}, lng:
-            {{ vehicle.getCurrentlocation().getLong() }}
-
-            Address:
-            {{ addresses[i] }}
-          </code>
-        </GMapInfoWindow>
-      </GMapMarker>
-
-      <GMapMarker
-        v-for="(latLng, index) in route"
-        :key="`r${index}`"
-        :position="{
-          lat: latLng.lat,
-          lng: latLng.lng,
-        }"
-        :options="{ icon: `/route-marker-${index}.png` }"
-      >
-      </GMapMarker>
-    </GMap>
+      />
+    </GmapMap>
 
     <v-sheet id="sheet" class="elevation-20" :style="sheetWidth" height="100%">
       <n-child />
@@ -81,6 +53,8 @@ export default Vue.extend({
         notSelected: 'data:image/png;base64,iVBORw0KGgo...',
       },
       mapStyle: [],
+      locations: [] as LatLng[],
+      locationsMovement: [] as LatLng[],
       renderMap: false,
       addresses: [] as string[],
       geocoder: Object,
@@ -125,6 +99,7 @@ export default Vue.extend({
     console.log(this)
 
     setTimeout(() => {
+      this.initializeLocations()
       this.renderMap = true
       this.addresses = Array(this.vehicles.length)
       // @ts-ignore
@@ -134,33 +109,42 @@ export default Vue.extend({
         // @ts-ignore
         this.addressFromCoordinates(vehicle.getCurrentlocation(), index)
       })
-      // this.setupMap()
 
-      // console.log('map')
-      // console.log(this.$refs)
+      this.$refs.gMap.$mapPromise.then((map) => {
+        console.log('mapp')
+        console.log(map)
+        this.map = map
+
+        this.initializeMarkerMoveMock()
+      })
     }, 5000)
     this.fetchData()
     this.setEventListeners()
   },
 
   methods: {
-    setupMap() {
-      const mapOptions = {
-        zoom: 8,
-        center: {
-          lat: this.center.getLat(),
-          lng: this.center.getLong(),
-        } as LatLng,
-        fullscreenControl: true,
-      }
+    initializeLocations() {
+      this.vehicles.forEach((vehicle) => {
+        this.locations.push({
+          lat: vehicle.getCurrentlocation()?.getLat(),
+          lng: vehicle.getCurrentlocation()?.getLong(),
+        })
 
-      // @ts-ignore
-      this.map = new this.$google.maps.Map(
-        document.getElementById('gMap'),
-        mapOptions
-      )
-
-      console.log('set up map')
+        const posneg = [-1, 1]
+        this.locationsMovement.push({
+          lat: posneg[Math.floor(Math.random() * posneg.length)],
+          lng: posneg[Math.floor(Math.random() * posneg.length)],
+        })
+      })
+    },
+    initializeMarkerMoveMock() {
+      const posneg = [-1, 1]
+      setInterval(() => {
+        this.locations.forEach((location) => {
+          location.lat += 0.01 * this.locationsMovement[0].lat
+          location.lng += 0.01 * this.locationsMovement[0].lng
+        })
+      }, 2000)
     },
     fetchData() {
       fetchVehicles(!process.browser)

@@ -230,6 +230,8 @@ export default Vue.extend({
     onEndApiCall(status: ApiCallStatus) {
       if (status === ApiCallStatus.SUCCESS) {
         tripsStore.cancelTrip(this.trip.getTripid())
+        this.$forceUpdate()
+        this.$parent.$parent.$forceUpdate()
       }
 
       const message =

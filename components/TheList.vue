@@ -1,6 +1,6 @@
 <template>
   <v-container class="the-list">
-    <v-virtual-scroll :bench="4" :items="items" height="80%" item-height="80">
+    <v-virtual-scroll :bench="50" :items="items" height="100%" item-height="80">
       <template #default="{ item }">
         <!-- TODO: ON CLICK ITEM SHOW ON MAP MARKER-->
         <v-list-item
