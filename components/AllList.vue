@@ -2,12 +2,13 @@
   <v-container class="all-list-continer py-8 px-6">
     <v-row class="search-bar">
       <v-text-field
+        v-model="query"
         outlined
         color="primary"
         label="Search"
         :placeholder="searchHint"
       >
-        <template #append>
+        <template #append @click="search">
           <v-icon>{{ icons.search }}</v-icon>
         </template>
         <template #append-outer>
@@ -59,6 +60,7 @@ export default Vue.extend({
         search: mdiSearchWeb,
         menu: mdiDotsVertical,
       },
+      query: '',
     }
   },
 
@@ -73,10 +75,18 @@ export default Vue.extend({
       return this.isVehicles ? 'vehicle' : 'driver'
     },
   },
+  watch: {
+    query(_val: string) {
+      this.search()
+    },
+  },
 
   methods: {
     createNew() {
       EventBus.$emit(`new-${this.item}`)
+    },
+    search() {
+      EventBus.$emit('filter:items', this.query)
     },
   },
 })

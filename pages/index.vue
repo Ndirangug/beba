@@ -11,14 +11,14 @@
         lat: center.getLat(),
         lng: center.getLong(),
       }"
-      :zoom="8"
+      :zoom="6"
       @rightclick="onRightClick"
     >
       <GmapMarker
         v-for="(vehicle, i) in vehicles"
         :ref="`marker${i}`"
         :key="i"
-        :position="locations[0]"
+        :position="locations[i]"
         :clickable="true"
         :draggable="false"
         icon="/truckMarker.png"

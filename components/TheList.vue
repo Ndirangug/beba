@@ -1,6 +1,6 @@
 <template>
   <v-container class="the-list">
-    <v-virtual-scroll :bench="50" :items="items" height="100%" item-height="80">
+    <v-virtual-scroll :bench="50" :items="filteredItems" height="100%" item-height="80">
       <template #default="{ item }">
         <!-- TODO: ON CLICK ITEM SHOW ON MAP MARKER-->
         <v-list-item
@@ -66,6 +66,7 @@ import { mdiChevronRight, mdiCircle } from '@mdi/js'
 import Vue from 'vue'
 import { Driver, Vehicle } from '~/protos/service_pb'
 import { driversStore, vehicleStore } from '~/store'
+import { EventBus } from '~/utils/event-bus'
 
 export default Vue.extend({
   data() {
@@ -74,15 +75,44 @@ export default Vue.extend({
         chevronRight: mdiChevronRight,
         statusCircle: mdiCircle,
       },
+      filteredItems: [],
     }
   },
   computed: {
     items(): Vehicle[] | Driver[] {
       // vehicleStore.allVehicles[0].getMo
-      return this.vehicles ? vehicleStore.allVehicles : driversStore.allDrivers
+      return this.vehicles
+        ? vehicleStore.allVehicles.slice()
+        : driversStore.allDrivers.slice()
     },
     vehicles(): boolean {
       return this.$route.path.endsWith('vehicles')
+    },
+  },
+
+  created() {
+    EventBus.$on('filter:items', this.filterItems)
+  },
+  mounted() {
+    this.filterItems('')
+  },
+  methods: {
+    filterItems(query: string) {
+      this.filteredItems = this.items.filter((item: Vehicle | Driver) =>
+        this.vehicles
+          ? (item as Vehicle)
+              .getRegistrationnumber()
+              .toLowerCase()
+              .includes(query.toLowerCase())
+          : (item as Driver)
+              .getFirstname()
+              .toLowerCase()
+              .includes(query.toLowerCase()) ||
+            (item as Driver)
+              .getLastname()
+              .toLowerCase()
+              .includes(query.toLowerCase())
+      )
     },
   },
 })

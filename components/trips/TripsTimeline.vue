@@ -13,6 +13,7 @@
               new Date(key * 1000)
             )
           }}
+          <!-- {{ key }} -->
         </h6>
 
         <trip-card
@@ -57,9 +58,10 @@ export default Vue.extend({
       const groupedTrips: GroupedTrips = {}
 
       trips.forEach((trip) => {
-        const time = trip.getScheduleddeparturetime()
+        const time = trip.getScheduleddeparturetime().array[0]
         if (!(time in groupedTrips)) {
           groupedTrips[time] = []
+          console.log(time)
         }
 
         groupedTrips[time].push(trip)

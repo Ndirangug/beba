@@ -39,7 +39,7 @@
             <span class="font-weight-medium"> Departure:</span>
             {{
               new Intl.DateTimeFormat({ dateStyle: 'long' }).format(
-                new Date(trip.getActualdeparturetime() * 1000)
+                new Date(trip.getActualdeparturetime().array[0] * 1000)
               )
             }}
           </p>
@@ -48,7 +48,7 @@
             <span class="font-weight-medium">Scheduled Departure:</span>
             {{
               new Intl.DateTimeFormat({ dateStyle: 'long' }).format(
-                new Date(trip.getScheduleddeparturetime() * 1000)
+                new Date(trip.getScheduleddeparturetime().array[0] * 1000)
               )
             }}
           </p>
@@ -57,7 +57,7 @@
             <span class="font-weight-medium"> Arrival:</span>
             {{
               new Intl.DateTimeFormat({ dateStyle: 'long' }).format(
-                new Date(trip.getActualarrivaltime() * 1000)
+                new Date(trip.getActualarrivaltime().array[0] * 1000)
               )
             }}
           </p>
@@ -66,7 +66,7 @@
             <span class="font-weight-medium">Expected Arrival:</span>
             {{
               new Intl.DateTimeFormat({ dateStyle: 'long' }).format(
-                new Date(trip.getScheduledarrivaltime() * 1000)
+                new Date(trip.getScheduledarrivaltime().array[0] * 1000)
               )
             }}
           </p>
@@ -140,6 +140,7 @@ import {
 import Vue, { PropOptions } from 'vue'
 // @ts-ignore
 import colors from 'vuetify/lib/util/colors'
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'
 import { RecordId, Trip } from '~/protos/service_pb'
 import { tripsStore } from '~/store'
 import { ApiCallStatus, cancelTrip } from '~/utils/api-client'
