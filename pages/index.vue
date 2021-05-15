@@ -140,9 +140,9 @@ export default Vue.extend({
     initializeMarkerMoveMock() {
       const posneg = [-1, 1]
       setInterval(() => {
-        this.locations.forEach((location) => {
-          location.lat += 0.01 * this.locationsMovement[0].lat
-          location.lng += 0.01 * this.locationsMovement[0].lng
+        this.locations.forEach((location, index) => {
+          location.lat += 0.01 * this.locationsMovement[index].lat
+          location.lng += 0.01 * this.locationsMovement[index].lng
         })
       }, 2000)
     },
