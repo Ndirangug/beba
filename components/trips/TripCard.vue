@@ -140,7 +140,6 @@ import {
 import Vue, { PropOptions } from 'vue'
 // @ts-ignore
 import colors from 'vuetify/lib/util/colors'
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'
 import { RecordId, Trip } from '~/protos/service_pb'
 import { tripsStore } from '~/store'
 import { ApiCallStatus, cancelTrip } from '~/utils/api-client'

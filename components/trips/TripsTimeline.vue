@@ -58,9 +58,17 @@ export default Vue.extend({
       const groupedTrips: GroupedTrips = {}
 
       trips.forEach((trip) => {
-        const time = trip.getScheduleddeparturetime().array[0]
+        let time = trip.getScheduleddeparturetime().array[0]
+        if (time === undefined) {
+          console.log('time was undefined')
+
+          time = 1421518761
+        }
+
         if (!(time in groupedTrips)) {
           groupedTrips[time] = []
+          console.log('key')
+
           console.log(time)
         }
 

@@ -1,6 +1,11 @@
 <template>
   <v-container class="the-list">
-    <v-virtual-scroll :bench="50" :items="filteredItems" height="100%" item-height="80">
+    <v-virtual-scroll
+      :bench="50"
+      :items="filteredItems"
+      height="100%"
+      item-height="80"
+    >
       <template #default="{ item }">
         <!-- TODO: ON CLICK ITEM SHOW ON MAP MARKER-->
         <v-list-item
@@ -98,6 +103,7 @@ export default Vue.extend({
   },
   methods: {
     filterItems(query: string) {
+      // @ts-ignore
       this.filteredItems = this.items.filter((item: Vehicle | Driver) =>
         this.vehicles
           ? (item as Vehicle)

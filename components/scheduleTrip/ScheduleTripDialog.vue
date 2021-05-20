@@ -96,7 +96,7 @@
                   v-model="form.scheduledStartTime"
                   outlined
                   label="Date"
-                  :prepend-icon="icons.calendar"
+                  :prepend-inner-icon="icons.calendar"
                   readonly
                   v-bind="attrs"
                   v-on="on"
@@ -151,8 +151,11 @@
 import { mdiCalendar, mdiMapMarker } from '@mdi/js'
 import Vue from 'vue'
 import emailjs, { init } from 'emailjs-com'
+// @ts-ignore
+// eslint-disable-next-line camelcase
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'
 import { Driver, Trip, Vehicle } from '~/protos/service_pb'
-import { driversStore, scheduleTripStore, vehicleStore } from '~/store'
+import { driversStore, scheduleTripStore, tripsStore, vehicleStore } from '~/store'
 import { EventBus } from '~/utils/event-bus'
 import { geocode, LatLng } from '~/utils/geocoding'
 import {
@@ -229,18 +232,30 @@ export default Vue.extend({
     scheduleTrip() {
       // eslint-disable-next-line no-console
       console.log('scheduling')
+      const scheduledStartTime = new Date(this.form.scheduledStartTime)
+      const scheduledArrivalTime = new Date(this.form.scheduledStartTime)
+      scheduledArrivalTime.setHours(scheduledArrivalTime.getHours() + 72)
+
+      const scheduledStartTimePb = new google_protobuf_timestamp_pb.Timestamp()
+      scheduledStartTimePb.fromDate(scheduledStartTime)
+
+      const scheduledArrivalTimePb = new google_protobuf_timestamp_pb.Timestamp()
+      scheduledArrivalTimePb.fromDate(scheduledArrivalTime)
+
       const trip = new Trip()
       trip.setDriver(this.form.driver)
       trip.setVehicle(this.form.vehicle)
       trip.setOrigin(scheduleTripStore.selectedOrigin)
       trip.setDestination(scheduleTripStore.selectedDestination)
       trip.setStatus('scheduled')
-      // TODO:SCHEDULE TIME HERE SERCH VUETIFY DATE TIME PICKER
+      trip.setScheduleddeparturetime(scheduledStartTimePb)
+      trip.setScheduledarrivaltime(scheduledArrivalTimePb)
       scheduleTripApi(!process.browser, trip, this.onEndApiCall)
 
       this.disburseFunds()
       this.sendEmail()
       this.model = false
+      tripsStore.pushTrip(trip)
     },
     disburseFunds() {
       if (this.form.disburseFunds) {

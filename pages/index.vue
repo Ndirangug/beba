@@ -24,6 +24,17 @@
         icon="/truckMarker.png"
         @click="goToVehicle(vehicle.getVehicleid())"
       />
+
+      <GmapMarker
+        v-for="(location, i) in route"
+        v-show="showRoute"
+        :ref="`route-marker${i}`"
+        :key="`route-marker${i}`"
+        :position="location"
+        :clickable="false"
+        :draggable="false"
+        :icon="`/route-marker-${i}.png`"
+      />
     </GmapMap>
 
     <v-sheet id="sheet" class="elevation-20" :style="sheetWidth" height="100%">
@@ -61,6 +72,10 @@ export default Vue.extend({
       showRoute: false,
       route: [] as LatLng[],
       map: {},
+      // @ts-ignore
+      directionsService: {},
+      // @ts-ignore
+      directionsRenderer: {},
     }
   },
 
@@ -110,6 +125,7 @@ export default Vue.extend({
         this.addressFromCoordinates(vehicle.getCurrentlocation(), index)
       })
 
+      // @ts-ignore
       this.$refs.gMap.$mapPromise.then((map) => {
         console.log('mapp')
         console.log(map)
@@ -138,10 +154,11 @@ export default Vue.extend({
       })
     },
     initializeMarkerMoveMock() {
-      const posneg = [-1, 1]
       setInterval(() => {
         this.locations.forEach((location, index) => {
+          // @ts-ignore
           location.lat += 0.01 * this.locationsMovement[index].lat
+          // @ts-ignore
           location.lng += 0.01 * this.locationsMovement[index].lng
         })
       }, 2000)
@@ -160,6 +177,11 @@ export default Vue.extend({
       EventBus.$on('clear:route', () => {
         this.route.pop()
         this.route.pop()
+        this.showRoute = false
+        // @ts-ignore
+        this.directionsRenderer.setMap(null)
+        // @ts-ignore
+        this.directionsRenderer = null
       })
     },
     addressFromCoordinates(location: Location, index: number) {
@@ -174,9 +196,12 @@ export default Vue.extend({
       )
     },
     onRightClick(data: any) {
+      console.log('right click')
+      console.log(data)
+
       const location: Location = new Location()
-      location.setLat(data.event.latLng.lat())
-      location.setLong(data.event.latLng.lng())
+      location.setLat(data.latLng.lat())
+      location.setLong(data.latLng.lng())
       EventBus.$emit('map-location', location)
     },
     goToVehicle(id: number) {
@@ -187,6 +212,7 @@ export default Vue.extend({
       console.log(`setting route marker ${location}  ${index}`)
       this.$set(this.route, index, location)
       console.log(this.route)
+      this.showRoute = true
 
       if (index === 1) {
         // if array index 0(origin) and 1(destination) are both filled
@@ -195,20 +221,24 @@ export default Vue.extend({
     },
     drawRoute() {
       // @ts-ignore
-      const directionsService = new this.$google.maps.DirectionsService()
+      this.directionsService = new this.$google.maps.DirectionsService()
       // @ts-ignore
-      const directionsRenderer = new this.$google.maps.DirectionsRenderer()
-      directionsRenderer.setMap(this.map)
+      this.directionsRenderer = new this.$google.maps.DirectionsRenderer()
+      // @ts-ignore
+      this.directionsRenderer.setMap(this.map)
 
       const request = {
         origin: this.route[0],
         destination: this.route[1],
         travelMode: 'DRIVING',
       }
-      directionsService.route(request, (result: any, status: string) => {
+      // @ts-ignore
+      this.directionsService.route(request, (result: any, status: string) => {
+        console.log('directions')
         if (status === 'OK') {
           console.log(result)
-          directionsRenderer.setDirections(result)
+          // @ts-ignore
+          this.directionsRenderer.setDirections(result)
         } else {
           console.log(status)
         }
