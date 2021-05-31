@@ -155,7 +155,12 @@ import emailjs, { init } from 'emailjs-com'
 // eslint-disable-next-line camelcase
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'
 import { Driver, Trip, Vehicle } from '~/protos/service_pb'
-import { driversStore, scheduleTripStore, tripsStore, vehicleStore } from '~/store'
+import {
+  driversStore,
+  scheduleTripStore,
+  tripsStore,
+  vehicleStore,
+} from '~/store'
 import { EventBus } from '~/utils/event-bus'
 import { geocode, LatLng } from '~/utils/geocoding'
 import {
@@ -259,11 +264,13 @@ export default Vue.extend({
     },
     disburseFunds() {
       if (this.form.disburseFunds) {
-        window.open(
-          `https://ipay-payment-container-p2gh3d44pq-uc.a.run.app?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
-            this.totalFuelCost
-          }`
-        )
+        const url = `https://ipay-payment-container-p2gh3d44pq-uc.a.run.app?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
+          this.totalFuelCost
+        }&client=soda&customer=${this.form.driver.getFirstname()} ${this.form.driver.getLastname()},${this.form.driver.getPhone()}&items=${this.form.vehicle.getBrand()} ${this.form.vehicle.getModel()},${this.form.vehicle.getRegistrationnumber()},${
+          this.totalFuelConsumption
+        },${this.fuelCostPerUnit},${this.totalFuelCost};`
+        console.log(url)
+        window.open(url)
       }
     },
     sendEmail() {
