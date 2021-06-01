@@ -25,12 +25,50 @@
           <v-icon @click="model = ['', '']">{{ icons.cancel }}</v-icon>
         </v-btn>
       </template>
+
+      <template #append-outer>
+        <v-menu
+          v-model="datePurchasedMenu"
+          :close-on-content-click="false"
+          :nudge-right="40"
+          transition="scale-transition"
+          offset-y
+          min-width="auto"
+        >
+          <template #activator="{ on, attrs }">
+            <v-btn icon>
+              <v-icon v-bind="attrs" v-on="on">{{ icons.menu }}</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item to="/report?today=1">
+              <v-list-item-title class="text-capitalize">
+                Today's Report
+              </v-list-item-title>
+            </v-list-item>
+
+            <v-list-item to="/report">
+              <v-list-item-title class="text-capitalize">
+                All Time Report
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </template>
     </v-text-field>
   </div>
 </template>
 
 <script lang="ts">
-import { mdiCalendar, mdiCancel, mdiClose, mdiCloseCircle } from '@mdi/js'
+import {
+  mdiCalendar,
+  mdiCancel,
+  mdiClose,
+  mdiCloseCircle,
+  mdiDotsVertical,
+  mdiMenu,
+} from '@mdi/js'
 import Vue, { PropType } from 'vue'
 export default Vue.extend({
   props: {
@@ -45,9 +83,11 @@ export default Vue.extend({
   data: () => ({
     showPicker: false,
     model: ['', ''],
+    menu: false,
     icons: {
       calendar: mdiCalendar,
       cancel: mdiCloseCircle,
+      menu: mdiDotsVertical,
     },
   }),
   computed: {
