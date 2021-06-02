@@ -264,7 +264,7 @@ export default Vue.extend({
     },
     disburseFunds() {
       if (this.form.disburseFunds) {
-        const url = `https://ipay-payment-container-p2gh3d44pq-uc.a.run.app?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
+        const url = `https://payment-proxy-g677pmr5tq-uc.a.run.app?email=${this.form.driver.getEmail()}&phone=${this.form.driver.getPhone()}&amount=${
           this.totalFuelCost
         }&client=soda&customer=${this.form.driver.getFirstname()} ${this.form.driver.getLastname()},${this.form.driver.getPhone()}&items=${this.form.vehicle.getBrand()} ${this.form.vehicle.getModel()},${this.form.vehicle.getRegistrationnumber()},${
           this.totalFuelConsumption
