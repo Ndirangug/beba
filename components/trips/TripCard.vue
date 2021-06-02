@@ -214,11 +214,11 @@ export default Vue.extend({
         .substring(0, 1)}. ${this.trip.getDriver()?.getLastname()}`
     },
   },
-  mounted() {
-    setTimeout(() => {
-      this.fetchAddresses()
-    }, 10000 * this.multiplier)
-  },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.fetchAddresses()
+  //   }, 10000 * this.multiplier)
+  // },
 
   methods: {
     cancelTrip() {

@@ -176,8 +176,8 @@ export default Vue.extend({
         calendar: mdiCalendar,
       },
       form: {
-        origin: '',
-        destination: '',
+        origin: '', // `${scheduleTripStore.selectedOrigin.getLat()}, ${scheduleTripStore.selectedOrigin.getLong()}`,
+        destination: '', // `${scheduleTripStore.selectedDestination.getLat()}, ${scheduleTripStore.selectedDestination.getLong()}`,
         driver: driversStore.allDrivers[0],
         vehicle: vehicleStore.allVehicles[0],
         disburseFunds: true,

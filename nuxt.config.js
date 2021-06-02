@@ -44,13 +44,13 @@ export default {
     [
       'nuxt-gmaps',
       {
-        key: 'AIzaSyBZgURdVR_BOFf7j-bk4bzVTCEAXdApUlE',
+        key: 'AIzaSyAJcCfa_hJm9vwvxNNVkIvNjfUYxD8TEzg',
       },
     ],
     [
       'nuxt-google-maps-module',
       {
-        key: 'AIzaSyBZgURdVR_BOFf7j-bk4bzVTCEAXdApUlE',
+        key: 'AIzaSyAJcCfa_hJm9vwvxNNVkIvNjfUYxD8TEzg',
       },
     ],
     //
