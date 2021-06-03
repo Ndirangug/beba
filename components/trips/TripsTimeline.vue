@@ -51,7 +51,7 @@ export default Vue.extend({
       // console.log(trips)
 
       trips.sort(
-        (a, b) => a.getScheduleddeparturetime() - b.getScheduleddeparturetime()
+        (a, b) => b.getScheduleddeparturetime() - a.getScheduleddeparturetime()
       )
       // console.log(trips)
 

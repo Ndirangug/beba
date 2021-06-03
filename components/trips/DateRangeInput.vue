@@ -84,6 +84,7 @@ export default Vue.extend({
     showPicker: false,
     model: ['', ''],
     menu: false,
+    datePurchasedMenu: false,
     icons: {
       calendar: mdiCalendar,
       cancel: mdiCloseCircle,
